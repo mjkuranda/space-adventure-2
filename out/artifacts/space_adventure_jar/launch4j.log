@@ -1,0 +1,220 @@
+
+
+Version:	3.50
+CmdLine:	M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\Space Adventure 2.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	
+Java max ver:	
+Substitute:	JAVA_HOME = C:\Program Files\AdoptOpenJDK\jdk-20\bin
+Substitute:	PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.5.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\ProgramData\chocolatey\bin;M:\Programy\nodejs\;M:\Programy\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;M:\Programy\Python\Scripts\;M:\Programy\Python\;C:\Users\Maro\AppData\Local\Microsoft\WindowsApps;M:\Programy\PyCharm\bin;M:\Programy\IntelliJ IDEA Community Edition 2020.2\bin;C:\Users\Maro\AppData\Roaming\npm;C:\Program Files\AdoptOpenJDK\jdk-20\bin
+JRE paths:	C:\Program Files\AdoptOpenJDK\jdk-20\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.5.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\ProgramData\chocolatey\bin;M:\Programy\nodejs\;M:\Programy\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;M:\Programy\Python\Scripts\;M:\Programy\Python\;C:\Users\Maro\AppData\Local\Microsoft\WindowsApps;M:\Programy\PyCharm\bin;M:\Programy\IntelliJ IDEA Community Edition 2020.2\bin;C:\Users\Maro\AppData\Roaming\npm;C:\Program Files\AdoptOpenJDK\jdk-20\bin
+Check launcher:	C:\Program Files\AdoptOpenJDK\jdk-20\bin\javaw.exe (OK)
+Version string: 1.020.000_001 / 64-Bit (OK)
+Main class:	com.github.mjkuranda.spaceadventure2.SpaceAdventure2
+Info:		Classpath not defined.
+Launcher:	C:\Program Files\AdoptOpenJDK\jdk-20\bin\javaw.exe
+Launcher args:	-classpath "M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\Space Adventure 2.exe" com.github.mjkuranda.spaceadventure2.SpaceAdventure2 -Djava.library.path=lib\natives\windows
+Args length:	208/32768 chars
+Exit code:	0
+
+
+Version:	3.50
+CmdLine:	M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\Space Adventure 2.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	
+Java max ver:	
+Substitute:	JAVA_HOME = C:\Program Files\AdoptOpenJDK\jdk-20\bin
+Substitute:	PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.5.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\ProgramData\chocolatey\bin;M:\Programy\nodejs\;M:\Programy\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;M:\Programy\Python\Scripts\;M:\Programy\Python\;C:\Users\Maro\AppData\Local\Microsoft\WindowsApps;;M:\Programy\PyCharm\bin;;M:\Programy\IntelliJ IDEA Community Edition 2020.2\bin;;C:\Users\Maro\AppData\Roaming\npm;C:\Program Files\AdoptOpenJDK\jdk-20\bin
+JRE paths:	C:\Program Files\AdoptOpenJDK\jdk-20\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.5.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\ProgramData\chocolatey\bin;M:\Programy\nodejs\;M:\Programy\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;M:\Programy\Python\Scripts\;M:\Programy\Python\;C:\Users\Maro\AppData\Local\Microsoft\WindowsApps;;M:\Programy\PyCharm\bin;;M:\Programy\IntelliJ IDEA Community Edition 2020.2\bin;;C:\Users\Maro\AppData\Roaming\npm;C:\Program Files\AdoptOpenJDK\jdk-20\bin
+Check launcher:	C:\Program Files\AdoptOpenJDK\jdk-20\bin\javaw.exe (OK)
+Version string: 1.020.000_001 / 64-Bit (OK)
+Main class:	com.github.mjkuranda.spaceadventure2.SpaceAdventure2
+Info:		Classpath not defined.
+Launcher:	C:\Program Files\AdoptOpenJDK\jdk-20\bin\javaw.exe
+Launcher args:	-Djava.library.path=lib\natives\windows -classpath "M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\Space Adventure 2.exe" com.github.mjkuranda.spaceadventure2.SpaceAdventure2
+Args length:	208/32768 chars
+Exit code:	0
+
+
+Version:	3.50
+CmdLine:	M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\Space Adventure 2.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	
+Java max ver:	
+Substitute:	JAVA_HOME = C:\Program Files\AdoptOpenJDK\jdk-20\bin
+Substitute:	PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.5.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\ProgramData\chocolatey\bin;M:\Programy\nodejs\;M:\Programy\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;M:\Programy\Python\Scripts\;M:\Programy\Python\;C:\Users\Maro\AppData\Local\Microsoft\WindowsApps;;M:\Programy\PyCharm\bin;;M:\Programy\IntelliJ IDEA Community Edition 2020.2\bin;;C:\Users\Maro\AppData\Roaming\npm;C:\Program Files\AdoptOpenJDK\jdk-20\bin
+JRE paths:	C:\Program Files\AdoptOpenJDK\jdk-20\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.5.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\ProgramData\chocolatey\bin;M:\Programy\nodejs\;M:\Programy\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;M:\Programy\Python\Scripts\;M:\Programy\Python\;C:\Users\Maro\AppData\Local\Microsoft\WindowsApps;;M:\Programy\PyCharm\bin;;M:\Programy\IntelliJ IDEA Community Edition 2020.2\bin;;C:\Users\Maro\AppData\Roaming\npm;C:\Program Files\AdoptOpenJDK\jdk-20\bin
+Check launcher:	C:\Program Files\AdoptOpenJDK\jdk-20\bin\javaw.exe (OK)
+Version string: 1.020.000_001 / 64-Bit (OK)
+Main class:	com.github.mjkuranda.spaceadventure2.SpaceAdventure2
+Info:		Classpath not defined.
+Launcher:	C:\Program Files\AdoptOpenJDK\jdk-20\bin\javaw.exe
+Launcher args:	-Djava.library.path=lib\natives\windows -classpath "M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\Space Adventure 2.exe" com.github.mjkuranda.spaceadventure2.SpaceAdventure2
+Args length:	208/32768 chars
+Exit code:	0
+
+
+Version:	3.50
+CmdLine:	M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\Space Adventure 2.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	
+Java max ver:	
+Substitute:	JAVA_HOME = C:\Program Files\AdoptOpenJDK\jdk-20\bin
+Substitute:	PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.5.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\ProgramData\chocolatey\bin;M:\Programy\nodejs\;M:\Programy\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;M:\Programy\Python\Scripts\;M:\Programy\Python\;C:\Users\Maro\AppData\Local\Microsoft\WindowsApps;;M:\Programy\PyCharm\bin;;M:\Programy\IntelliJ IDEA Community Edition 2020.2\bin;;C:\Users\Maro\AppData\Roaming\npm;C:\Program Files\AdoptOpenJDK\jdk-20\bin
+JRE paths:	C:\Program Files\AdoptOpenJDK\jdk-20\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.5.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\ProgramData\chocolatey\bin;M:\Programy\nodejs\;M:\Programy\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;M:\Programy\Python\Scripts\;M:\Programy\Python\;C:\Users\Maro\AppData\Local\Microsoft\WindowsApps;;M:\Programy\PyCharm\bin;;M:\Programy\IntelliJ IDEA Community Edition 2020.2\bin;;C:\Users\Maro\AppData\Roaming\npm;C:\Program Files\AdoptOpenJDK\jdk-20\bin
+Check launcher:	C:\Program Files\AdoptOpenJDK\jdk-20\bin\javaw.exe (OK)
+Version string: 1.020.000_001 / 64-Bit (OK)
+Main class:	com.github.mjkuranda.spaceadventure2.SpaceAdventure2
+Info:		Classpath not defined.
+Launcher:	C:\Program Files\AdoptOpenJDK\jdk-20\bin\javaw.exe
+Launcher args:	-Djava.library.path=lib\natives\windows -classpath "M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\Space Adventure 2.exe" com.github.mjkuranda.spaceadventure2.SpaceAdventure2
+Args length:	208/32768 chars
+Exit code:	0
+
+
+Version:	3.50
+CmdLine:	M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\Space Adventure 2.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	
+Java max ver:	
+Substitute:	JAVA_HOME = C:\Program Files\AdoptOpenJDK\jdk-20\bin
+Substitute:	PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.5.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\ProgramData\chocolatey\bin;M:\Programy\nodejs\;M:\Programy\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;M:\Programy\Python\Scripts\;M:\Programy\Python\;C:\Users\Maro\AppData\Local\Microsoft\WindowsApps;;M:\Programy\PyCharm\bin;;M:\Programy\IntelliJ IDEA Community Edition 2020.2\bin;;C:\Users\Maro\AppData\Roaming\npm;C:\Program Files\AdoptOpenJDK\jdk-20\bin
+JRE paths:	C:\Program Files\AdoptOpenJDK\jdk-20\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.5.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\ProgramData\chocolatey\bin;M:\Programy\nodejs\;M:\Programy\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;M:\Programy\Python\Scripts\;M:\Programy\Python\;C:\Users\Maro\AppData\Local\Microsoft\WindowsApps;;M:\Programy\PyCharm\bin;;M:\Programy\IntelliJ IDEA Community Edition 2020.2\bin;;C:\Users\Maro\AppData\Roaming\npm;C:\Program Files\AdoptOpenJDK\jdk-20\bin
+Check launcher:	C:\Program Files\AdoptOpenJDK\jdk-20\bin\javaw.exe (OK)
+Version string: 1.020.000_001 / 64-Bit (OK)
+Main class:	com.github.mjkuranda.spaceadventure2.SpaceAdventure2
+Info:		Classpath not defined.
+Launcher:	C:\Program Files\AdoptOpenJDK\jdk-20\bin\javaw.exe
+Launcher args:	-Djava.library.path=lib\natives\windows -classpath "M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\Space Adventure 2.exe" com.github.mjkuranda.spaceadventure2.SpaceAdventure2
+Args length:	208/32768 chars
+Exit code:	0
+
+
+Version:	3.50
+CmdLine:	M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\Space Adventure 2.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	
+Java max ver:	
+Substitute:	JAVA_HOME = C:\Program Files\AdoptOpenJDK\jdk-20\bin
+Substitute:	PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.5.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\ProgramData\chocolatey\bin;M:\Programy\nodejs\;M:\Programy\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;M:\Programy\Python\Scripts\;M:\Programy\Python\;C:\Users\Maro\AppData\Local\Microsoft\WindowsApps;;M:\Programy\PyCharm\bin;;M:\Programy\IntelliJ IDEA Community Edition 2020.2\bin;;C:\Users\Maro\AppData\Roaming\npm;C:\Program Files\AdoptOpenJDK\jdk-20\bin
+JRE paths:	C:\Program Files\AdoptOpenJDK\jdk-20\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.5.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\ProgramData\chocolatey\bin;M:\Programy\nodejs\;M:\Programy\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;M:\Programy\Python\Scripts\;M:\Programy\Python\;C:\Users\Maro\AppData\Local\Microsoft\WindowsApps;;M:\Programy\PyCharm\bin;;M:\Programy\IntelliJ IDEA Community Edition 2020.2\bin;;C:\Users\Maro\AppData\Roaming\npm;C:\Program Files\AdoptOpenJDK\jdk-20\bin
+Check launcher:	C:\Program Files\AdoptOpenJDK\jdk-20\bin\javaw.exe (OK)
+Version string: 1.020.000_001 / 64-Bit (OK)
+Main class:	com.github.mjkuranda.spaceadventure2.SpaceAdventure2
+Info:		Classpath not defined.
+Launcher:	C:\Program Files\AdoptOpenJDK\jdk-20\bin\javaw.exe
+Launcher args:	-Djava.library.path=lib\natives\windows -classpath "M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\Space Adventure 2.exe" com.github.mjkuranda.spaceadventure2.SpaceAdventure2
+Args length:	208/32768 chars
+Exit code:	0
+
+
+Version:	3.50
+CmdLine:	M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\Space Adventure 2.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	
+Java max ver:	
+Substitute:	JAVA_HOME = C:\Program Files\AdoptOpenJDK\jdk-20\bin
+Substitute:	PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.5.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\ProgramData\chocolatey\bin;M:\Programy\nodejs\;M:\Programy\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;M:\Programy\Python\Scripts\;M:\Programy\Python\;C:\Users\Maro\AppData\Local\Microsoft\WindowsApps;;M:\Programy\PyCharm\bin;;M:\Programy\IntelliJ IDEA Community Edition 2020.2\bin;;C:\Users\Maro\AppData\Roaming\npm;C:\Program Files\AdoptOpenJDK\jdk-20\bin
+JRE paths:	C:\Program Files\AdoptOpenJDK\jdk-20\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.5.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\ProgramData\chocolatey\bin;M:\Programy\nodejs\;M:\Programy\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;M:\Programy\Python\Scripts\;M:\Programy\Python\;C:\Users\Maro\AppData\Local\Microsoft\WindowsApps;;M:\Programy\PyCharm\bin;;M:\Programy\IntelliJ IDEA Community Edition 2020.2\bin;;C:\Users\Maro\AppData\Roaming\npm;C:\Program Files\AdoptOpenJDK\jdk-20\bin
+Check launcher:	C:\Program Files\AdoptOpenJDK\jdk-20\bin\javaw.exe (OK)
+Version string: 1.020.000_001 / 64-Bit (OK)
+Main class:	com.github.mjkuranda.spaceadventure2.SpaceAdventure2
+Info:		Classpath not defined.
+Launcher:	C:\Program Files\AdoptOpenJDK\jdk-20\bin\javaw.exe
+Launcher args:	-Djava.library.path=lib\natives\windows -classpath "M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\Space Adventure 2.exe" com.github.mjkuranda.spaceadventure2.SpaceAdventure2
+Args length:	208/32768 chars
+Exit code:	0
+
+
+Version:	3.50
+CmdLine:	M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\Space Adventure 2.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	
+Java max ver:	
+Substitute:	JAVA_HOME = C:\Program Files\AdoptOpenJDK\jdk-20\bin
+Substitute:	PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.5.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\ProgramData\chocolatey\bin;M:\Programy\nodejs\;M:\Programy\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;M:\Programy\Python\Scripts\;M:\Programy\Python\;C:\Users\Maro\AppData\Local\Microsoft\WindowsApps;;M:\Programy\PyCharm\bin;;M:\Programy\IntelliJ IDEA Community Edition 2020.2\bin;;C:\Users\Maro\AppData\Roaming\npm;C:\Program Files\AdoptOpenJDK\jdk-20\bin
+JRE paths:	C:\Program Files\AdoptOpenJDK\jdk-20\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.5.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\ProgramData\chocolatey\bin;M:\Programy\nodejs\;M:\Programy\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;M:\Programy\Python\Scripts\;M:\Programy\Python\;C:\Users\Maro\AppData\Local\Microsoft\WindowsApps;;M:\Programy\PyCharm\bin;;M:\Programy\IntelliJ IDEA Community Edition 2020.2\bin;;C:\Users\Maro\AppData\Roaming\npm;C:\Program Files\AdoptOpenJDK\jdk-20\bin
+Check launcher:	C:\Program Files\AdoptOpenJDK\jdk-20\bin\javaw.exe (OK)
+Version string: 1.020.000_001 / 64-Bit (OK)
+Main class:	com.github.mjkuranda.spaceadventure2.SpaceAdventure2
+Info:		Classpath not defined.
+Launcher:	C:\Program Files\AdoptOpenJDK\jdk-20\bin\javaw.exe
+Launcher args:	-Djava.library.path=lib\natives\windows -classpath "M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\Space Adventure 2.exe" com.github.mjkuranda.spaceadventure2.SpaceAdventure2
+Args length:	208/32768 chars
+Exit code:	0
+
+
+Version:	3.50
+CmdLine:	M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\Space Adventure 2.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	
+Java max ver:	
+Substitute:	JAVA_HOME = C:\Program Files\AdoptOpenJDK\jdk-20\bin
+Substitute:	PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.5.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\ProgramData\chocolatey\bin;M:\Programy\nodejs\;M:\Programy\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;M:\Programy\Python\Scripts\;M:\Programy\Python\;C:\Users\Maro\AppData\Local\Microsoft\WindowsApps;;M:\Programy\PyCharm\bin;;M:\Programy\IntelliJ IDEA Community Edition 2020.2\bin;;C:\Users\Maro\AppData\Roaming\npm;C:\Program Files\AdoptOpenJDK\jdk-20\bin
+JRE paths:	C:\Program Files\AdoptOpenJDK\jdk-20\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.5.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\ProgramData\chocolatey\bin;M:\Programy\nodejs\;M:\Programy\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;M:\Programy\Python\Scripts\;M:\Programy\Python\;C:\Users\Maro\AppData\Local\Microsoft\WindowsApps;;M:\Programy\PyCharm\bin;;M:\Programy\IntelliJ IDEA Community Edition 2020.2\bin;;C:\Users\Maro\AppData\Roaming\npm;C:\Program Files\AdoptOpenJDK\jdk-20\bin
+Check launcher:	C:\Program Files\AdoptOpenJDK\jdk-20\bin\javaw.exe (OK)
+Version string: 1.020.000_001 / 64-Bit (OK)
+Main class:	com.github.mjkuranda.spaceadventure2.SpaceAdventure2
+Info:		Classpath not defined.
+Launcher:	C:\Program Files\AdoptOpenJDK\jdk-20\bin\javaw.exe
+Launcher args:	-Djava.library.path=lib\natives\windows -classpath "M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\Space Adventure 2.exe" com.github.mjkuranda.spaceadventure2.SpaceAdventure2
+Args length:	208/32768 chars
+Exit code:	0
+
+
+Version:	3.50
+CmdLine:	M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\Space Adventure 2.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	
+Java max ver:	
+Substitute:	JAVA_HOME = C:\Program Files\AdoptOpenJDK\jdk-20\bin
+Substitute:	PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.5.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\ProgramData\chocolatey\bin;M:\Programy\nodejs\;M:\Programy\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;M:\Programy\Python\Scripts\;M:\Programy\Python\;C:\Users\Maro\AppData\Local\Microsoft\WindowsApps;;M:\Programy\PyCharm\bin;;M:\Programy\IntelliJ IDEA Community Edition 2020.2\bin;;C:\Users\Maro\AppData\Roaming\npm;C:\Program Files\AdoptOpenJDK\jdk-20\bin
+JRE paths:	C:\Program Files\AdoptOpenJDK\jdk-20\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.5.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\ProgramData\chocolatey\bin;M:\Programy\nodejs\;M:\Programy\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;M:\Programy\Python\Scripts\;M:\Programy\Python\;C:\Users\Maro\AppData\Local\Microsoft\WindowsApps;;M:\Programy\PyCharm\bin;;M:\Programy\IntelliJ IDEA Community Edition 2020.2\bin;;C:\Users\Maro\AppData\Roaming\npm;C:\Program Files\AdoptOpenJDK\jdk-20\bin
+Check launcher:	C:\Program Files\AdoptOpenJDK\jdk-20\bin\javaw.exe (OK)
+Version string: 1.020.000_001 / 64-Bit (OK)
+Main class:	com.github.mjkuranda.spaceadventure2.SpaceAdventure2
+Info:		Classpath not defined.
+Launcher:	C:\Program Files\AdoptOpenJDK\jdk-20\bin\javaw.exe
+Launcher args:	-Djava.library.path=lib\natives\windows -classpath "M:\Programowanie\Projekty\Java\space-adventure\out\artifacts\space_adventure_jar\Space Adventure 2.exe" com.github.mjkuranda.spaceadventure2.SpaceAdventure2
+Args length:	208/32768 chars
+Exit code:	0
