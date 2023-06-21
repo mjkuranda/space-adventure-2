@@ -1,1 +1,0 @@
-java -Djava.library.path=lib\natives\windows -jar space-adventure.jar
