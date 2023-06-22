@@ -2,9 +2,11 @@ package com.github.mjkuranda.spaceadventure2;
 
 import com.github.mjkuranda.spaceadventure2.states.GameState;
 import com.github.mjkuranda.spaceadventure2.states.IntroState;
+import org.lwjgl.opengl.Display;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 
+import java.awt.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,11 +25,15 @@ public class SpaceAdventure2 extends StateBasedGame {
     }
 
     public static void main(String[] args) {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        ScalableGame sg = new ScalableGame(new SpaceAdventure2(), screenSize.width, screenSize.height, true);
+        AppGameContainer appgc;
+
         try {
-            AppGameContainer appgc;
-            appgc = new AppGameContainer(new SpaceAdventure2());
-            appgc.setDisplayMode(640, 480, true);
+            appgc = new AppGameContainer(sg);
+            appgc.setDisplayMode(screenSize.width, screenSize.height, false);
             appgc.setShowFPS(false);
+
             appgc.start();
         } catch (SlickException ex) {
             Logger.getLogger(SpaceAdventure2.class.getName()).log(Level.SEVERE, null, ex);
