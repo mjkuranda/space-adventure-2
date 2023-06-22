@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.3.0] - 2023-06-22
 ### Added
 - [@mjkuranda](https://github.com/mjkuranda): Adopting window to the screen size and detecting its.
+- [@mjkuranda](https://github.com/mjkuranda): Entity, SpaceEntity and Missile as abstract classes.
+- [@mjkuranda](https://github.com/mjkuranda): Asteroid and LaserMissile as new derived classes.
+- [@mjkuranda](https://github.com/mjkuranda): Moveable, Destroyable, Damageable and Shootable interfaces.
+- [@mjkuranda](https://github.com/mjkuranda): Entity turn to define if it's incoming or outcoming entity.
+- [@mjkuranda](https://github.com/mjkuranda): Entity type defining a specific type of the entity.
+- [@mjkuranda](https://github.com/mjkuranda): Shootable as Strategy Pattern.
 
 ## [0.2.0] - 2023-06-21
 ### Added

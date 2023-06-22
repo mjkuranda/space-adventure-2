@@ -2,6 +2,7 @@ package com.github.mjkuranda.spaceadventure2;
 
 import com.github.mjkuranda.spaceadventure2.states.GameState;
 import com.github.mjkuranda.spaceadventure2.states.IntroState;
+import org.lwjgl.opengl.Display;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -24,10 +25,12 @@ public class SpaceAdventure2 extends StateBasedGame {
     }
 
     public static void main(String[] args) {
-        try {
-            AppGameContainer appgc = new AppGameContainer(new SpaceAdventure2());
-            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        ScalableGame sg = new ScalableGame(new SpaceAdventure2(), screenSize.width, screenSize.height, true);
+        AppGameContainer appgc;
 
+        try {
+            appgc = new AppGameContainer(sg);
             appgc.setDisplayMode(screenSize.width, screenSize.height, false);
             appgc.setShowFPS(false);
 
