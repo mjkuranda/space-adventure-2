@@ -34,8 +34,27 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
 
     @Override
     public void move() {
-        x += speed;
-        y += speed;
+        if (turn == EntityTurn.INCOMING) {
+            y += speed;
+
+            return;
+        }
+
+        if (turn == EntityTurn.OUTCOMING) {
+            y -= speed;
+        }
+    }
+
+    public void move(EntityDirection direction) {
+        if (direction == EntityDirection.LEFT) {
+            x -= speed;
+
+            return;
+        }
+
+        if (direction == EntityDirection.RIGHT) {
+            x += speed;
+        }
     }
 
     @Override
@@ -50,6 +69,38 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
         if (durability <= 0) {
             destroy();
         }
+    }
+
+    public boolean collides(Entity e) {
+        if (e == null) {
+            return false;
+        }
+
+        float diffX = Math.abs(this.getX() - e.getX());
+        float diffY = Math.abs(this.getY() - e.getY());
+
+        return diffX > 0 && diffX < 1 && diffY > 0 && diffY < 1;
+    }
+
+    public void setCoords(float x, float y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public void setSubscriber(LinkedList<Entity> subscriber) {
+        this.subscriber = subscriber;
+    }
+
+    public void setTurn(EntityTurn turn) {
+        this.turn = turn;
     }
 
     public LinkedList<Entity> getSubscriber() {

@@ -7,6 +7,14 @@ import java.util.LinkedList;
 public class Asteroid extends SpaceEntity {
 
     public Asteroid(LinkedList<Entity> subscriber, float x, float y) {
-        super(EntityType.ASTEROID, subscriber, EntityTurn.INCOMING, new CantShoot(), null, x, y, 2, 100);
+        super(EntityType.ASTEROID, subscriber, EntityTurn.INCOMING, new CantShoot(), x, y, 0.05f, 100);
+    }
+
+    public Asteroid(float x, float y) {
+        super(EntityType.ASTEROID, null, EntityTurn.INCOMING, new CantShoot(), x, y, 0.05f, 100);
+    }
+
+    public Asteroid() {
+        super(EntityType.ASTEROID, null, EntityTurn.INCOMING, new CantShoot(), -1, -1, 0.05f, 100);
     }
 }

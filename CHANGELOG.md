@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2023-06-23
+### Added
+- [@mjkuranda](https://github.com/mjkuranda): GameMap and Renderer abstract classes.
+- [@mjkuranda](https://github.com/mjkuranda): ArcadeRenderer that renders 2D map.
+- [@mjkuranda](https://github.com/mjkuranda): Basic Player class and handling keys.
+- [@mjkuranda](https://github.com/mjkuranda): Player can shoot LaserMissiles. 
+- [@mjkuranda](https://github.com/mjkuranda): Colliding asteroids and the player.
+- [@mjkuranda](https://github.com/mjkuranda): Colliding player missiles with asteroids.
+
 ## [0.3.0] - 2023-06-22
 ### Added
 - [@mjkuranda](https://github.com/mjkuranda): Adopting window to the screen size and detecting its.
