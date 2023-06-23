@@ -27,6 +27,7 @@ public class ArcadeRenderer extends Renderer {
 
     @Override
     protected void renderEntities(Graphics g) {
+        /** Render space entities */
         for (var line : getMap().getSpaceEntityList()) {
             var it = line.iterator();
 
@@ -36,6 +37,12 @@ public class ArcadeRenderer extends Renderer {
                 g.setColor(Color.gray);
                 g.fillRect(entity.getX() * 32, entity.getY() * 32, 32, 32);
             }
+        }
+
+        /** Render player missiles */
+        for (var missile : getMap().getPlayerMissiles()) {
+            g.setColor(Color.green);
+            g.fillRect(missile.getX() * 32 + 12, missile.getY() * 32, 8, 32);
         }
 
         /** Render player */
