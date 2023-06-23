@@ -34,7 +34,6 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
 
     @Override
     public void move() {
-        x += speed;
         y += speed;
     }
 
@@ -50,6 +49,23 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
         if (durability <= 0) {
             destroy();
         }
+    }
+
+    public void setCoords(float x, float y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public void setSubscriber(LinkedList<Entity> subscriber) {
+        this.subscriber = subscriber;
     }
 
     public LinkedList<Entity> getSubscriber() {

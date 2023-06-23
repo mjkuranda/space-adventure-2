@@ -27,6 +27,14 @@ public abstract class Renderer {
         renderEntities(g);
     }
 
+    /**
+     * Returns game map reference
+     * @return map GameMap
+     */
+    public GameMap getMap() {
+        return map;
+    }
+
     /** Toggles map mesh */
     public void toggleMesh() {
         isMeshEnabled = !isMeshEnabled;

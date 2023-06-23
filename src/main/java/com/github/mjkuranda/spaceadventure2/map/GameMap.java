@@ -2,6 +2,7 @@ package com.github.mjkuranda.spaceadventure2.map;
 
 import com.github.mjkuranda.spaceadventure2.entities.Asteroid;
 import com.github.mjkuranda.spaceadventure2.entities.Entity;
+import com.github.mjkuranda.spaceadventure2.entities.EntityType;
 import com.github.mjkuranda.spaceadventure2.entities.SpaceEntity;
 
 import java.util.LinkedList;
@@ -19,13 +20,52 @@ public class GameMap {
         initLists();
     }
 
-    public void spawn(SpaceEntity entity) {
+    public void spawn(EntityType type) {
         float x = new Random().nextFloat() * X_SIZE;
         float y = 0;
 
         int xInt = (int) x;
 
-        entityLines[xInt].add(new Asteroid(entityLines[xInt], x, y));
+        Entity entity = getEntity(type);
+        entity.setCoords(x, y);
+        entity.setSubscriber(entityLines[xInt]);
+
+        entityLines[xInt].add(entity);
+    }
+
+    public void update() {
+        /** Update entities */
+        for (var line : entityLines) {
+            var it = line.iterator();
+
+            while (it.hasNext()) {
+                var entity = it.next();
+
+                entity.move();
+
+                if (isOutOfMap(entity)) {
+                    it.remove();
+                    entity.destroy();
+                }
+            }
+        }
+    }
+
+    public LinkedList<Entity>[] getSpaceEntityList() {
+        return entityLines;
+    }
+
+    private Entity getEntity(EntityType type) {
+        return switch(type) {
+            case ASTEROID -> new Asteroid();
+            case LASER_MISSILE -> null;
+            case NONE -> null;
+            default -> null;
+        };
+    }
+
+    private boolean isOutOfMap(Entity e) {
+        return e.getY() * 32 > Y_SIZE * 32;
     }
 
     private void initLists() {
