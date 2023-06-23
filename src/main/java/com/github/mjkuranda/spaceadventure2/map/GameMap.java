@@ -2,6 +2,8 @@ package com.github.mjkuranda.spaceadventure2.map;
 
 import com.github.mjkuranda.spaceadventure2.entities.*;
 import com.github.mjkuranda.spaceadventure2.entities.missiles.Missile;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Input;
 
 import java.util.LinkedList;
 import java.util.Random;
@@ -37,7 +39,7 @@ public class GameMap {
         entityLines[xInt].add(entity);
     }
 
-    public void update() {
+    public void update(GameContainer container) {
         /** Update entities */
         for (var line : entityLines) {
             var it = line.iterator();
@@ -52,6 +54,24 @@ public class GameMap {
                     entity.destroy();
                 }
             }
+        }
+
+        /** Spawn new entities */
+        float prob = new Random().nextFloat();
+
+        if (prob < 0.05) {
+            spawn(EntityType.ASTEROID);
+        }
+
+        /** Player update */
+        Input in = container.getInput();
+
+        if (in.isKeyDown(Input.KEY_A)) {
+            player.move(EntityDirection.LEFT);
+        }
+
+        if (in.isKeyDown(Input.KEY_D)) {
+            player.move(EntityDirection.RIGHT);
         }
     }
 

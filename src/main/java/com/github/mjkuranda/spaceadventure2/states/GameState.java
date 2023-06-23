@@ -1,17 +1,11 @@
 package com.github.mjkuranda.spaceadventure2.states;
 
-import com.github.mjkuranda.spaceadventure2.entities.Asteroid;
-import com.github.mjkuranda.spaceadventure2.entities.EntityDirection;
-import com.github.mjkuranda.spaceadventure2.entities.EntityType;
-import com.github.mjkuranda.spaceadventure2.entities.SpaceShip;
 import com.github.mjkuranda.spaceadventure2.map.GameMap;
 import com.github.mjkuranda.spaceadventure2.renderers.ArcadeRenderer;
 import com.github.mjkuranda.spaceadventure2.renderers.Renderer;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-
-import java.util.Random;
 
 public class GameState extends BasicGameState {
 
@@ -43,26 +37,12 @@ public class GameState extends BasicGameState {
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-        map.update();
+        map.update(container);
 
         Input in = container.getInput();
 
         if (in.isKeyPressed(Input.KEY_F)) {
             container.setFullscreen(!container.isFullscreen());
-        }
-
-        if (in.isKeyDown(Input.KEY_A)) {
-            map.getPlayer().move(EntityDirection.LEFT);
-        }
-
-        if (in.isKeyDown(Input.KEY_D)) {
-            map.getPlayer().move(EntityDirection.RIGHT);
-        }
-
-        float prob = new Random().nextFloat();
-
-        if (prob < 0.05) {
-            map.spawn(EntityType.ASTEROID);
         }
     }
 }
