@@ -37,7 +37,7 @@ public class GameState extends BasicGameState {
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-        map.update(container);
+        map.update(container, game);
 
         Input in = container.getInput();
 

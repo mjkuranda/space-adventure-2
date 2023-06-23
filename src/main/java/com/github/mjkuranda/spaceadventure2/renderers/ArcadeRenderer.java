@@ -34,7 +34,7 @@ public class ArcadeRenderer extends Renderer {
                 var entity = it.next();
 
                 g.setColor(Color.gray);
-                g.fillOval(entity.getX() * 32, entity.getY() * 32, 32, 32);
+                g.fillRect(entity.getX() * 32, entity.getY() * 32, 32, 32);
             }
         }
 
@@ -42,6 +42,6 @@ public class ArcadeRenderer extends Renderer {
         var player = getMap().getPlayer();
 
         g.setColor(Color.red);
-        g.fillOval(player.getX() * 32, player.getY() * 32, 32, 32);
+        g.fillRect(player.getX() * 32, player.getY() * 32, 32, 32);
     }
 }

@@ -2,8 +2,10 @@ package com.github.mjkuranda.spaceadventure2.map;
 
 import com.github.mjkuranda.spaceadventure2.entities.*;
 import com.github.mjkuranda.spaceadventure2.entities.missiles.Missile;
+import com.github.mjkuranda.spaceadventure2.states.StatesId;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.state.StateBasedGame;
 
 import java.util.LinkedList;
 import java.util.Random;
@@ -39,7 +41,7 @@ public class GameMap {
         entityLines[xInt].add(entity);
     }
 
-    public void update(GameContainer container) {
+    public void update(GameContainer container, StateBasedGame game) {
         /** Update entities */
         for (var line : entityLines) {
             var it = line.iterator();
@@ -56,13 +58,6 @@ public class GameMap {
             }
         }
 
-        /** Spawn new entities */
-        float prob = new Random().nextFloat();
-
-        if (prob < 0.05) {
-            spawn(EntityType.ASTEROID);
-        }
-
         /** Player update */
         Input in = container.getInput();
 
@@ -73,6 +68,21 @@ public class GameMap {
         if (in.isKeyDown(Input.KEY_D)) {
             player.move(EntityDirection.RIGHT);
         }
+
+        if (in.isKeyPressed(Input.KEY_G)) {
+            spawn(EntityType.ASTEROID);
+        }
+
+        if (playerCollides()) {
+            game.enterState(StatesId.INTRO);
+        }
+
+        /** Spawn new entities */
+//        float prob = new Random().nextFloat();
+//
+//        if (prob < 0.001) {
+//            spawn(EntityType.ASTEROID);
+//        }
     }
 
     public SpaceShip getPlayer() {
@@ -107,5 +117,28 @@ public class GameMap {
         for (int i = 0; i < listLines.length; i++) {
             listLines[i] = new LinkedList<>();
         }
+    }
+
+    private boolean playerCollides() {
+        float x = player.getX();
+
+        return playerCollides(x) || playerCollides(x - 1) || playerCollides(x + 1);
+    }
+
+    private boolean playerCollides(float px) {
+        int x = (int) px;
+
+        if (entityLines[x].size() == 0) {
+            return false;
+        }
+
+        Entity entity = entityLines[x].getLast();
+        float entityX = entity.getX() * 32;
+        float entityY = entity.getY() * 32;
+
+        float diffX = Math.abs(player.getX() * 32 - entityX);
+        float diffY = Math.abs(player.getY() * 32 - entityY);
+
+        return diffX > 0 && diffX < 32 && diffY > 0 && diffY < 32;
     }
 }

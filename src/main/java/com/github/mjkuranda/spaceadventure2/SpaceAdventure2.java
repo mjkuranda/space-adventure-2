@@ -1,6 +1,7 @@
 package com.github.mjkuranda.spaceadventure2;
 
 import com.github.mjkuranda.spaceadventure2.states.GameState;
+import com.github.mjkuranda.spaceadventure2.states.IntroState;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -19,6 +20,7 @@ public class SpaceAdventure2 extends StateBasedGame {
     @Override
     public void initStatesList(GameContainer container) throws SlickException {
         addState(new GameState());
+        addState(new IntroState());
     }
 
     public static void main(String[] args) {
