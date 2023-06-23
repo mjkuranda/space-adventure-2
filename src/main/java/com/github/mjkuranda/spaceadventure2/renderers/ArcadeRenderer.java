@@ -37,5 +37,11 @@ public class ArcadeRenderer extends Renderer {
                 g.fillOval(entity.getX() * 32, entity.getY() * 32, 32, 32);
             }
         }
+
+        /** Render player */
+        var player = getMap().getPlayer();
+
+        g.setColor(Color.red);
+        g.fillOval(player.getX() * 32, player.getY() * 32, 32, 32);
     }
 }

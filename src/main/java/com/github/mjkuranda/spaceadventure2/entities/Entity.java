@@ -37,6 +37,18 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
         y += speed;
     }
 
+    public void move(EntityDirection direction) {
+        if (direction == EntityDirection.LEFT) {
+            x -= speed;
+
+            return;
+        }
+
+        if (direction == EntityDirection.RIGHT) {
+            x += speed;
+        }
+    }
+
     @Override
     public void destroy() {
         subscriber.remove(this);
