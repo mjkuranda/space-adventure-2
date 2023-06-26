@@ -1,5 +1,7 @@
 package com.github.mjkuranda.spaceadventure2.entities;
 
+import com.github.mjkuranda.spaceadventure2.GameData;
+
 import java.util.LinkedList;
 import static java.lang.Math.sqrt;
 import static java.lang.Math.pow;
@@ -39,24 +41,36 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
     public void move() {
         if (turn == EntityTurn.INCOMING) {
             y += speed;
-
-            return;
         }
 
         if (turn == EntityTurn.OUTCOMING) {
             y -= speed;
+        }
+
+        if (y < 0) {
+            y = 0;
+        }
+
+        if (y > GameData.Y_SIZE) {
+            y = GameData.Y_SIZE - 1;
         }
     }
 
     public void move(EntityDirection direction) {
         if (direction == EntityDirection.LEFT) {
             x -= speed;
-
-            return;
         }
 
         if (direction == EntityDirection.RIGHT) {
             x += speed;
+        }
+
+        if (x < 0) {
+            x = 0;
+        }
+
+        if (x > GameData.X_SIZE) {
+            x = GameData.X_SIZE - 1;
         }
     }
 
@@ -98,9 +112,11 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
         return diffX > 0 && diffX < 1 && diffY > 0 && diffY < 1;
     }
 
-    public void setCoords(float x, float y) {
+    public Entity setCoords(float x, float y) {
         this.x = x;
         this.y = y;
+
+        return this;
     }
 
     public float getX() {
@@ -111,12 +127,16 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
         return y;
     }
 
-    public void setSubscriber(LinkedList<Entity> subscriber) {
+    public Entity setSubscriber(LinkedList<Entity> subscriber) {
         this.subscriber = subscriber;
+
+        return this;
     }
 
-    public void setTurn(EntityTurn turn) {
+    public Entity setTurn(EntityTurn turn) {
         this.turn = turn;
+
+        return this;
     }
 
     public LinkedList<Entity> getSubscriber() {

@@ -126,9 +126,9 @@ public class GameData {
 
         int xInt = (int) x;
 
-        Entity entity = getEntity(type);
-        entity.setCoords(x, y);
-        entity.setSubscriber(entityLines[xInt]);
+        Entity entity = getEntity(type)
+                .setCoords(x, y)
+                .setSubscriber(entityLines[xInt]);
 
         entityLines[xInt].add(entity);
     }
@@ -138,10 +138,10 @@ public class GameData {
      * @param type MissileType
      */
     public void spawn(MissileType type) {
-        Missile missile = getMissile(type);
-        missile.setCoords(player.getX(), player.getY() - 1);
-        missile.setSubscriber(playerMissiles);
-        missile.setTurn(EntityTurn.OUTCOMING);
+        Missile missile = (Missile) getMissile(type)
+                .setCoords(player.getX(), player.getY() - 1)
+                .setSubscriber(playerMissiles)
+                .setTurn(EntityTurn.OUTCOMING);
 
         playerMissiles.add(missile);
     }
@@ -245,6 +245,12 @@ public class GameData {
 
     private boolean playerCollides(float px) {
         int x = (int) px;
+
+        System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxa" + x);
+
+        if (x < 0 || x >= GameData.X_SIZE) {
+            return false;
+        }
 
         if (entityLines[x].size() == 0) {
             return false;

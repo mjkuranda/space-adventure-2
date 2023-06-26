@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.5.0] - 2023-06-26
 ### Changed
 - [@mjkuranda](https://github.com/mjkuranda): GameMap to GameData.
+- [@mjkuranda](https://github.com/mjkuranda): Spawn and destroy refactored.
 
 ## [0.4.0] - 2023-06-23
 ### Added
