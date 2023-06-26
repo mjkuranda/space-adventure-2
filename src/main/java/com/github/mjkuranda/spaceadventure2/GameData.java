@@ -213,7 +213,7 @@ public class GameData {
     }
 
     private boolean isOutOfMap(Entity e) {
-        return e.getY() * 32 > Y_SIZE * 32 || e.getY() < 0;
+        return e.getY() > Y_SIZE || e.getY() < 0;
     }
 
     private void initLists() {
@@ -259,12 +259,9 @@ public class GameData {
         }
 
         Entity entity = entityLines[x].getLast();
-        float entityX = entity.getX() * 32;
-        float entityY = entity.getY() * 32;
+        float diffX = Math.abs(player.getX() - entity.getX());
+        float diffY = Math.abs(player.getY() - entity.getY());
 
-        float diffX = Math.abs(player.getX() * 32 - entityX);
-        float diffY = Math.abs(player.getY() * 32 - entityY);
-
-        return diffX > 0 && diffX < 32 && diffY > 0 && diffY < 32;
+        return diffX > 0 && diffX < 1 && diffY > 0 && diffY < 1;
     }
 }
