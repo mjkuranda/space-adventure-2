@@ -1,6 +1,7 @@
 package com.github.mjkuranda.spaceadventure2.entities;
 
 import com.github.mjkuranda.spaceadventure2.GameData;
+import org.newdawn.slick.geom.Shape;
 
 import java.util.LinkedList;
 import static java.lang.Math.sqrt;
@@ -18,6 +19,9 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
     /** Entity turn */
     private EntityTurn turn;
 
+    /** Entity shape */
+    private Shape shape;
+
     /** Entity coordinates */
     private float x, y;
 
@@ -27,10 +31,11 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
     /** Entity durability */
     private int durability;
 
-    public Entity(EntityType type, LinkedList<Entity> subscriber, EntityTurn turn, float x, float y, float speed, int durability) {
+    public Entity(EntityType type, LinkedList<Entity> subscriber, EntityTurn turn, Shape shape, float x, float y, float speed, int durability) {
         this.type = type;
         this.subscriber = subscriber;
         this.turn = turn;
+        this.shape = shape;
         this.x = x;
         this.y = y;
         this.speed = speed;
@@ -41,8 +46,6 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
     public void move() {
         if (turn == EntityTurn.INCOMING) {
             y += speed;
-
-            return;
         }
 
         if (turn == EntityTurn.OUTCOMING) {
@@ -100,10 +103,13 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
             return false;
         }
 
-        float diffX = abs(this.getX() - e.getX());
-        float diffY = abs(this.getY() - e.getY());
+        Shape shape1 = shape.prune();
+        Shape shape2 = e.shape.prune();
 
-        return diffX > 0 && diffX < 1 && diffY > 0 && diffY < 1;
+        shape1.setLocation(x + shape.getX(), y + shape.getY());
+        shape2.setLocation(e.getX() + e.shape.getX(), e.getY() + e.shape.getY());
+
+        return shape1.intersects(shape2);
     }
 
     public Entity setCoords(float x, float y) {
@@ -113,12 +119,20 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
         return this;
     }
 
+    public float getWidth() {
+        return shape.getWidth();
+    }
+
+    public float getHeight() {
+        return shape.getHeight();
+    }
+
     public float getX() {
-        return x;
+        return x + shape.getX();
     }
 
     public float getY() {
-        return y;
+        return y + shape.getY();
     }
 
     public Entity setSubscriber(LinkedList<Entity> subscriber) {

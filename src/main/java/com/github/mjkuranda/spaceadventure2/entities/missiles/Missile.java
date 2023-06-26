@@ -1,8 +1,10 @@
 package com.github.mjkuranda.spaceadventure2.entities.missiles;
 
 import com.github.mjkuranda.spaceadventure2.entities.Entity;
+import com.github.mjkuranda.spaceadventure2.entities.EntityShapes;
 import com.github.mjkuranda.spaceadventure2.entities.EntityTurn;
 import com.github.mjkuranda.spaceadventure2.entities.EntityType;
+import org.newdawn.slick.geom.Rectangle;
 
 import java.util.LinkedList;
 
@@ -12,7 +14,7 @@ public abstract class Missile extends Entity {
     private int damage;
 
     public Missile(EntityType type, LinkedList<Entity> subscriber, EntityTurn turn, float x, float y, float speed, int damage, int durability) {
-        super(type, subscriber, turn, x, y, speed, durability);
+        super(type, subscriber, turn, EntityShapes.MISSILE_SHAPE, x, y, speed, durability);
 
         this.damage = damage;
     }
