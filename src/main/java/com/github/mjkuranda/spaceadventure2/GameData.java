@@ -28,7 +28,7 @@ public class GameData {
     public GameData() {
         initLists();
 
-        player = new Spaceship(playerMissiles, X_SIZE / 2.0f, Y_SIZE - 1);
+        player = new Spaceship(playerMissiles, X_SIZE / 2.0f, Y_SIZE - 2);
     }
 
     /***
@@ -59,23 +59,29 @@ public class GameData {
             int x = (int) missile.getX();
             missile.move();
 
-            if (missile.collides(getLast(x))) {
-                destroy(missile, missileIt);
-                getLast(x).destroy();
+            Entity e =  null;                   float d  = Float.MAX_VALUE;
+            Entity e1 = getFirst(x - 1);     float d1 = missile.getDistanceTo(e1);
+            Entity e2 = getFirst(x);            float d2 = missile.getDistanceTo(e2);
+            Entity e3 = getFirst(x + 1);     float d3 = missile.getDistanceTo(e3);
 
-                continue;
+            if (missile.collides(e1)) {
+                e = e1;
+                d = d1;
             }
 
-            if (missile.collides(getLast(x - 1))) {
-                destroy(missile, missileIt);
-                getLast(x - 1).destroy();
-
-                continue;
+            if (missile.collides(e2) && d2 < d) {
+                e = e2;
+                d = d2;
             }
 
-            if (missile.collides(getLast(x + 1))) {
+            if (missile.collides(e3) && d3 < d) {
+                e = e3;
+                d = d3;
+            }
+
+            if (e != null) {
                 destroy(missile, missileIt);
-                getLast(x + 1).destroy();
+                destroy(e);
 
                 continue;
             }
@@ -106,6 +112,7 @@ public class GameData {
 
         if (playerCollides()) {
             game.enterState(StatesId.INTRO);
+            reset();
         }
 
         /** Spawn new entities */
@@ -114,6 +121,20 @@ public class GameData {
         if (prob < 0.01) {
             spawn(EntityType.ASTEROID);
         }
+    }
+
+    /**
+     * Resets game data
+     */
+    public void reset() {
+        /** Resets player */
+        player.setCoords(X_SIZE / 2.0f, Y_SIZE - 2);
+
+        /** Resets lists */
+        for (var line : entityLines) {
+            line.clear();
+        }
+        playerMissiles.clear();
     }
 
     /**
@@ -229,7 +250,7 @@ public class GameData {
         }
     }
 
-    private Entity getLast(int x) {
+    private Entity getFirst(int x) {
         if (x < 0 || x > GameData.X_SIZE - 1) {
             return null;
         }
@@ -238,7 +259,7 @@ public class GameData {
             return null;
         }
 
-        return entityLines[x].getLast();
+        return entityLines[x].getFirst();
     }
 
     private boolean playerCollides() {
@@ -259,9 +280,7 @@ public class GameData {
         }
 
         Entity entity = entityLines[x].getLast();
-        float diffX = Math.abs(player.getX() - entity.getX());
-        float diffY = Math.abs(player.getY() - entity.getY());
 
-        return diffX > 0 && diffX < 1 && diffY > 0 && diffY < 1;
+        return player.collides(entity);
     }
 }
