@@ -1,18 +1,18 @@
 package com.github.mjkuranda.spaceadventure2.renderers;
 
-import com.github.mjkuranda.spaceadventure2.map.GameMap;
+import com.github.mjkuranda.spaceadventure2.GameData;
 import org.newdawn.slick.Graphics;
 
 public abstract class Renderer {
 
-    /** Map */
-    private GameMap map;
+    /** Game data */
+    private GameData data;
 
     /** Map mesh flag */
     private boolean isMeshEnabled;
 
-    public Renderer(GameMap map, boolean isMeshEnabled) {
-        this.map = map;
+    public Renderer(GameData data, boolean isMeshEnabled) {
+        this.data = data;
         this.isMeshEnabled = isMeshEnabled;
     }
 
@@ -28,11 +28,11 @@ public abstract class Renderer {
     }
 
     /**
-     * Returns game map reference
-     * @return map GameMap
+     * Returns game data reference
+     * @return data GameData
      */
-    public GameMap getMap() {
-        return map;
+    public GameData getData() {
+        return data;
     }
 
     /** Toggles map mesh */

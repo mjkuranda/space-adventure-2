@@ -1,6 +1,6 @@
 package com.github.mjkuranda.spaceadventure2.states;
 
-import com.github.mjkuranda.spaceadventure2.map.GameMap;
+import com.github.mjkuranda.spaceadventure2.GameData;
 import com.github.mjkuranda.spaceadventure2.renderers.ArcadeRenderer;
 import com.github.mjkuranda.spaceadventure2.renderers.Renderer;
 import org.newdawn.slick.*;
@@ -9,15 +9,15 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class GameState extends BasicGameState {
 
-    /** Game map */
-    private GameMap map;
+    /** Game data */
+    private GameData data;
 
-    /** Game map renderer */
+    /** Game data renderer */
     private Renderer renderer;
 
     public GameState() {
-        map = new GameMap();
-        renderer = new ArcadeRenderer(map);
+        data = new GameData();
+        renderer = new ArcadeRenderer(data);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class GameState extends BasicGameState {
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-        map.update(container, game);
+        data.update(container, game);
 
         Input in = container.getInput();
 

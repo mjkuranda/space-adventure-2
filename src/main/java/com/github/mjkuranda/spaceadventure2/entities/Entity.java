@@ -1,6 +1,11 @@
 package com.github.mjkuranda.spaceadventure2.entities;
 
+import com.github.mjkuranda.spaceadventure2.GameData;
+
 import java.util.LinkedList;
+import static java.lang.Math.sqrt;
+import static java.lang.Math.pow;
+import static java.lang.Math.abs;
 
 public abstract class Entity implements Moveable, Destroyable, Damageable {
 
@@ -48,12 +53,18 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
     public void move(EntityDirection direction) {
         if (direction == EntityDirection.LEFT) {
             x -= speed;
-
-            return;
         }
 
         if (direction == EntityDirection.RIGHT) {
             x += speed;
+        }
+
+        if (x < 0) {
+            x = 0;
+        }
+
+        if (x > GameData.X_SIZE - 1) {
+            x = GameData.X_SIZE - 1;
         }
     }
 
@@ -71,20 +82,35 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
         }
     }
 
+    /***
+     * Returns a distance between two entities
+     * @param e Entity
+     * @return float difference
+     */
+    public float getDistanceTo(Entity e) {
+        if (e == null) {
+            return Float.POSITIVE_INFINITY;
+        }
+
+        return (float) sqrt(pow(x - e.getX(), 2) + pow(y - e.getY(), 2));
+    }
+
     public boolean collides(Entity e) {
         if (e == null) {
             return false;
         }
 
-        float diffX = Math.abs(this.getX() - e.getX());
-        float diffY = Math.abs(this.getY() - e.getY());
+        float diffX = abs(this.getX() - e.getX());
+        float diffY = abs(this.getY() - e.getY());
 
         return diffX > 0 && diffX < 1 && diffY > 0 && diffY < 1;
     }
 
-    public void setCoords(float x, float y) {
+    public Entity setCoords(float x, float y) {
         this.x = x;
         this.y = y;
+
+        return this;
     }
 
     public float getX() {
@@ -95,12 +121,16 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
         return y;
     }
 
-    public void setSubscriber(LinkedList<Entity> subscriber) {
+    public Entity setSubscriber(LinkedList<Entity> subscriber) {
         this.subscriber = subscriber;
+
+        return this;
     }
 
-    public void setTurn(EntityTurn turn) {
+    public Entity setTurn(EntityTurn turn) {
         this.turn = turn;
+
+        return this;
     }
 
     public LinkedList<Entity> getSubscriber() {

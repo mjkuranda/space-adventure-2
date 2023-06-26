@@ -1,4 +1,4 @@
-package com.github.mjkuranda.spaceadventure2.map;
+package com.github.mjkuranda.spaceadventure2;
 
 import com.github.mjkuranda.spaceadventure2.entities.*;
 import com.github.mjkuranda.spaceadventure2.entities.missiles.LaserMissile;
@@ -9,49 +9,33 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.state.StateBasedGame;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
 
-public class GameMap {
+public class GameData {
 
     public static final int X_SIZE = 16;
     public static final int Y_SIZE = 16;
 
     /** Player spaceship */
-    private SpaceShip player;
+    private Spaceship player;
 
     /** All lines of map */
     private LinkedList<Entity>[] entityLines;
     private LinkedList<Entity> playerMissiles;
 
-    public GameMap() {
+    public GameData() {
         initLists();
 
-        player = new SpaceShip(playerMissiles, X_SIZE / 2.0f, Y_SIZE - 1);
+        player = new Spaceship(playerMissiles, X_SIZE / 2.0f, Y_SIZE - 1);
     }
 
-    public void spawn(EntityType type) {
-        float x = new Random().nextFloat() * X_SIZE;
-        float y = 0;
-
-        int xInt = (int) x;
-
-        Entity entity = getEntity(type);
-        entity.setCoords(x, y);
-        entity.setSubscriber(entityLines[xInt]);
-
-        entityLines[xInt].add(entity);
-    }
-
-    public void spawn(MissileType type) {
-        Missile missile = getMissile(type);
-        missile.setCoords(player.getX(), player.getY() - 1);
-        missile.setSubscriber(playerMissiles);
-        missile.setTurn(EntityTurn.OUTCOMING);
-
-        playerMissiles.add(missile);
-    }
-
+    /***
+     * Update function per tick
+     * @param container GameContainer
+     * @param game StateBasedGame
+     */
     public void update(GameContainer container, StateBasedGame game) {
         /** Update entities */
         for (var line : entityLines) {
@@ -59,12 +43,10 @@ public class GameMap {
 
             while (it.hasNext()) {
                 var entity = it.next();
-
                 entity.move();
 
                 if (isOutOfMap(entity)) {
-                    it.remove();
-                    entity.destroy();
+                    destroy(entity, it);
                 }
             }
         }
@@ -74,38 +56,32 @@ public class GameMap {
 
         while (missileIt.hasNext()) {
             var missile = missileIt.next();
-
+            int x = (int) missile.getX();
             missile.move();
 
-            int x = (int) missile.getX();
-
             if (missile.collides(getLast(x))) {
-                missileIt.remove();
+                destroy(missile, missileIt);
                 getLast(x).destroy();
-                missile.destroy();
 
                 continue;
             }
 
             if (missile.collides(getLast(x - 1))) {
-                missileIt.remove();
+                destroy(missile, missileIt);
                 getLast(x - 1).destroy();
-                missile.destroy();
 
                 continue;
             }
 
             if (missile.collides(getLast(x + 1))) {
-                missileIt.remove();
+                destroy(missile, missileIt);
                 getLast(x + 1).destroy();
-                missile.destroy();
 
                 continue;
             }
 
             if (isOutOfMap(missile)) {
-                missileIt.remove();
-                missile.destroy();
+                destroy(missile, missileIt);
             }
         }
 
@@ -133,23 +109,91 @@ public class GameMap {
         }
 
         /** Spawn new entities */
-//        float prob = new Random().nextFloat();
-//
-//        if (prob < 0.001) {
-//            spawn(EntityType.ASTEROID);
-//        }
+        float prob = new Random().nextFloat();
+
+        if (prob < 0.01) {
+            spawn(EntityType.ASTEROID);
+        }
     }
 
-    public SpaceShip getPlayer() {
+    /**
+     * Spawns a new space entity
+     * @param type EntityType
+     */
+    public void spawn(EntityType type) {
+        float x = new Random().nextFloat() * X_SIZE;
+        float y = 0;
+
+        int xInt = (int) x;
+
+        Entity entity = getEntity(type)
+                .setCoords(x, y)
+                .setSubscriber(entityLines[xInt]);
+
+        entityLines[xInt].add(entity);
+    }
+
+    /***
+     * Spawns a new missile
+     * @param type MissileType
+     */
+    public void spawn(MissileType type) {
+        Missile missile = (Missile) getMissile(type)
+                .setCoords(player.getX(), player.getY() - 1)
+                .setSubscriber(playerMissiles)
+                .setTurn(EntityTurn.OUTCOMING);
+
+        playerMissiles.add(missile);
+    }
+
+    /***
+     * Removes an entity from game data
+     * @param e Entity
+     */
+    public void destroy(Entity e) {
+        e.destroy();
+    }
+
+    /***
+     * Removes a player missile from game data
+     * @param missile Missile
+     */
+    public void destroy(Missile missile) {
+        missile.destroy();
+    }
+
+    /***
+     * Returns a player spaceship
+     * @return player Spaceship
+     */
+    public Spaceship getPlayer() {
         return player;
     }
 
+    /***
+     * Returns space entity list
+     * @return arrays of entity list
+     */
     public LinkedList<Entity>[] getSpaceEntityList() {
         return entityLines;
     }
 
+    /***
+     * Returns missile list
+     * @return missile list
+     */
     public LinkedList<Entity> getPlayerMissiles() {
         return playerMissiles;
+    }
+
+    private void destroy(Missile missile, Iterator<Entity> it) {
+        it.remove();
+        missile.destroy();
+    }
+
+    private void destroy(Entity e, Iterator<Entity> it) {
+        it.remove();
+        e.destroy();
     }
 
     private Entity getEntity(EntityType type) {
@@ -186,6 +230,10 @@ public class GameMap {
     }
 
     private Entity getLast(int x) {
+        if (x < 0 || x > GameData.X_SIZE - 1) {
+            return null;
+        }
+
         if (entityLines[x].size() == 0) {
             return null;
         }
@@ -200,6 +248,10 @@ public class GameMap {
     }
 
     private boolean playerCollides(float px) {
+        if (px < 0 || px > GameData.X_SIZE - 1) {
+            return false;
+        }
+
         int x = (int) px;
 
         if (entityLines[x].size() == 0) {
