@@ -1,4 +1,4 @@
-package com.github.mjkuranda.spaceadventure2.map;
+package com.github.mjkuranda.spaceadventure2;
 
 import com.github.mjkuranda.spaceadventure2.entities.*;
 import com.github.mjkuranda.spaceadventure2.entities.missiles.LaserMissile;
@@ -12,7 +12,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import java.util.LinkedList;
 import java.util.Random;
 
-public class GameMap {
+public class GameData {
 
     public static final int X_SIZE = 16;
     public static final int Y_SIZE = 16;
@@ -24,7 +24,7 @@ public class GameMap {
     private LinkedList<Entity>[] entityLines;
     private LinkedList<Entity> playerMissiles;
 
-    public GameMap() {
+    public GameData() {
         initLists();
 
         player = new SpaceShip(playerMissiles, X_SIZE / 2.0f, Y_SIZE - 1);
