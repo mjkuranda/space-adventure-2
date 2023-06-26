@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [@mjkuranda](https://github.com/mjkuranda): GameMap to GameData.
 - [@mjkuranda](https://github.com/mjkuranda): Spawn and destroy refactored.
 
+### Fixed
+- [@mjkuranda](https://github.com/mjkuranda): ArrayOutOfBoundsException related to player movement and missiles.
+- [@mjkuranda](https://github.com/mjkuranda): Building artifacts again.
+
 ## [0.4.0] - 2023-06-23
 ### Added
 - [@mjkuranda](https://github.com/mjkuranda): GameMap and Renderer abstract classes.

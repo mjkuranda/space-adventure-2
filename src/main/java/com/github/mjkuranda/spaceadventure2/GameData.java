@@ -230,6 +230,10 @@ public class GameData {
     }
 
     private Entity getLast(int x) {
+        if (x < 0 || x > GameData.X_SIZE - 1) {
+            return null;
+        }
+
         if (entityLines[x].size() == 0) {
             return null;
         }
@@ -244,13 +248,11 @@ public class GameData {
     }
 
     private boolean playerCollides(float px) {
-        int x = (int) px;
-
-        System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxa" + x);
-
-        if (x < 0 || x >= GameData.X_SIZE) {
+        if (px < 0 || px > GameData.X_SIZE - 1) {
             return false;
         }
+
+        int x = (int) px;
 
         if (entityLines[x].size() == 0) {
             return false;

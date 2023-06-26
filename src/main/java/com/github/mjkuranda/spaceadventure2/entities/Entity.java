@@ -41,18 +41,12 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
     public void move() {
         if (turn == EntityTurn.INCOMING) {
             y += speed;
+
+            return;
         }
 
         if (turn == EntityTurn.OUTCOMING) {
             y -= speed;
-        }
-
-        if (y < 0) {
-            y = 0;
-        }
-
-        if (y > GameData.Y_SIZE) {
-            y = GameData.Y_SIZE - 1;
         }
     }
 
@@ -69,7 +63,7 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
             x = 0;
         }
 
-        if (x > GameData.X_SIZE) {
+        if (x > GameData.X_SIZE - 1) {
             x = GameData.X_SIZE - 1;
         }
     }
