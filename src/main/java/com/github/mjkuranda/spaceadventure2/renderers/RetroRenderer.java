@@ -23,8 +23,8 @@ public class RetroRenderer extends Renderer {
         g.setColor(Color.red);
         g.drawLine(0, RENDERER_HEIGHT / 2, RENDERER_WIDTH, RENDERER_HEIGHT / 2);
 
-        for (int i = 0; i < 8; i++) {
-            drawColumn(g, i);
+        for (int i = 0; i < 16; i++) {
+            drawColumn(g, i - data.getPlayer().getX());
         }
 
         for (int i = 0; i < 16; i++) {
@@ -45,7 +45,37 @@ public class RetroRenderer extends Renderer {
         g.fillRect(xPlayer, yPlayer, 64, 64);
     }
 
-    private void drawColumn(Graphics g, int idx) {
+    private void drawColumn(Graphics g, float x) {
+        System.out.println(x);
+
+        if (x <= 0) {
+            drawLeftColumn(g, x);
+        } else {
+            drawRightColumn(g, x);
+        }
+    }
+
+    private void drawLeftColumn(Graphics g, float x) {
+        int xStart = RENDERER_WIDTH / 2;
+        int yStart = RENDERER_HEIGHT / 2;
+        int yEnd = RENDERER_HEIGHT;
+
+        int deltaX = (int) (x * 64);
+
+        g.drawLine(xStart - 32 + x * 32, yStart, xStart - 32 - 128 + deltaX * 4, yEnd);
+    }
+
+    private void drawRightColumn(Graphics g, float x) {
+        int xStart = RENDERER_WIDTH / 2;
+        int yStart = RENDERER_HEIGHT / 2;
+        int yEnd = RENDERER_HEIGHT;
+
+        int deltaX = (int) (x * 64);
+
+        g.drawLine(xStart + 32 + x * 32, yStart, xStart + 32 + 128 + deltaX * 4, yEnd);
+    }
+
+    private void drawColumn2(Graphics g, int idx) {
         int xStart = RENDERER_WIDTH / 2;
         int yStart = RENDERER_HEIGHT / 2;
         int yEnd = RENDERER_HEIGHT;

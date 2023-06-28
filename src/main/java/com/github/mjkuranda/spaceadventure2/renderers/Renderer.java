@@ -6,10 +6,10 @@ import org.newdawn.slick.Graphics;
 public abstract class Renderer {
 
     /** Game data */
-    private GameData data;
+    protected GameData data;
 
     /** Map mesh flag */
-    private boolean isMeshEnabled;
+    protected boolean isMeshEnabled;
 
     public Renderer(GameData data, boolean isMeshEnabled) {
         this.data = data;
