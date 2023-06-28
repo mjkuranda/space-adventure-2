@@ -9,6 +9,8 @@ public class RetroRenderer extends Renderer {
     public static final int RENDERER_WIDTH = 1280;
     public static final int RENDERER_HEIGHT = 1024;
 
+    public static final int UNEXPLAINED_OFFSET = 7;
+
     public RetroRenderer(GameData data) {
         super(data, true);
     }
@@ -23,7 +25,7 @@ public class RetroRenderer extends Renderer {
         g.setColor(Color.red);
         g.drawLine(0, RENDERER_HEIGHT / 2, RENDERER_WIDTH, RENDERER_HEIGHT / 2);
 
-        for (int i = 0; i < 16; i++) {
+        for (int i = -1; i < 16; i++) {
             drawColumn(g, i - data.getPlayer().getX());
         }
 
@@ -38,59 +40,21 @@ public class RetroRenderer extends Renderer {
     }
 
     private void renderPlayer(Graphics g) {
-        int xPlayer = RENDERER_WIDTH / 2 - 32;
+        int xPlayer = RENDERER_WIDTH / 2 - 64;
         int yPlayer = RENDERER_HEIGHT - 218;
 
         g.setColor(Color.yellow);
-        g.fillRect(xPlayer, yPlayer, 64, 64);
+        g.fillRect(xPlayer, yPlayer, 128, 64);
     }
 
     private void drawColumn(Graphics g, float x) {
-        System.out.println(x);
-
-        if (x <= 0) {
-            drawLeftColumn(g, x);
-        } else {
-            drawRightColumn(g, x);
-        }
-    }
-
-    private void drawLeftColumn(Graphics g, float x) {
         int xStart = RENDERER_WIDTH / 2;
         int yStart = RENDERER_HEIGHT / 2;
         int yEnd = RENDERER_HEIGHT;
 
         int deltaX = (int) (x * 64);
 
-        g.drawLine(xStart - 32 + x * 32, yStart, xStart - 32 - 128 + deltaX * 4, yEnd);
-    }
-
-    private void drawRightColumn(Graphics g, float x) {
-        int xStart = RENDERER_WIDTH / 2;
-        int yStart = RENDERER_HEIGHT / 2;
-        int yEnd = RENDERER_HEIGHT;
-
-        int deltaX = (int) (x * 64);
-
-        g.drawLine(xStart + 32 + x * 32, yStart, xStart + 32 + 128 + deltaX * 4, yEnd);
-    }
-
-    private void drawColumn2(Graphics g, int idx) {
-        int xStart = RENDERER_WIDTH / 2;
-        int yStart = RENDERER_HEIGHT / 2;
-        int yEnd = RENDERER_HEIGHT;
-
-        if (idx == 0) {
-            g.drawLine(xStart - 32, yStart, xStart - 32 - 128, yEnd);
-            g.drawLine(xStart + 32, yStart, xStart + 32 + 128, yEnd);
-
-            return;
-        }
-
-        int deltaX = 64 * idx;
-
-        g.drawLine(xStart - 32 - deltaX, yStart, xStart - 32 - 128 - deltaX * 4, yEnd);
-        g.drawLine(xStart + 32 + deltaX, yStart, xStart + 32 + 128 + deltaX * 4, yEnd);
+        g.drawLine(xStart + x * 32 + UNEXPLAINED_OFFSET, yStart, xStart + 128 + deltaX * 4 + UNEXPLAINED_OFFSET, yEnd);
     }
 
     private void drawRows(Graphics g, int idx) {
