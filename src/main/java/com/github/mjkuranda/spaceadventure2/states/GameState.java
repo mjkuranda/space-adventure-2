@@ -3,6 +3,7 @@ package com.github.mjkuranda.spaceadventure2.states;
 import com.github.mjkuranda.spaceadventure2.GameData;
 import com.github.mjkuranda.spaceadventure2.renderers.ArcadeRenderer;
 import com.github.mjkuranda.spaceadventure2.renderers.Renderer;
+import com.github.mjkuranda.spaceadventure2.renderers.RetroRenderer;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -17,7 +18,7 @@ public class GameState extends BasicGameState {
 
     public GameState() {
         data = new GameData();
-        renderer = new ArcadeRenderer(data);
+        renderer = new RetroRenderer(data);
     }
 
     @Override
