@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.7.0] - 2023-06-28
 ### Added
 - [@mjkuranda](https://github.com/mjkuranda): RetroRenderer as a pseudo 3D renderer.
+- [@mjkuranda](https://github.com/mjkuranda): Dynamically changing renderer by 1 or 2 key on the keyboard.
+
+### Changed
+- [@mjkuranda](https://github.com/mjkuranda): GameData map size to 16x32 tiles.
+- [@mjkuranda](https://github.com/mjkuranda): Position of ArcadeRender to center position.
 
 ## [0.6.0] - 2023-06-26
 ### Added

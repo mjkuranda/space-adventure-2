@@ -6,6 +6,12 @@ import org.newdawn.slick.Graphics;
 
 public class ArcadeRenderer extends Renderer {
 
+    private static final int GAME_OBJECT_SIZE = 32;
+    private static final int RENDERER_WIDTH = 1280;
+    private static final int RENDERER_HEIGHT = 1024;
+    private static final int START_X = RENDERER_WIDTH / 2 - (GameData.X_SIZE / 2) * GAME_OBJECT_SIZE;
+    private static final int START_Y = 0;
+
     public ArcadeRenderer(GameData data) {
         super(data, true);
     }
@@ -20,9 +26,11 @@ public class ArcadeRenderer extends Renderer {
         for (int y = 0; y < GameData.Y_SIZE; y++) {
             for (int x = 0; x < GameData.X_SIZE; x++) {
                 g.setColor(Color.red);
-                g.drawRect(x * 32, y * 32, 32, 32);
+                g.drawRect(START_X + x * GAME_OBJECT_SIZE, START_Y + y * GAME_OBJECT_SIZE, GAME_OBJECT_SIZE, GAME_OBJECT_SIZE);
             }
         }
+
+        g.drawLine(START_X, RENDERER_HEIGHT - 1, START_X + GameData.X_SIZE * 32, RENDERER_HEIGHT - 1);
     }
 
     @Override
@@ -35,20 +43,20 @@ public class ArcadeRenderer extends Renderer {
                 var entity = it.next();
 
                 g.setColor(Color.gray);
-                g.fillRect(entity.getX() * 32, entity.getY() * 32, 32, 32);
+                g.fillRect(START_X + entity.getX() * GAME_OBJECT_SIZE, START_Y + entity.getY() * GAME_OBJECT_SIZE, GAME_OBJECT_SIZE, GAME_OBJECT_SIZE);
             }
         }
 
         /** Render player missiles */
         for (var missile : getData().getPlayerMissiles()) {
             g.setColor(Color.green);
-            g.fillRect(missile.getX() * 32 + 12, missile.getY() * 32, 8, 32);
+            g.fillRect(START_X + missile.getX() * GAME_OBJECT_SIZE + 12, START_Y + missile.getY() * GAME_OBJECT_SIZE, 8, GAME_OBJECT_SIZE);
         }
 
         /** Render player */
         var player = getData().getPlayer();
 
         g.setColor(Color.red);
-        g.fillRect(player.getX() * 32, player.getY() * 32, 32, 32);
+        g.fillRect(START_X + player.getX() * GAME_OBJECT_SIZE, START_Y + player.getY() * GAME_OBJECT_SIZE, GAME_OBJECT_SIZE, GAME_OBJECT_SIZE);
     }
 }
