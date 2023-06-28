@@ -10,6 +10,8 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class GameState extends BasicGameState {
 
+    private static Renderer ARCADE_RENDERER, RETRO_RENDERER;
+
     /** Game data */
     private GameData data;
 
@@ -18,7 +20,11 @@ public class GameState extends BasicGameState {
 
     public GameState() {
         data = new GameData();
-        renderer = new RetroRenderer(data);
+
+        ARCADE_RENDERER = new ArcadeRenderer(data);
+        RETRO_RENDERER = new RetroRenderer(data);
+
+        renderer = RETRO_RENDERER;
     }
 
     @Override
@@ -44,6 +50,15 @@ public class GameState extends BasicGameState {
 
         if (in.isKeyPressed(Input.KEY_F)) {
             container.setFullscreen(!container.isFullscreen());
+        }
+
+        /** Handle renderers */
+        if (in.isKeyPressed(Input.KEY_1)) {
+            renderer = ARCADE_RENDERER;
+        }
+
+        if (in.isKeyPressed(Input.KEY_2)) {
+            renderer = RETRO_RENDERER;
         }
     }
 }

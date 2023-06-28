@@ -34,7 +34,15 @@ public class RetroRenderer extends Renderer {
 
     @Override
     protected void renderEntities(Graphics g) {
+        renderPlayer(g);
+    }
 
+    private void renderPlayer(Graphics g) {
+        int xPlayer = RENDERER_WIDTH / 2 - 32;
+        int yPlayer = RENDERER_HEIGHT - 218;
+
+        g.setColor(Color.yellow);
+        g.fillRect(xPlayer, yPlayer, 64, 64);
     }
 
     private void drawColumn(Graphics g, int idx) {
