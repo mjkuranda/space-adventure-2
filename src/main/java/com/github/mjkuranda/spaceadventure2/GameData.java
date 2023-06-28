@@ -16,7 +16,7 @@ import java.util.Random;
 public class GameData {
 
     public static final int X_SIZE = 16;
-    public static final int Y_SIZE = 16;
+    public static final int Y_SIZE = 32;
 
     /** Player spaceship */
     private Spaceship player;
@@ -116,11 +116,11 @@ public class GameData {
         }
 
         /** Spawn new entities */
-        float prob = new Random().nextFloat();
-
-        if (prob < 0.01) {
-            spawn(EntityType.ASTEROID);
-        }
+//        float prob = new Random().nextFloat();
+//
+//        if (prob < 0.01) {
+//            spawn(EntityType.ASTEROID);
+//        }
     }
 
     /**
