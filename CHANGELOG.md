@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.0] - 2023-06-29
+### Added
+- [@mjkuranda](https://github.com/mjkuranda): xxx
+
+### Changed
+- [@mjkuranda](https://github.com/mjkuranda): GameData size changed to 16x16 board size.
+
 ## [0.7.0] - 2023-06-28
 ### Added
 - [@mjkuranda](https://github.com/mjkuranda): RetroRenderer as a pseudo 3D renderer.

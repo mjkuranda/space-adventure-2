@@ -1,15 +1,17 @@
 package com.github.mjkuranda.spaceadventure2.renderers;
 
 import com.github.mjkuranda.spaceadventure2.GameData;
+import com.github.mjkuranda.spaceadventure2.entities.Entity;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
 public class RetroRenderer extends Renderer {
 
-    public static final int RENDERER_WIDTH = 1280;
-    public static final int RENDERER_HEIGHT = 1024;
+    private static final int RENDERER_WIDTH = 1280;
+    private static final int RENDERER_HEIGHT = 1024;
 
-    public static final int UNEXPLAINED_OFFSET = 7;
+    private static final int UNEXPLAINED_OFFSET = 7;
+    private static final int UNEXPLAINED_ENTITIES_OFFSET = 25;
 
     public RetroRenderer(GameData data) {
         super(data, true);
@@ -36,7 +38,27 @@ public class RetroRenderer extends Renderer {
 
     @Override
     protected void renderEntities(Graphics g) {
+        renderSpaceEntities(g);
         renderPlayer(g);
+    }
+
+    private void renderSpaceEntities(Graphics g) {
+        int xStart = RENDERER_WIDTH / 2;
+        int yStart = RENDERER_HEIGHT / 2;
+
+        g.setColor(Color.gray);
+
+        for (var line : data.getSpaceEntityList()) {
+            for (var entity : line) {
+                // -0.5f because player is centered
+                float x = entity.getX() - data.getPlayer().getX() - 0.5f;
+                int deltaX = (int) (x * 64);
+
+                // -4 (half of size). 8 is size
+                g.fillRect(xStart + x * 32 + UNEXPLAINED_OFFSET - 4, yStart - 4, 8, 8);
+                g.drawLine(xStart + x * 32 + UNEXPLAINED_OFFSET, yStart, xStart + 128 + deltaX * 4 + UNEXPLAINED_OFFSET, RENDERER_HEIGHT);
+            }
+        }
     }
 
     private void renderPlayer(Graphics g) {
