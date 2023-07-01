@@ -87,10 +87,6 @@ public class RetroRenderer extends Renderer {
         g.drawLine(xStart, yLine, xEnd, yLine);
     }
 
-    //        float x1 = MIDDLE_X + x * 32 + UNEXPLAINED_OFFSET;
-//        float x2 = MIDDLE_X + 128 + deltaX * 4 + UNEXPLAINED_OFFSET;
-//        float y1 = MIDDLE_Y;
-//        float y2 = getYOffset(14); // last 16th row
 //        //
 //        //                float a = (y2 - y1) / (x2 - x1);
 
@@ -105,7 +101,19 @@ public class RetroRenderer extends Renderer {
         float yPerc = e.getY() / GameData.Y_SIZE;
         float size = (yPerc * 56) + 8;
 
-        g.fillRect(MIDDLE_X + x * 32 + UNEXPLAINED_OFFSET - (size / 2), MIDDLE_Y - (size / 2), size, size);
+        // Line
+        float x1 = MIDDLE_X + x * 32 + UNEXPLAINED_OFFSET;
+        float x2 = MIDDLE_X + 128 + deltaX * 4 + UNEXPLAINED_OFFSET;
+        float y1 = MIDDLE_Y;
+        float y2 = RENDERER_HEIGHT;
+
+        float a = (y2 - y1) / (x2 - x1);
+        float b = y1 - a * x1;
+        float ye = getYOffset(16) * yPerc;
+        float xe = (ye - b) / a;
+
+        // Render line
+        g.fillRect(MIDDLE_X + x * 32 + UNEXPLAINED_OFFSET - (size / 2) + xe, MIDDLE_Y - (size / 2) + ye, size, size);
         g.drawLine(MIDDLE_X + x * 32 + UNEXPLAINED_OFFSET, MIDDLE_Y, MIDDLE_X + 128 + deltaX * 4 + UNEXPLAINED_OFFSET, RENDERER_HEIGHT);
     }
 
