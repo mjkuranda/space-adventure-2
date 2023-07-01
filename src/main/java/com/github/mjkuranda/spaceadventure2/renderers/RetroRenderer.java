@@ -2,6 +2,7 @@ package com.github.mjkuranda.spaceadventure2.renderers;
 
 import com.github.mjkuranda.spaceadventure2.GameData;
 import com.github.mjkuranda.spaceadventure2.entities.Entity;
+import com.github.mjkuranda.spaceadventure2.entities.Spaceship;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
@@ -9,6 +10,9 @@ public class RetroRenderer extends Renderer {
 
     private static final int RENDERER_WIDTH = 1280;
     private static final int RENDERER_HEIGHT = 1024;
+
+    private static final int MIDDLE_X = RENDERER_WIDTH  /2;
+    private static final int MIDDLE_Y = RENDERER_HEIGHT  /2;
 
     private static final int UNEXPLAINED_OFFSET = 7;
     private static final int UNEXPLAINED_ENTITIES_OFFSET = 25;
@@ -43,20 +47,11 @@ public class RetroRenderer extends Renderer {
     }
 
     private void renderSpaceEntities(Graphics g) {
-        int xStart = RENDERER_WIDTH / 2;
-        int yStart = RENDERER_HEIGHT / 2;
-
         g.setColor(Color.gray);
 
         for (var line : data.getSpaceEntityList()) {
             for (var entity : line) {
-                // -0.5f because player is centered
-                float x = entity.getX() - data.getPlayer().getX() - 0.5f;
-                int deltaX = (int) (x * 64);
-
-                // -4 (half of size). 8 is size
-                g.fillRect(xStart + x * 32 + UNEXPLAINED_OFFSET - 4, yStart - 4, 8, 8);
-                g.drawLine(xStart + x * 32 + UNEXPLAINED_OFFSET, yStart, xStart + 128 + deltaX * 4 + UNEXPLAINED_OFFSET, RENDERER_HEIGHT);
+                renderSpaceEntity(g, data.getPlayer(), entity);
             }
         }
     }
@@ -90,6 +85,28 @@ public class RetroRenderer extends Renderer {
         int yLine = yStart + deltaY + offsetY;
 
         g.drawLine(xStart, yLine, xEnd, yLine);
+    }
+
+    //        float x1 = MIDDLE_X + x * 32 + UNEXPLAINED_OFFSET;
+//        float x2 = MIDDLE_X + 128 + deltaX * 4 + UNEXPLAINED_OFFSET;
+//        float y1 = MIDDLE_Y;
+//        float y2 = getYOffset(14); // last 16th row
+//        //
+//        //                float a = (y2 - y1) / (x2 - x1);
+
+    //        float xOffset = (x2 - x1) * yPerc;
+//        float yOffset = (y2 - y1) * yPerc;
+
+    private void renderSpaceEntity(Graphics g, Spaceship p, Entity e) {
+        // -0.5f because player is centered
+        float x = e.getX() - p.getX() - 0.5f;
+        int deltaX = (int) (x * 64);
+
+        float yPerc = e.getY() / GameData.Y_SIZE;
+        float size = (yPerc * 56) + 8;
+
+        g.fillRect(MIDDLE_X + x * 32 + UNEXPLAINED_OFFSET - (size / 2), MIDDLE_Y - (size / 2), size, size);
+        g.drawLine(MIDDLE_X + x * 32 + UNEXPLAINED_OFFSET, MIDDLE_Y, MIDDLE_X + 128 + deltaX * 4 + UNEXPLAINED_OFFSET, RENDERER_HEIGHT);
     }
 
     private int getYDelta(int idx) {
