@@ -87,12 +87,6 @@ public class RetroRenderer extends Renderer {
         g.drawLine(xStart, yLine, xEnd, yLine);
     }
 
-//        //
-//        //                float a = (y2 - y1) / (x2 - x1);
-
-    //        float xOffset = (x2 - x1) * yPerc;
-//        float yOffset = (y2 - y1) * yPerc;
-
     private void renderSpaceEntity(Graphics g, Spaceship p, Entity e) {
         // -0.5f because player is centered
         float x = e.getX() - p.getX() - 0.5f;
@@ -102,19 +96,22 @@ public class RetroRenderer extends Renderer {
         float size = (yPerc * 56) + 8;
 
         // Line
-        float x1 = MIDDLE_X + x * 32 + UNEXPLAINED_OFFSET;
-        float x2 = MIDDLE_X + 128 + deltaX * 4 + UNEXPLAINED_OFFSET;
+        float x1 = MIDDLE_X + UNEXPLAINED_OFFSET + x * 32;
         float y1 = MIDDLE_Y;
+        float x2 = MIDDLE_X + UNEXPLAINED_OFFSET + 128 + deltaX * 4;
         float y2 = RENDERER_HEIGHT;
 
         float a = (y2 - y1) / (x2 - x1);
         float b = y1 - a * x1;
-        float ye = getYOffset(16) * yPerc;
-        float xe = (ye - b) / a;
+        float xe = (x2 - x1) * yPerc;
+        float ye = a * (x1 + xe) + b;
+
+        System.out.println("X: " + x1 + ", " + xe + ", ?: " + (x1 - xe));
+        System.out.println("Y: " + y1 + ", " + ye);
 
         // Render line
-        g.fillRect(MIDDLE_X + x * 32 + UNEXPLAINED_OFFSET - (size / 2) + xe, MIDDLE_Y - (size / 2) + ye, size, size);
-        g.drawLine(MIDDLE_X + x * 32 + UNEXPLAINED_OFFSET, MIDDLE_Y, MIDDLE_X + 128 + deltaX * 4 + UNEXPLAINED_OFFSET, RENDERER_HEIGHT);
+        g.fillRect(x1 + xe, ye, size, size);
+        g.drawLine(x1, y1, x2, y2);
     }
 
     private int getYDelta(int idx) {
