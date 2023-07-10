@@ -46,7 +46,7 @@ public class GameData {
                 entity.move();
 
                 if (isOutOfMap(entity)) {
-                    destroy(entity, it);
+                    remove(entity, it);
                 }
             }
         }
@@ -87,7 +87,7 @@ public class GameData {
             }
 
             if (isOutOfMap(missile)) {
-                destroy(missile, missileIt);
+                remove(missile, missileIt);
             }
         }
 
@@ -213,6 +213,11 @@ public class GameData {
     private void destroy(Missile missile, Iterator<Entity> it) {
         it.remove();
         missile.destroy();
+    }
+
+    private void remove(Entity e, Iterator<Entity> it) {
+        it.remove();
+        e.remove();
     }
 
     private void destroy(Entity e, Iterator<Entity> it) {

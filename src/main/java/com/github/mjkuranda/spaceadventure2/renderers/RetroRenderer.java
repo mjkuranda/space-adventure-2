@@ -67,11 +67,13 @@ public class RetroRenderer extends Renderer {
     }
 
     private void renderPlayer(Graphics g) {
-        int xPlayer = RENDERER_WIDTH / 2 - 64;
+        int playerWidth = 192;
+
+        int xPlayer = RENDERER_WIDTH / 2 - (playerWidth / 2);
         int yPlayer = RENDERER_HEIGHT - 218;
 
         g.setColor(Color.yellow);
-        g.fillRect(xPlayer, yPlayer, 128, 64);
+        g.fillRect(xPlayer, yPlayer, playerWidth, 64);
     }
 
     private void drawColumn(Graphics g, float x) {
@@ -108,7 +110,7 @@ public class RetroRenderer extends Renderer {
 
         float yMapped = (float) (Math.pow(e.getY(), 2) + 9 * e.getY() - 2);
         float yPerc = yMapped / (440 + 44); // 18 -> weird
-        float size = (yPerc * 64) + (e.getWidth() * 32);
+        float size = (yPerc * (e.getWidth() * 160)) + (e.getWidth() * 32);
 
         // Line
         float x1 = MIDDLE_X + UNEXPLAINED_OFFSET + x * 32;

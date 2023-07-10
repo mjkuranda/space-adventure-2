@@ -31,7 +31,7 @@ public class SpaceAdventure2 extends StateBasedGame {
         try {
             appgc = new AppGameContainer(sg);
             appgc.setDisplayMode(screenSize.width, screenSize.height, false);
-            appgc.setShowFPS(true);
+            appgc.setShowFPS(false);
             appgc.setTargetFrameRate(60);
 
             appgc.start();

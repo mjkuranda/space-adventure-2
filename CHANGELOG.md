@@ -8,10 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.9.0] - 2023-07-10
 ### Added
 - [@mjkuranda](https://github.com/mjkuranda): Missiles rendering.
-- [@mjkuranda](https://github.com/mjkuranda): Scores!
+- [@mjkuranda](https://github.com/mjkuranda): PlayerStatistics, which allows to collect the points!
 
 ### Changed
 - [@mjkuranda](https://github.com/mjkuranda): ArcadeRenderer centered.
+
+### Fixed
+- [@mjkuranda](https://github.com/mjkuranda): Player rendering size.
 
 ## [0.8.0] - 2023-07-01
 ### Added

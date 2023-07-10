@@ -1,12 +1,12 @@
 package com.github.mjkuranda.spaceadventure2.entities;
 
 import com.github.mjkuranda.spaceadventure2.GameData;
+import com.github.mjkuranda.spaceadventure2.PlayerStatistics;
 import org.newdawn.slick.geom.Shape;
 
 import java.util.LinkedList;
 import static java.lang.Math.sqrt;
 import static java.lang.Math.pow;
-import static java.lang.Math.abs;
 
 public abstract class Entity implements Moveable, Destroyable, Damageable {
 
@@ -31,7 +31,10 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
     /** Entity durability */
     private int durability;
 
-    public Entity(EntityType type, LinkedList<Entity> subscriber, EntityTurn turn, Shape shape, float x, float y, float speed, int durability) {
+    /** Entity score */
+    private int score;
+
+    public Entity(EntityType type, LinkedList<Entity> subscriber, EntityTurn turn, Shape shape, float x, float y, float speed, int durability, int score) {
         this.type = type;
         this.subscriber = subscriber;
         this.turn = turn;
@@ -40,6 +43,7 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
         this.y = y;
         this.speed = speed;
         this.durability = durability;
+        this.score = score;
     }
 
     @Override
@@ -73,6 +77,11 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
 
     @Override
     public void destroy() {
+        remove();
+        PlayerStatistics.getInstance().addScore(score);
+    }
+
+    public void remove() {
         subscriber.remove(this);
     }
 

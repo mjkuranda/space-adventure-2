@@ -1,6 +1,7 @@
 package com.github.mjkuranda.spaceadventure2.states;
 
 import com.github.mjkuranda.spaceadventure2.GameData;
+import com.github.mjkuranda.spaceadventure2.PlayerStatistics;
 import com.github.mjkuranda.spaceadventure2.renderers.ArcadeRenderer;
 import com.github.mjkuranda.spaceadventure2.renderers.Renderer;
 import com.github.mjkuranda.spaceadventure2.renderers.RetroRenderer;
@@ -15,11 +16,15 @@ public class GameState extends BasicGameState {
     /** Game data */
     private GameData data;
 
+    /** Player statistics */
+    private PlayerStatistics stats;
+
     /** Game data renderer */
     private Renderer renderer;
 
     public GameState() {
         data = new GameData();
+        stats = PlayerStatistics.getInstance();
 
         ARCADE_RENDERER = new ArcadeRenderer(data);
         RETRO_RENDERER = new RetroRenderer(data);
@@ -40,6 +45,12 @@ public class GameState extends BasicGameState {
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         renderer.render(g);
+        renderUI(container, g);
+    }
+
+    private void renderUI(GameContainer container, Graphics g) {
+        g.setColor(Color.white);
+        g.drawString("" + stats.getScore(), container.getWidth() - 64, 16);
     }
 
     @Override
