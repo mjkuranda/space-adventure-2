@@ -106,11 +106,13 @@ public class RetroRenderer extends Renderer {
         float xe = (x2 - x1) * yPerc;
         float ye = a * (x1 + xe) + b;
 
+        float center = size / 2;
+
         System.out.println("X: " + x1 + ", " + xe + ", ?: " + (x1 - xe));
         System.out.println("Y: " + y1 + ", " + ye);
 
         // Render line
-        g.fillRect(x1 + xe, ye, size, size);
+        g.fillRect(x1 + xe - center, ye - center, size, size);
         g.drawLine(x1, y1, x2, y2);
     }
 
