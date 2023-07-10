@@ -15,7 +15,6 @@ public class RetroRenderer extends Renderer {
     private static final int MIDDLE_Y = RENDERER_HEIGHT  /2;
 
     private static final int UNEXPLAINED_OFFSET = 7;
-    private static final int UNEXPLAINED_ENTITIES_OFFSET = 25;
 
     public RetroRenderer(GameData data) {
         super(data, true);
@@ -92,7 +91,8 @@ public class RetroRenderer extends Renderer {
         float x = e.getX() - p.getX() - 0.5f;
         int deltaX = (int) (x * 64);
 
-        float yPerc = e.getY() / GameData.Y_SIZE;
+        float yMapped = (float) (Math.pow(e.getY(), 2) + 9 * e.getY() - 2);
+        float yPerc = yMapped / (440 + 44); // 18 -> weird
         float size = (yPerc * 56) + 8;
 
         // Line
@@ -107,9 +107,6 @@ public class RetroRenderer extends Renderer {
         float ye = a * (x1 + xe) + b;
 
         float center = size / 2;
-
-        System.out.println("X: " + x1 + ", " + xe + ", ?: " + (x1 - xe));
-        System.out.println("Y: " + y1 + ", " + ye);
 
         // Render line
         g.fillRect(x1 + xe - center, ye - center, size, size);
