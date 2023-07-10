@@ -25,6 +25,9 @@ public class IntroState extends BasicGameState {
 
         g.setColor(Color.white);
         g.drawString("PLAY", 20, 20);
+
+        g.drawString("Your score: " + PlayerStatistics.getInstance().getScore(), 256, 256);
+        g.drawString("Press 1 to start game again!", 256, 288);
     }
 
     @Override

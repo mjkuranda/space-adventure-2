@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [@mjkuranda](https://github.com/mjkuranda): ArcadeRenderer centered.
 
 ### Fixed
-- [@mjkuranda](https://github.com/mjkuranda): Player rendering size.
+- [@mjkuranda](https://github.com/mjkuranda): All SpaceEntities rendering size.
 
 ## [0.8.0] - 2023-07-01
 ### Added
