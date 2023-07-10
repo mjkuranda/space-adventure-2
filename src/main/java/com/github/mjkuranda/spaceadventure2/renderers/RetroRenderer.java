@@ -2,7 +2,9 @@ package com.github.mjkuranda.spaceadventure2.renderers;
 
 import com.github.mjkuranda.spaceadventure2.GameData;
 import com.github.mjkuranda.spaceadventure2.entities.Entity;
+import com.github.mjkuranda.spaceadventure2.entities.EntityType;
 import com.github.mjkuranda.spaceadventure2.entities.Spaceship;
+import com.github.mjkuranda.spaceadventure2.entities.missiles.Missile;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
@@ -42,6 +44,7 @@ public class RetroRenderer extends Renderer {
     @Override
     protected void renderEntities(Graphics g) {
         renderSpaceEntities(g);
+        renderPlayerMissiles(g);
         renderPlayer(g);
     }
 
@@ -52,6 +55,15 @@ public class RetroRenderer extends Renderer {
             for (var entity : line) {
                 renderSpaceEntity(g, data.getPlayer(), entity);
             }
+        }
+    }
+
+    private void renderPlayerMissiles(Graphics g) {
+        g.setColor(Color.green);
+
+        for (var missile : data.getPlayerMissiles()) {
+//            renderMissile(g, missile);
+            renderSpaceEntity(g, data.getPlayer(), missile);
         }
     }
 
@@ -93,7 +105,7 @@ public class RetroRenderer extends Renderer {
 
         float yMapped = (float) (Math.pow(e.getY(), 2) + 9 * e.getY() - 2);
         float yPerc = yMapped / (440 + 44); // 18 -> weird
-        float size = (yPerc * 56) + 8;
+        float size = (yPerc * 58) + (e.getWidth() * 16);
 
         // Line
         float x1 = MIDDLE_X + UNEXPLAINED_OFFSET + x * 32;
@@ -108,9 +120,15 @@ public class RetroRenderer extends Renderer {
 
         float center = size / 2;
 
+        if (e.getType() == EntityType.LASER_MISSILE) {
+            g.fillOval(x1 + xe - center, ye - center, size, size);
+        } else g.fillRect(x1 + xe - center, ye - center, size, size);
         // Render line
-        g.fillRect(x1 + xe - center, ye - center, size, size);
-        g.drawLine(x1, y1, x2, y2);
+        // g.drawLine(x1, y1, x2, y2);
+    }
+
+    private void renderMissile(Graphics g, Entity m) {
+
     }
 
     private int getYDelta(int idx) {

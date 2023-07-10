@@ -29,8 +29,6 @@ public class ArcadeRenderer extends Renderer {
                 g.drawRect(START_X + x * GAME_OBJECT_SIZE, START_Y + y * GAME_OBJECT_SIZE, GAME_OBJECT_SIZE, GAME_OBJECT_SIZE);
             }
         }
-
-        g.drawLine(START_X, RENDERER_HEIGHT - 1, START_X + GameData.X_SIZE * 32, RENDERER_HEIGHT - 1);
     }
 
     @Override
