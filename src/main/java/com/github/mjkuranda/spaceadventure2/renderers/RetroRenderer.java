@@ -62,8 +62,7 @@ public class RetroRenderer extends Renderer {
         g.setColor(Color.green);
 
         for (var missile : data.getPlayerMissiles()) {
-//            renderMissile(g, missile);
-            renderSpaceEntity(g, data.getPlayer(), missile);
+            renderSpaceEntity(g, data.getPlayer(), missile, true);
         }
     }
 
@@ -99,13 +98,17 @@ public class RetroRenderer extends Renderer {
     }
 
     private void renderSpaceEntity(Graphics g, Spaceship p, Entity e) {
+        renderSpaceEntity(g, p, e, false);
+    }
+
+    private void renderSpaceEntity(Graphics g, Spaceship p, Entity e, boolean isMissile) {
         // -0.5f because player is centered
         float x = e.getX() - p.getX() - 0.5f;
         int deltaX = (int) (x * 64);
 
         float yMapped = (float) (Math.pow(e.getY(), 2) + 9 * e.getY() - 2);
         float yPerc = yMapped / (440 + 44); // 18 -> weird
-        float size = (yPerc * 58) + (e.getWidth() * 16);
+        float size = (yPerc * 64) + (e.getWidth() * 32);
 
         // Line
         float x1 = MIDDLE_X + UNEXPLAINED_OFFSET + x * 32;
@@ -120,15 +123,16 @@ public class RetroRenderer extends Renderer {
 
         float center = size / 2;
 
-        if (e.getType() == EntityType.LASER_MISSILE) {
+        if (isMissile) {
             g.fillOval(x1 + xe - center, ye - center, size, size);
-        } else g.fillRect(x1 + xe - center, ye - center, size, size);
+
+            return;
+        }
+
+        g.fillRect(x1 + xe - center, ye - center, size, size);
+
         // Render line
         // g.drawLine(x1, y1, x2, y2);
-    }
-
-    private void renderMissile(Graphics g, Entity m) {
-
     }
 
     private int getYDelta(int idx) {

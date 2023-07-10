@@ -10,7 +10,7 @@ public class ArcadeRenderer extends Renderer {
     private static final int RENDERER_WIDTH = 1280;
     private static final int RENDERER_HEIGHT = 1024;
     private static final int START_X = RENDERER_WIDTH / 2 - (GameData.X_SIZE / 2) * GAME_OBJECT_SIZE;
-    private static final int START_Y = 0;
+    private static final int START_Y = RENDERER_HEIGHT / 2 - (GameData.Y_SIZE / 2) * GAME_OBJECT_SIZE;
 
     public ArcadeRenderer(GameData data) {
         super(data, true);
