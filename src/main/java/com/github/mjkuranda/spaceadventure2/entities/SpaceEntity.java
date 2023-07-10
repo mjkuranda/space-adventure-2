@@ -11,8 +11,8 @@ public abstract class SpaceEntity extends Entity {
     /** Shootable strategy */
     private Shootable shootable;
 
-    public SpaceEntity(EntityType type, LinkedList<Entity> subscriber, EntityTurn turn, Shootable shootable, Shape shape, float x, float y, float speed, int durability) {
-        super(type, subscriber, turn, shape, x, y, speed, durability);
+    public SpaceEntity(EntityType type, LinkedList<Entity> subscriber, EntityTurn turn, Shootable shootable, Shape shape, float x, float y, float speed, int durability, int score) {
+        super(type, subscriber, turn, shape, x, y, speed, durability, score);
 
         this.shootable = shootable;
     }

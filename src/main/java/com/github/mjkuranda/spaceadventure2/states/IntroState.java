@@ -1,5 +1,6 @@
 package com.github.mjkuranda.spaceadventure2.states;
 
+import com.github.mjkuranda.spaceadventure2.PlayerStatistics;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -24,6 +25,9 @@ public class IntroState extends BasicGameState {
 
         g.setColor(Color.white);
         g.drawString("PLAY", 20, 20);
+
+        g.drawString("Your score: " + PlayerStatistics.getInstance().getScore(), 256, 256);
+        g.drawString("Press 1 to start game again!", 256, 288);
     }
 
     @Override
@@ -32,6 +36,7 @@ public class IntroState extends BasicGameState {
 
         if (in.isKeyPressed(Input.KEY_1)) {
             game.enterState(StatesId.GAME, new FadeOutTransition(), new FadeInTransition());
+            PlayerStatistics.getInstance().clear();
         }
     }
 }

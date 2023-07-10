@@ -2,7 +2,9 @@ package com.github.mjkuranda.spaceadventure2.renderers;
 
 import com.github.mjkuranda.spaceadventure2.GameData;
 import com.github.mjkuranda.spaceadventure2.entities.Entity;
+import com.github.mjkuranda.spaceadventure2.entities.EntityType;
 import com.github.mjkuranda.spaceadventure2.entities.Spaceship;
+import com.github.mjkuranda.spaceadventure2.entities.missiles.Missile;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
@@ -42,6 +44,7 @@ public class RetroRenderer extends Renderer {
     @Override
     protected void renderEntities(Graphics g) {
         renderSpaceEntities(g);
+        renderPlayerMissiles(g);
         renderPlayer(g);
     }
 
@@ -55,12 +58,22 @@ public class RetroRenderer extends Renderer {
         }
     }
 
+    private void renderPlayerMissiles(Graphics g) {
+        g.setColor(Color.green);
+
+        for (var missile : data.getPlayerMissiles()) {
+            renderSpaceEntity(g, data.getPlayer(), missile, true);
+        }
+    }
+
     private void renderPlayer(Graphics g) {
-        int xPlayer = RENDERER_WIDTH / 2 - 64;
+        int playerWidth = 192;
+
+        int xPlayer = RENDERER_WIDTH / 2 - (playerWidth / 2);
         int yPlayer = RENDERER_HEIGHT - 218;
 
         g.setColor(Color.yellow);
-        g.fillRect(xPlayer, yPlayer, 128, 64);
+        g.fillRect(xPlayer, yPlayer, playerWidth, 64);
     }
 
     private void drawColumn(Graphics g, float x) {
@@ -87,13 +100,17 @@ public class RetroRenderer extends Renderer {
     }
 
     private void renderSpaceEntity(Graphics g, Spaceship p, Entity e) {
+        renderSpaceEntity(g, p, e, false);
+    }
+
+    private void renderSpaceEntity(Graphics g, Spaceship p, Entity e, boolean isMissile) {
         // -0.5f because player is centered
         float x = e.getX() - p.getX() - 0.5f;
         int deltaX = (int) (x * 64);
 
         float yMapped = (float) (Math.pow(e.getY(), 2) + 9 * e.getY() - 2);
         float yPerc = yMapped / (440 + 44); // 18 -> weird
-        float size = (yPerc * 56) + 8;
+        float size = (yPerc * (e.getWidth() * 160)) + (e.getWidth() * 32);
 
         // Line
         float x1 = MIDDLE_X + UNEXPLAINED_OFFSET + x * 32;
@@ -108,9 +125,16 @@ public class RetroRenderer extends Renderer {
 
         float center = size / 2;
 
-        // Render line
+        if (isMissile) {
+            g.fillOval(x1 + xe - center, ye - center, size, size);
+
+            return;
+        }
+
         g.fillRect(x1 + xe - center, ye - center, size, size);
-        g.drawLine(x1, y1, x2, y2);
+
+        // Render line
+        // g.drawLine(x1, y1, x2, y2);
     }
 
     private int getYDelta(int idx) {

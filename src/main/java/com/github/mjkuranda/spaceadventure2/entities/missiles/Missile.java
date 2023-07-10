@@ -13,8 +13,8 @@ public abstract class Missile extends Entity {
     /** Missile damage */
     private int damage;
 
-    public Missile(EntityType type, LinkedList<Entity> subscriber, EntityTurn turn, float x, float y, float speed, int damage, int durability) {
-        super(type, subscriber, turn, EntityShapes.MISSILE_SHAPE, x, y, speed, durability);
+    public Missile(EntityType type, LinkedList<Entity> subscriber, EntityTurn turn, float x, float y, float speed, int damage, int durability, int score) {
+        super(type, subscriber, turn, EntityShapes.MISSILE_SHAPE, x, y, speed, durability, score);
 
         this.damage = damage;
     }

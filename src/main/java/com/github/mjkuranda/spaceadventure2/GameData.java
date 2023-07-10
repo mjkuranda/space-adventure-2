@@ -46,7 +46,7 @@ public class GameData {
                 entity.move();
 
                 if (isOutOfMap(entity)) {
-                    destroy(entity, it);
+                    remove(entity, it);
                 }
             }
         }
@@ -87,7 +87,7 @@ public class GameData {
             }
 
             if (isOutOfMap(missile)) {
-                destroy(missile, missileIt);
+                remove(missile, missileIt);
             }
         }
 
@@ -110,19 +110,17 @@ public class GameData {
             spawn(MissileType.LASER);
         }
 
-        // FIXME: enable it
-//        if (playerCollides()) {
-//            game.enterState(StatesId.INTRO);
-//            reset();
-//        }
+        if (playerCollides()) {
+            game.enterState(StatesId.INTRO);
+            reset();
+        }
 
-        // FIXME: enable it
         /** Spawn new entities */
-//        float prob = new Random().nextFloat();
-//
-//        if (prob < 0.01) {
-//            spawn(EntityType.ASTEROID);
-//        }
+        float prob = new Random().nextFloat();
+
+        if (prob < 0.01) {
+            spawn(EntityType.ASTEROID);
+        }
     }
 
     /**
@@ -161,8 +159,11 @@ public class GameData {
      * @param type MissileType
      */
     public void spawn(MissileType type) {
+        float x = player.getX() - EntityShapes.MISSILE_SHAPE.getX();
+        float y = player.getY() - 1;
+
         Missile missile = (Missile) getMissile(type)
-                .setCoords(player.getX(), player.getY() - 1)
+                .setCoords(x, y)
                 .setSubscriber(playerMissiles)
                 .setTurn(EntityTurn.OUTCOMING);
 
@@ -212,6 +213,11 @@ public class GameData {
     private void destroy(Missile missile, Iterator<Entity> it) {
         it.remove();
         missile.destroy();
+    }
+
+    private void remove(Entity e, Iterator<Entity> it) {
+        it.remove();
+        e.remove();
     }
 
     private void destroy(Entity e, Iterator<Entity> it) {
