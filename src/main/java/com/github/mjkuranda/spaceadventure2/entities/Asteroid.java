@@ -15,6 +15,7 @@ public class Asteroid extends SpaceEntity {
     }
 
     public Asteroid() {
-        super(EntityType.ASTEROID, null, EntityTurn.INCOMING, new CantShoot(), EntityShapes.ASTEROID_SHAPE, -1, -1, 0.05f, 100);
+        // FIXME: speed up
+        super(EntityType.ASTEROID, null, EntityTurn.INCOMING, new CantShoot(), EntityShapes.ASTEROID_SHAPE, -1, -1, 0.01f, 100);
     }
 }

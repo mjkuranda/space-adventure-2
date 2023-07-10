@@ -1,15 +1,20 @@
 package com.github.mjkuranda.spaceadventure2.renderers;
 
 import com.github.mjkuranda.spaceadventure2.GameData;
+import com.github.mjkuranda.spaceadventure2.entities.Entity;
+import com.github.mjkuranda.spaceadventure2.entities.Spaceship;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
 public class RetroRenderer extends Renderer {
 
-    public static final int RENDERER_WIDTH = 1280;
-    public static final int RENDERER_HEIGHT = 1024;
+    private static final int RENDERER_WIDTH = 1280;
+    private static final int RENDERER_HEIGHT = 1024;
 
-    public static final int UNEXPLAINED_OFFSET = 7;
+    private static final int MIDDLE_X = RENDERER_WIDTH  /2;
+    private static final int MIDDLE_Y = RENDERER_HEIGHT  /2;
+
+    private static final int UNEXPLAINED_OFFSET = 7;
 
     public RetroRenderer(GameData data) {
         super(data, true);
@@ -36,7 +41,18 @@ public class RetroRenderer extends Renderer {
 
     @Override
     protected void renderEntities(Graphics g) {
+        renderSpaceEntities(g);
         renderPlayer(g);
+    }
+
+    private void renderSpaceEntities(Graphics g) {
+        g.setColor(Color.gray);
+
+        for (var line : data.getSpaceEntityList()) {
+            for (var entity : line) {
+                renderSpaceEntity(g, data.getPlayer(), entity);
+            }
+        }
     }
 
     private void renderPlayer(Graphics g) {
@@ -68,6 +84,33 @@ public class RetroRenderer extends Renderer {
         int yLine = yStart + deltaY + offsetY;
 
         g.drawLine(xStart, yLine, xEnd, yLine);
+    }
+
+    private void renderSpaceEntity(Graphics g, Spaceship p, Entity e) {
+        // -0.5f because player is centered
+        float x = e.getX() - p.getX() - 0.5f;
+        int deltaX = (int) (x * 64);
+
+        float yMapped = (float) (Math.pow(e.getY(), 2) + 9 * e.getY() - 2);
+        float yPerc = yMapped / (440 + 44); // 18 -> weird
+        float size = (yPerc * 56) + 8;
+
+        // Line
+        float x1 = MIDDLE_X + UNEXPLAINED_OFFSET + x * 32;
+        float y1 = MIDDLE_Y;
+        float x2 = MIDDLE_X + UNEXPLAINED_OFFSET + 128 + deltaX * 4;
+        float y2 = RENDERER_HEIGHT;
+
+        float a = (y2 - y1) / (x2 - x1);
+        float b = y1 - a * x1;
+        float xe = (x2 - x1) * yPerc;
+        float ye = a * (x1 + xe) + b;
+
+        float center = size / 2;
+
+        // Render line
+        g.fillRect(x1 + xe - center, ye - center, size, size);
+        g.drawLine(x1, y1, x2, y2);
     }
 
     private int getYDelta(int idx) {

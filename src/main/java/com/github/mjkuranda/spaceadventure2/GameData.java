@@ -16,7 +16,7 @@ import java.util.Random;
 public class GameData {
 
     public static final int X_SIZE = 16;
-    public static final int Y_SIZE = 32;
+    public static final int Y_SIZE = 16;
 
     /** Player spaceship */
     private Spaceship player;
@@ -110,11 +110,13 @@ public class GameData {
             spawn(MissileType.LASER);
         }
 
-        if (playerCollides()) {
-            game.enterState(StatesId.INTRO);
-            reset();
-        }
+        // FIXME: enable it
+//        if (playerCollides()) {
+//            game.enterState(StatesId.INTRO);
+//            reset();
+//        }
 
+        // FIXME: enable it
         /** Spawn new entities */
 //        float prob = new Random().nextFloat();
 //
