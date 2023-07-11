@@ -6,8 +6,10 @@ import com.github.mjkuranda.spaceadventure2.entities.Entity;
 import com.github.mjkuranda.spaceadventure2.entities.EntityType;
 import com.github.mjkuranda.spaceadventure2.entities.Spaceship;
 import com.github.mjkuranda.spaceadventure2.entities.missiles.Missile;
+import com.github.mjkuranda.spaceadventure2.graphics.ImageFactory;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 
 public class RetroRenderer extends Renderer {
 
@@ -49,7 +51,7 @@ public class RetroRenderer extends Renderer {
     protected void renderEntities(Graphics g) {
         renderSpaceEntities(g);
         renderPlayerMissiles(g);
-        renderPlayer(g);
+        renderPlayer();
     }
 
     private void renderSpaceEntities(Graphics g) {
@@ -70,14 +72,13 @@ public class RetroRenderer extends Renderer {
         }
     }
 
-    private void renderPlayer(Graphics g) {
+    private void renderPlayer() {
         int playerWidth = 192;
 
         int xPlayer = RENDERER_WIDTH / 2 - (playerWidth / 2);
         int yPlayer = RENDERER_HEIGHT - 218;
 
-        g.setColor(Color.yellow);
-        g.fillRect(xPlayer, yPlayer, playerWidth, 64);
+        GameImages.SPACESHIP_IMAGE.draw(xPlayer, yPlayer, 0.37f);
     }
 
     private void drawColumn(Graphics g, float x) {
@@ -135,7 +136,10 @@ public class RetroRenderer extends Renderer {
             return;
         }
 
-        g.fillRect(x1 + xe - center, ye - center, size, size);
+        Image img = ImageFactory.get(e.getType());
+        img.draw(x1 + xe - center, ye - center, size, size);
+
+        //g.fillRect(x1 + xe - center, ye - center, size, size);
 
         // Render line
         // g.drawLine(x1, y1, x2, y2);
