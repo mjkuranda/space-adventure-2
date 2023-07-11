@@ -63,6 +63,10 @@ public class GameState extends BasicGameState {
             container.setFullscreen(!container.isFullscreen());
         }
 
+        if (in.isKeyPressed(Input.KEY_M)) {
+            renderer.toggleMesh();
+        }
+
         /** Handle renderers */
         if (in.isKeyPressed(Input.KEY_1)) {
             renderer = ARCADE_RENDERER;
