@@ -1,6 +1,7 @@
 package com.github.mjkuranda.spaceadventure2.renderers;
 
 import com.github.mjkuranda.spaceadventure2.GameData;
+import com.github.mjkuranda.spaceadventure2.GameImages;
 import com.github.mjkuranda.spaceadventure2.entities.Entity;
 import com.github.mjkuranda.spaceadventure2.entities.EntityType;
 import com.github.mjkuranda.spaceadventure2.entities.Spaceship;
@@ -13,8 +14,8 @@ public class RetroRenderer extends Renderer {
     private static final int RENDERER_WIDTH = 1280;
     private static final int RENDERER_HEIGHT = 1024;
 
-    private static final int MIDDLE_X = RENDERER_WIDTH  /2;
-    private static final int MIDDLE_Y = RENDERER_HEIGHT  /2;
+    private static final int MIDDLE_X = RENDERER_WIDTH / 2;
+    private static final int MIDDLE_Y = RENDERER_HEIGHT / 2;
 
     private static final int UNEXPLAINED_OFFSET = 7;
 
@@ -24,7 +25,10 @@ public class RetroRenderer extends Renderer {
 
     @Override
     protected void renderBackground(Graphics g) {
+        float playerX = data.getPlayer().getX();
+        int xOffset = (int) ((playerX - 8.0f) * 8);
 
+        g.drawImage(GameImages.BACKGROUND_IMAGE, -xOffset - 64, 0);
     }
 
     @Override

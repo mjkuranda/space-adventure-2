@@ -5,12 +5,22 @@ import org.newdawn.slick.SlickException;
 
 public class GameImages {
 
-    private static final String PREFIX_IMAGE_PATH = "src/main/java/resources/";
+    private static final String PREFIX_IMAGE_PATH = "src/main/resources/img/";
+
+    private static GameImages instance;
 
     public static Image ASTEROID_IMAGE,
                         SPACESHIP_IMAGE;
 
     public static Image BACKGROUND_IMAGE;
+
+    public static GameImages getInstance() {
+        if (instance == null) {
+            instance = new GameImages();
+        }
+
+        return instance;
+    }
 
     public void init() throws SlickException {
         initEntityImages();
