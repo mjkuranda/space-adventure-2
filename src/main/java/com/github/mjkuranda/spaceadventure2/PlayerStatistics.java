@@ -11,6 +11,9 @@ public class PlayerStatistics {
     /** Player score points */
     private int score;
 
+    /** Player distance */
+    private float distance;
+
     private PlayerStatistics() {
         //
     }
@@ -32,6 +35,7 @@ public class PlayerStatistics {
      */
     public void clear() {
         this.score = 0;
+        this.distance = 0;
     }
 
     public void addScore(int score) {
@@ -40,5 +44,13 @@ public class PlayerStatistics {
 
     public int getScore() {
         return score;
+    }
+
+    public void addDistance(float distance) {
+        this.distance += distance;
+    }
+
+    public float getDistance() {
+        return distance;
     }
 }

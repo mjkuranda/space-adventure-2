@@ -1,20 +1,24 @@
 package com.github.mjkuranda.spaceadventure2.renderers;
 
 import com.github.mjkuranda.spaceadventure2.GameData;
+import com.github.mjkuranda.spaceadventure2.GameImages;
+import com.github.mjkuranda.spaceadventure2.PlayerStatistics;
 import com.github.mjkuranda.spaceadventure2.entities.Entity;
 import com.github.mjkuranda.spaceadventure2.entities.EntityType;
 import com.github.mjkuranda.spaceadventure2.entities.Spaceship;
 import com.github.mjkuranda.spaceadventure2.entities.missiles.Missile;
+import com.github.mjkuranda.spaceadventure2.graphics.ImageFactory;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 
 public class RetroRenderer extends Renderer {
 
     private static final int RENDERER_WIDTH = 1280;
     private static final int RENDERER_HEIGHT = 1024;
 
-    private static final int MIDDLE_X = RENDERER_WIDTH  /2;
-    private static final int MIDDLE_Y = RENDERER_HEIGHT  /2;
+    private static final int MIDDLE_X = RENDERER_WIDTH / 2;
+    private static final int MIDDLE_Y = RENDERER_HEIGHT / 2;
 
     private static final int UNEXPLAINED_OFFSET = 7;
 
@@ -24,7 +28,12 @@ public class RetroRenderer extends Renderer {
 
     @Override
     protected void renderBackground(Graphics g) {
+        float playerX = data.getPlayer().getX();
+        int xOffset = (int) ((playerX - 8.0f) * 8);
 
+        Image img = GameImages.BACKGROUND_IMAGE;
+        float inc = PlayerStatistics.getInstance().getDistance() / 2;
+        img.draw(-xOffset - 64 - (inc / 2), 0 - (inc / 2), img.getWidth() + inc, img.getHeight() + inc);
     }
 
     @Override
@@ -45,7 +54,7 @@ public class RetroRenderer extends Renderer {
     protected void renderEntities(Graphics g) {
         renderSpaceEntities(g);
         renderPlayerMissiles(g);
-        renderPlayer(g);
+        renderPlayer();
     }
 
     private void renderSpaceEntities(Graphics g) {
@@ -66,14 +75,13 @@ public class RetroRenderer extends Renderer {
         }
     }
 
-    private void renderPlayer(Graphics g) {
+    private void renderPlayer() {
         int playerWidth = 192;
 
         int xPlayer = RENDERER_WIDTH / 2 - (playerWidth / 2);
         int yPlayer = RENDERER_HEIGHT - 218;
 
-        g.setColor(Color.yellow);
-        g.fillRect(xPlayer, yPlayer, playerWidth, 64);
+        GameImages.SPACESHIP_IMAGE.draw(xPlayer, yPlayer, 0.37f);
     }
 
     private void drawColumn(Graphics g, float x) {
@@ -131,7 +139,10 @@ public class RetroRenderer extends Renderer {
             return;
         }
 
-        g.fillRect(x1 + xe - center, ye - center, size, size);
+        Image img = ImageFactory.get(e.getType());
+        img.draw(x1 + xe - center, ye - center, size, size);
+
+        //g.fillRect(x1 + xe - center, ye - center, size, size);
 
         // Render line
         // g.drawLine(x1, y1, x2, y2);

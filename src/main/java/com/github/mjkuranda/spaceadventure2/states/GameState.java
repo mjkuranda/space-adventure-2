@@ -50,7 +50,8 @@ public class GameState extends BasicGameState {
 
     private void renderUI(GameContainer container, Graphics g) {
         g.setColor(Color.white);
-        g.drawString("" + stats.getScore(), container.getWidth() - 64, 16);
+        g.drawString("Score: " + stats.getScore(), container.getWidth() - 256, 16);
+        g.drawString("Distance: " + (int) (stats.getDistance()), container.getWidth() - 256, 48);
     }
 
     @Override
@@ -61,6 +62,10 @@ public class GameState extends BasicGameState {
 
         if (in.isKeyPressed(Input.KEY_F)) {
             container.setFullscreen(!container.isFullscreen());
+        }
+
+        if (in.isKeyPressed(Input.KEY_M)) {
+            renderer.toggleMesh();
         }
 
         /** Handle renderers */

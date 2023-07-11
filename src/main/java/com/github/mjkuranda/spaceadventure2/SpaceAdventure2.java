@@ -23,6 +23,9 @@ public class SpaceAdventure2 extends StateBasedGame {
         addState(new GameState());
         addState(new GameOverState());
         addState(new IntroState());
+
+        GameImages images = GameImages.getInstance();
+        images.init();
     }
 
     public static void main(String[] args) {

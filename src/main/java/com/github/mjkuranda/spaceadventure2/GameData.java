@@ -92,6 +92,8 @@ public class GameData {
         }
 
         /** Player update */
+        PlayerStatistics.getInstance().addDistance(player.getSpeed());
+
         Input in = container.getInput();
 
         if (in.isKeyDown(Input.KEY_A)) {
