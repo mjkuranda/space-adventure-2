@@ -11,10 +11,10 @@ public class Asteroid extends SpaceEntity {
     }
 
     public Asteroid(float x, float y) {
-        super(EntityType.ASTEROID, null, EntityTurn.INCOMING, new CantShoot(), EntityShapes.ASTEROID_SHAPE, x, y, 0.02f, 100, 1);
+        this(null, x, y);
     }
 
     public Asteroid() {
-        super(EntityType.ASTEROID, null, EntityTurn.INCOMING, new CantShoot(), EntityShapes.ASTEROID_SHAPE, -1, -1, 0.02f, 100, 1);
+        this(0.0f, 0.0f);
     }
 }
