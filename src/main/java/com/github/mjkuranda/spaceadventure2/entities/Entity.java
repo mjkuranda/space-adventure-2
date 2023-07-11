@@ -144,6 +144,10 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
         return y + shape.getY();
     }
 
+    public float getSpeed() {
+        return speed;
+    }
+
     public Entity setSubscriber(LinkedList<Entity> subscriber) {
         this.subscriber = subscriber;
 

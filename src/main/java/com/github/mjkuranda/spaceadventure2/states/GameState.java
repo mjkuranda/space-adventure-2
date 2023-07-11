@@ -50,7 +50,8 @@ public class GameState extends BasicGameState {
 
     private void renderUI(GameContainer container, Graphics g) {
         g.setColor(Color.white);
-        g.drawString("" + stats.getScore(), container.getWidth() - 64, 16);
+        g.drawString("Score: " + stats.getScore(), container.getWidth() - 256, 16);
+        g.drawString("Distance: " + (int) (stats.getDistance()), container.getWidth() - 256, 48);
     }
 
     @Override
