@@ -4,7 +4,6 @@ import com.github.mjkuranda.spaceadventure2.entities.Entity;
 import com.github.mjkuranda.spaceadventure2.entities.EntityShapes;
 import com.github.mjkuranda.spaceadventure2.entities.EntityTurn;
 import com.github.mjkuranda.spaceadventure2.entities.EntityType;
-import org.newdawn.slick.geom.Rectangle;
 
 import java.util.LinkedList;
 

@@ -111,7 +111,7 @@ public class GameData {
         }
 
         if (playerCollides()) {
-            game.enterState(StatesId.INTRO);
+            game.enterState(StatesId.GAME_OVER);
             reset();
         }
 
@@ -144,6 +144,9 @@ public class GameData {
     public void spawn(EntityType type) {
         float x = new Random().nextFloat() * X_SIZE;
         float y = 0;
+
+        if (x < 0) x = 0;
+        if (x > X_SIZE - 1) x = X_SIZE - 1;
 
         int xInt = (int) x;
 
