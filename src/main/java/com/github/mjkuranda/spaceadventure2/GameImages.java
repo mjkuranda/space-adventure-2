@@ -28,8 +28,8 @@ public class GameImages {
     }
 
     private void initEntityImages() throws SlickException {
-        ASTEROID_IMAGE = load("entities/asteroid.png");
-        SPACESHIP_IMAGE = load("entities/spaceship.png");
+        ASTEROID_IMAGE = load("entities/asteroid.png"); // https://www.space.com/asteroid-mining-bring-space-rocks-to-earth
+        SPACESHIP_IMAGE = load("entities/spaceship.png"); // https://www.shutterstock.com/pl/search/spaceship-back
     }
 
     private void initBackgrounds() throws SlickException {
