@@ -2,6 +2,7 @@ package com.github.mjkuranda.spaceadventure2.renderers;
 
 import com.github.mjkuranda.spaceadventure2.GameData;
 import com.github.mjkuranda.spaceadventure2.GameImages;
+import com.github.mjkuranda.spaceadventure2.PlayerStatistics;
 import com.github.mjkuranda.spaceadventure2.entities.Entity;
 import com.github.mjkuranda.spaceadventure2.entities.EntityType;
 import com.github.mjkuranda.spaceadventure2.entities.Spaceship;
@@ -30,7 +31,9 @@ public class RetroRenderer extends Renderer {
         float playerX = data.getPlayer().getX();
         int xOffset = (int) ((playerX - 8.0f) * 8);
 
-        g.drawImage(GameImages.BACKGROUND_IMAGE, -xOffset - 64, 0);
+        Image img = GameImages.BACKGROUND_IMAGE;
+        float inc = PlayerStatistics.getInstance().getDistance() / 2;
+        img.draw(-xOffset - 64 - (inc / 2), 0 - (inc / 2), img.getWidth() + inc, img.getHeight() + inc);
     }
 
     @Override
