@@ -21,7 +21,7 @@ public class SpaceAdventure2 extends StateBasedGame {
 
     @Override
     public void initStatesList(GameContainer container) throws SlickException {
-        addState(new MainMenuState());
+        addState(new MainMenuState(this));
         addState(new GameState());
         addState(new GameOverState());
         addState(new IntroState());
