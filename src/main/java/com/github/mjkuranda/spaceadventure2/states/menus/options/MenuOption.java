@@ -33,11 +33,19 @@ public abstract class MenuOption implements MenuOptionEvent {
 
     @Override
     public void onSelect() {
+        if (onSelect == null) {
+            return;
+        }
+
         onSelect.onSelect();
     }
 
     @Override
     public void onChange(int direction) {
+        if (onChange == null) {
+            return;
+        }
+
         onChange.onChange(direction);
     }
 
