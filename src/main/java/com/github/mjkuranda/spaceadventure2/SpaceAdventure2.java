@@ -3,6 +3,7 @@ package com.github.mjkuranda.spaceadventure2;
 import com.github.mjkuranda.spaceadventure2.states.GameOverState;
 import com.github.mjkuranda.spaceadventure2.states.GameState;
 import com.github.mjkuranda.spaceadventure2.states.IntroState;
+import com.github.mjkuranda.spaceadventure2.states.menus.MainMenuState;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -20,6 +21,7 @@ public class SpaceAdventure2 extends StateBasedGame {
 
     @Override
     public void initStatesList(GameContainer container) throws SlickException {
+        addState(new MainMenuState(this));
         addState(new GameState());
         addState(new GameOverState());
         addState(new IntroState());
@@ -38,6 +40,7 @@ public class SpaceAdventure2 extends StateBasedGame {
             appgc.setDisplayMode(screenSize.width, screenSize.height, false);
             appgc.setShowFPS(false);
             appgc.setTargetFrameRate(60);
+            appgc.setFullscreen(true);
 
             appgc.start();
         } catch (SlickException ex) {

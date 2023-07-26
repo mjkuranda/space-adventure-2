@@ -6,7 +6,7 @@
 
     <groupId>com.github.mjkuranda.space-adventure-2</groupId>
     <artifactId>space-adventure-2</artifactId>
-    <version>0.11.0</version>
+    <version>0.12.0</version>
 
     <properties>
         <maven.compiler.source>18</maven.compiler.source>
