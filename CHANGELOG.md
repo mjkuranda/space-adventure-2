@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [@mjkuranda](https://github.com/mjkuranda): Each entity has an image reference.
 - [@mjkuranda](https://github.com/mjkuranda): GameResource as an interface.
 - [@mjkuranda](https://github.com/mjkuranda): GameImage containing all images.
+- [@mjkuranda](https://github.com/mjkuranda): GameFont containing all fonts.
+- [@mjkuranda](https://github.com/mjkuranda): Centering of MenuOption text.
+- [@mjkuranda](https://github.com/mjkuranda): Title, version and creator text in main menu state.
 
 ### Changed
 - [@mjkuranda](https://github.com/mjkuranda): Any GameResource directly returns its resource.

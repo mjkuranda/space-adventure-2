@@ -1,5 +1,6 @@
 package com.github.mjkuranda.spaceadventure2.states.menus.options;
 
+import com.github.mjkuranda.spaceadventure2.resources.GameFont;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.events.MenuOptionEvent;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -27,13 +28,16 @@ public abstract class MenuOption implements MenuOptionEvent {
         float x = centerX;
         float y = centerY + idx * OPTION_SPACE;
 
+        float textX = x + (float) OPTION_WIDTH / 2 - (float) GameFont.VCR_OSD_MONO.getWidth(title) / 2;
+        float textY = y + (float) OPTION_HEIGHT / 2 - (float) GameFont.VCR_OSD_MONO.getHeight(title) / 2;
+
         g.setColor(Color.white);
         g.drawRect(x, y, OPTION_WIDTH, OPTION_HEIGHT);
-        g.drawString(title, x, y);
+        g.drawString(title, textX, textY);
 
         if (currentOption == idx) {
-            g.drawString(">", x - 20, y);
-            g.drawString("<", x + OPTION_WIDTH + 20, y);
+            g.drawString(">", x - 20, textY);
+            g.drawString("<", x + OPTION_WIDTH + 20, textY);
         }
     }
 
