@@ -11,9 +11,8 @@ import java.io.IOException;
 public class GameFont implements GameResource<UnicodeFont> {
 
     public static UnicodeFont PERFECT_DOS_VGA_437;
-    public static UnicodeFont PERFECT_DOS_VGA_437_WIN;
-    public static UnicodeFont REAL_VHS;
     public static UnicodeFont RETRO_GAMING;
+    public static UnicodeFont VCR_OSD_MONO;
 
     private UnicodeFont uniFont;
 
@@ -31,9 +30,8 @@ public class GameFont implements GameResource<UnicodeFont> {
 
     public static void load() throws SlickException, IOException, FontFormatException {
         PERFECT_DOS_VGA_437 = new GameFont("Perfect DOS VGA 437.ttf").get();
-        PERFECT_DOS_VGA_437_WIN = new GameFont("Perfect DOS VGA 437 Win.ttf").get();
-        REAL_VHS = new GameFont("RealVhsFontRegular-WyV0z.ttf").get();
         RETRO_GAMING = new GameFont("Retro Gaming.ttf").get();
+        VCR_OSD_MONO = new GameFont("VCR_OSD_MONO_1.001.ttf").get();
     }
 
     @Override
