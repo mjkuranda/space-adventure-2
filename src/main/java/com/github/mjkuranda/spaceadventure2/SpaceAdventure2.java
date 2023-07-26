@@ -40,6 +40,7 @@ public class SpaceAdventure2 extends StateBasedGame {
             appgc.setDisplayMode(screenSize.width, screenSize.height, false);
             appgc.setShowFPS(false);
             appgc.setTargetFrameRate(60);
+            appgc.setFullscreen(true);
 
             appgc.start();
         } catch (SlickException ex) {

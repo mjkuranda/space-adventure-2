@@ -7,6 +7,10 @@ import org.newdawn.slick.Graphics;
 
 public abstract class MenuOption implements MenuOptionEvent {
 
+    private static final int OPTION_WIDTH   = 200;
+    private static final int OPTION_HEIGHT  = 50;
+    private static final int OPTION_SPACE   = 100;
+
     protected String title;
     protected MenuOptionEvent onSelect;
     protected MenuOptionEvent onChange;
@@ -16,18 +20,20 @@ public abstract class MenuOption implements MenuOptionEvent {
     }
 
     public void render(GameContainer container, Graphics g, int idx, int currentOption, int length) {
-        float centerX = (float) container.getWidth() / 2;
-        float centerY = (float) container.getHeight() / 2;
-        float x = centerX - 100;
-        float y = centerY + idx * 100;
+        float containerSize = length * OPTION_HEIGHT + (length - 1) * OPTION_SPACE;
+
+        float centerX = (float) (container.getWidth() / 2) - (float) (OPTION_WIDTH / 2);
+        float centerY = (float) container.getHeight() / 2 - (float) (containerSize / 2);
+        float x = centerX;
+        float y = centerY + idx * OPTION_SPACE;
 
         g.setColor(Color.white);
-        g.drawRect(x, y, 200, 50);
+        g.drawRect(x, y, OPTION_WIDTH, OPTION_HEIGHT);
         g.drawString(title, x, y);
 
         if (currentOption == idx) {
             g.drawString(">", x - 20, y);
-            g.drawString("<", x + 220, y);
+            g.drawString("<", x + OPTION_WIDTH + 20, y);
         }
     }
 
