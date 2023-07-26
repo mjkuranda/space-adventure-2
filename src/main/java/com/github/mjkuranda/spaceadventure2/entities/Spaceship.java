@@ -9,6 +9,6 @@ import java.util.LinkedList;
 public class Spaceship extends SpaceEntity {
 
     public Spaceship(LinkedList<Entity> missileSubscriber, float x, float y) {
-        super(EntityType.SPACESHIP, null, EntityTurn.OUTCOMING, new Shooting(missileSubscriber, MissileType.LASER), EntityShapes.SPACESHIP_SHAPE, GameImage.SPACESHIP.get(), x, y, 0.075f, 100, 0);
+        super(EntityType.SPACESHIP, null, EntityTurn.OUTCOMING, new Shooting(missileSubscriber, MissileType.LASER), EntityShapes.SPACESHIP_SHAPE, GameImage.SPACESHIP, x, y, 0.075f, 100, 0);
     }
 }

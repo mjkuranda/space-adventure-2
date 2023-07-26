@@ -27,7 +27,7 @@ public class MainMenuState extends MenuState {
 
     @Override
     public void renderPartials(Graphics g) {
-        g.setFont(GameFont.RETRO_GAMING.get());
+        g.setFont(GameFont.RETRO_GAMING);
         g.drawString("Test", 300, 300);
     }
 }

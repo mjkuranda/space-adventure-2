@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [@mjkuranda](https://github.com/mjkuranda): GameResource as an interface.
 - [@mjkuranda](https://github.com/mjkuranda): GameImage containing all images.
 
+### Changed
+- [@mjkuranda](https://github.com/mjkuranda): Any GameResource directly returns its resource.
+
 ### Removed
 - [@mjkuranda](https://github.com/mjkuranda): ImageFactory, GameImages classes.
 

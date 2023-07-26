@@ -28,7 +28,7 @@ public class RetroRenderer extends Renderer {
         float playerX = data.getPlayer().getX();
         int xOffset = (int) ((playerX - 8.0f) * 8);
 
-        Image img = GameImage.BACKGROUND.get();
+        Image img = GameImage.BACKGROUND;
         float inc = PlayerStatistics.getInstance().getDistance() / 2;
         img.draw(-xOffset - 64 - (inc / 2), 0 - (inc / 2), img.getWidth() + inc, img.getHeight() + inc);
     }
@@ -78,7 +78,7 @@ public class RetroRenderer extends Renderer {
         int xPlayer = RENDERER_WIDTH / 2 - (playerWidth / 2);
         int yPlayer = RENDERER_HEIGHT - 218;
 
-        GameImage.SPACESHIP.get().draw(xPlayer, yPlayer, 0.37f);
+        GameImage.SPACESHIP.draw(xPlayer, yPlayer, 0.37f);
     }
 
     private void drawColumn(Graphics g, float x) {

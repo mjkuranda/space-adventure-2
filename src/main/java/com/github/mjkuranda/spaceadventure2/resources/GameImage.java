@@ -5,10 +5,10 @@ import org.newdawn.slick.SlickException;
 
 public class GameImage implements GameResource<Image> {
 
-    public static GameImage ASTEROID;
-    public static GameImage SPACESHIP;
+    public static Image ASTEROID;
+    public static Image SPACESHIP;
 
-    public static GameImage BACKGROUND;
+    public static Image BACKGROUND;
 
     private Image img;
 
@@ -27,11 +27,11 @@ public class GameImage implements GameResource<Image> {
     }
 
     private static void initEntityImages() throws SlickException {
-        ASTEROID = new GameImage("entities/asteroid.png"); // https://www.space.com/asteroid-mining-bring-space-rocks-to-earth
-        SPACESHIP = new GameImage("entities/spaceship.png"); // https://www.shutterstock.com/pl/search/spaceship-back
+        ASTEROID = new GameImage("entities/asteroid.png").get(); // https://www.space.com/asteroid-mining-bring-space-rocks-to-earth
+        SPACESHIP = new GameImage("entities/spaceship.png").get(); // https://www.shutterstock.com/pl/search/spaceship-back
     }
 
     private static void initBackgrounds() throws SlickException {
-        BACKGROUND = new GameImage("backgrounds/background.png");
+        BACKGROUND = new GameImage("backgrounds/background.png").get();
     }
 }
