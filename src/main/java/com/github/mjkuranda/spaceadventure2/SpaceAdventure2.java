@@ -1,5 +1,6 @@
 package com.github.mjkuranda.spaceadventure2;
 
+import com.github.mjkuranda.spaceadventure2.resources.GameFont;
 import com.github.mjkuranda.spaceadventure2.resources.GameImage;
 import com.github.mjkuranda.spaceadventure2.states.GameOverState;
 import com.github.mjkuranda.spaceadventure2.states.GameState;
@@ -9,6 +10,7 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,6 +26,11 @@ public class SpaceAdventure2 extends StateBasedGame {
     public void initStatesList(GameContainer container) throws SlickException {
         // FIXME: Loading resources in `LoadingState` state.
         GameImage.load();
+        try {
+            GameFont.load();
+        } catch (IOException | FontFormatException e) {
+            throw new RuntimeException(e);
+        }
 
         addState(new MainMenuState(this));
         addState(new GameState());

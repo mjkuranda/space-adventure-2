@@ -1,9 +1,9 @@
 package com.github.mjkuranda.spaceadventure2.resources;
 
-import org.newdawn.slick.SlickException;
-
 public interface GameResource<T> {
-    static void load() throws SlickException {}
+    default String getResourcePath(String type, String path) {
+        return PREFIX_PATH + type + "/" + path;
+    }
 
     T get();
 

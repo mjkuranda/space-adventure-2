@@ -13,7 +13,7 @@ public class GameImage implements GameResource<Image> {
     private Image img;
 
     public GameImage(String path) throws SlickException {
-        img = new Image(PREFIX_PATH + "img" + path);
+        img = new Image(getResourcePath("img", path));
     }
 
     public static void load() throws SlickException {
@@ -27,11 +27,11 @@ public class GameImage implements GameResource<Image> {
     }
 
     private static void initEntityImages() throws SlickException {
-        ASTEROID = new GameImage("/entities/asteroid.png"); // https://www.space.com/asteroid-mining-bring-space-rocks-to-earth
-        SPACESHIP = new GameImage("/entities/spaceship.png"); // https://www.shutterstock.com/pl/search/spaceship-back
+        ASTEROID = new GameImage("entities/asteroid.png"); // https://www.space.com/asteroid-mining-bring-space-rocks-to-earth
+        SPACESHIP = new GameImage("entities/spaceship.png"); // https://www.shutterstock.com/pl/search/spaceship-back
     }
 
     private static void initBackgrounds() throws SlickException {
-        BACKGROUND = new GameImage("/backgrounds/background.png");
+        BACKGROUND = new GameImage("backgrounds/background.png");
     }
 }

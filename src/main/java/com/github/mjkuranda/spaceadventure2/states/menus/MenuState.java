@@ -25,8 +25,12 @@ public abstract class MenuState extends BasicGameState {
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {}
 
+    public abstract void renderPartials(Graphics g);
+
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+        renderPartials(g);
+
         for (int i = 0; i < options.length; i++) {
             options[i].render(container, g, i, currentOption, options.length);
         }
