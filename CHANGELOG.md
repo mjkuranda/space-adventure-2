@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.13.0] - 2023-07-26
+### Added
+- [@mjkuranda](https://github.com/mjkuranda): Each entity has an image reference.
+- [@mjkuranda](https://github.com/mjkuranda): GameResource as an interface.
+- [@mjkuranda](https://github.com/mjkuranda): GameImage containing all images.
+- [@mjkuranda](https://github.com/mjkuranda): GameFont containing all fonts.
+- [@mjkuranda](https://github.com/mjkuranda): Centering of MenuOption text.
+- [@mjkuranda](https://github.com/mjkuranda): Title, version and creator text in main menu state.
+
+### Changed
+- [@mjkuranda](https://github.com/mjkuranda): Any GameResource directly returns its resource.
+
+### Removed
+- [@mjkuranda](https://github.com/mjkuranda): ImageFactory, GameImages classes.
+
 ## [0.12.0] - 2023-07-26
 ### Added
 - [@mjkuranda](https://github.com/mjkuranda): Menu, MenuOption and MenuOptionEvent system.

@@ -2,6 +2,7 @@ package com.github.mjkuranda.spaceadventure2.entities;
 
 import com.github.mjkuranda.spaceadventure2.GameData;
 import com.github.mjkuranda.spaceadventure2.PlayerStatistics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Shape;
 
 import java.util.LinkedList;
@@ -34,11 +35,15 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
     /** Entity score */
     private int score;
 
-    public Entity(EntityType type, LinkedList<Entity> subscriber, EntityTurn turn, Shape shape, float x, float y, float speed, int durability, int score) {
+    /** Entity image */
+    private Image image;
+
+    public Entity(EntityType type, LinkedList<Entity> subscriber, EntityTurn turn, Shape shape, Image image, float x, float y, float speed, int durability, int score) {
         this.type = type;
         this.subscriber = subscriber;
         this.turn = turn;
         this.shape = shape;
+        this.image = image;
         this.x = x;
         this.y = y;
         this.speed = speed;
@@ -142,6 +147,10 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
 
     public float getY() {
         return y + shape.getY();
+    }
+
+    public Image getImage() {
+        return image;
     }
 
     public float getSpeed() {
