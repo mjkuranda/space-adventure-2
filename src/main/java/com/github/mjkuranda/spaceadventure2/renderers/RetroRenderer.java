@@ -3,11 +3,14 @@ package com.github.mjkuranda.spaceadventure2.renderers;
 import com.github.mjkuranda.spaceadventure2.GameData;
 import com.github.mjkuranda.spaceadventure2.PlayerStatistics;
 import com.github.mjkuranda.spaceadventure2.entities.Entity;
+import com.github.mjkuranda.spaceadventure2.entities.EntityType;
+import com.github.mjkuranda.spaceadventure2.entities.SpaceEntity;
 import com.github.mjkuranda.spaceadventure2.entities.Spaceship;
 import com.github.mjkuranda.spaceadventure2.resources.GameImage;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.geom.Vector2f;
 
 public class RetroRenderer extends Renderer {
 
@@ -51,6 +54,7 @@ public class RetroRenderer extends Renderer {
     protected void renderEntities(Graphics g) {
         renderSpaceEntities(g);
         renderPlayerMissiles(g);
+        renderParticles();
         renderPlayer();
     }
 
@@ -69,6 +73,13 @@ public class RetroRenderer extends Renderer {
 
         for (var missile : data.getPlayerMissiles()) {
             renderSpaceEntity(g, data.getPlayer(), missile, true);
+        }
+    }
+
+    private void renderParticles() {
+        for (var particle : data.getParticles()) {
+            Vector2f[] coords = getCoordinatesToRender(particle, data.getPlayer());
+            particle.getAnimation().draw(coords[0].x, coords[0].y, coords[1].x, coords[1].y);
         }
     }
 
@@ -109,6 +120,23 @@ public class RetroRenderer extends Renderer {
     }
 
     private void renderSpaceEntity(Graphics g, Spaceship p, Entity e, boolean isMissile) {
+        Vector2f[] coords = getCoordinatesToRender(e, p);
+
+        float x = coords[0].x;
+        float y = coords[0].y;
+        float size = coords[1].x;
+
+        if (isMissile) {
+            g.fillOval(x, y, size, size);
+
+            return;
+        }
+
+        Image img = e.getImage();
+        img.draw(x, y, size, size);
+    }
+
+    private Vector2f[] getCoordinatesToRender(Entity e, SpaceEntity p) {
         // -0.5f because player is centered
         float x = e.getX() - p.getX() - 0.5f;
         int deltaX = (int) (x * 64);
@@ -130,19 +158,12 @@ public class RetroRenderer extends Renderer {
 
         float center = size / 2;
 
-        if (isMissile) {
-            g.fillOval(x1 + xe - center, ye - center, size, size);
+        float weirdOffset = e.getType() == EntityType.PARTICLE && e.getWidth() < 1.0f ? -16 : 0;
 
-            return;
-        }
-
-        Image img = e.getImage();
-        img.draw(x1 + xe - center, ye - center, size, size);
-
-        //g.fillRect(x1 + xe - center, ye - center, size, size);
-
-        // Render line
-        // g.drawLine(x1, y1, x2, y2);
+        return new Vector2f[] {
+                new Vector2f(x1 + xe - center + weirdOffset, ye - center),
+                new Vector2f(size, size)
+        };
     }
 
     private int getYDelta(int idx) {

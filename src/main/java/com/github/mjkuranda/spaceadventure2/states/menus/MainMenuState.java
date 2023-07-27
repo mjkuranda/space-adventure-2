@@ -1,5 +1,6 @@
 package com.github.mjkuranda.spaceadventure2.states.menus;
 
+import com.github.mjkuranda.spaceadventure2.SpaceAdventure2;
 import com.github.mjkuranda.spaceadventure2.resources.GameFont;
 import com.github.mjkuranda.spaceadventure2.states.StatesId;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.MenuOption;
@@ -32,16 +33,16 @@ public class MainMenuState extends MenuState {
         g.setFont(GameFont.VCR_OSD_MONO);
         float fontHeight = GameFont.VCR_OSD_MONO.getHeight("X");
 
-        String title = "Space Adventure II";
+        String title = SpaceAdventure2.GAME_TITLE;
         int width = getStringWidth(title, GameFont.VCR_OSD_MONO);
         float textX = (float) container.getWidth() / 2 - (float) width / 2;
 
-        String version = "v0.13.0";
+        String version = SpaceAdventure2.GAME_VERSION;
         int versionWidth = getStringWidth(version, GameFont.VCR_OSD_MONO);
         float versionX = (float) container.getWidth() - versionWidth;
         float versionY = (float) container.getHeight() - fontHeight - fontHeight;
 
-        String creator = "Created by: Marek Kuranda";
+        String creator = "Created by: " + SpaceAdventure2.GAME_CREATOR;
         int creatorWidth = getStringWidth(creator, GameFont.VCR_OSD_MONO);
         float creatorX = (float) container.getWidth() - creatorWidth;
         float creatorY = (float) container.getHeight() - fontHeight;

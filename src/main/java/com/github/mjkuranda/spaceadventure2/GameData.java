@@ -4,6 +4,8 @@ import com.github.mjkuranda.spaceadventure2.entities.*;
 import com.github.mjkuranda.spaceadventure2.entities.missiles.LaserMissile;
 import com.github.mjkuranda.spaceadventure2.entities.missiles.Missile;
 import com.github.mjkuranda.spaceadventure2.entities.missiles.MissileType;
+import com.github.mjkuranda.spaceadventure2.entities.Particle;
+import com.github.mjkuranda.spaceadventure2.resources.GameAnimation;
 import com.github.mjkuranda.spaceadventure2.states.StatesId;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
@@ -24,6 +26,7 @@ public class GameData {
     /** All lines of map */
     private LinkedList<Entity>[] entityLines;
     private LinkedList<Entity> playerMissiles;
+    private LinkedList<Particle> particles;
 
     public GameData() {
         initLists();
@@ -55,7 +58,7 @@ public class GameData {
         var missileIt = playerMissiles.iterator();
 
         while (missileIt.hasNext()) {
-            var missile = missileIt.next();
+            Missile missile = (Missile) missileIt.next();
             int x = (int) missile.getX();
             missile.move();
 
@@ -80,14 +83,30 @@ public class GameData {
             }
 
             if (e != null) {
+                e.damage(missile.getDamage());
                 destroy(missile, missileIt);
-                destroy(e);
+                particles.add(new Particle(GameAnimation.EXPLOSION, missile));
+
+                if (!e.isAlive()) {
+                    particles.add(new Particle(GameAnimation.EXPLOSION, e));
+                }
 
                 continue;
             }
 
             if (isOutOfMap(missile)) {
                 remove(missile, missileIt);
+            }
+        }
+
+        /** Particle update */
+        var particleIt = particles.iterator();
+
+        while (particleIt.hasNext()) {
+            Particle particle = particleIt.next();
+
+            if (particle.isDead()) {
+                particleIt.remove();
             }
         }
 
@@ -112,9 +131,18 @@ public class GameData {
             spawn(MissileType.LASER);
         }
 
-        if (playerCollides()) {
-            game.enterState(StatesId.GAME_OVER);
-            reset();
+        /** Player collision */
+        Entity e = playerCollides();
+
+        if (e != null) {
+            player.damage(e.getDurability());
+            spawn(new Particle(GameAnimation.EXPLOSION, e));
+            e.destroy();
+
+            if (!player.isAlive()) {
+                game.enterState(StatesId.GAME_OVER);
+                reset();
+            }
         }
 
         /** Spawn new entities */
@@ -137,6 +165,9 @@ public class GameData {
             line.clear();
         }
         playerMissiles.clear();
+
+        /** Resets particles */
+        particles.clear();
     }
 
     /**
@@ -192,6 +223,14 @@ public class GameData {
     }
 
     /***
+     * Spawns a new particle
+     * @param particle Particle
+     */
+    public void spawn(Particle particle) {
+        this.particles.add(particle);
+    }
+
+    /***
      * Returns a player spaceship
      * @return player Spaceship
      */
@@ -213,6 +252,14 @@ public class GameData {
      */
     public LinkedList<Entity> getPlayerMissiles() {
         return playerMissiles;
+    }
+
+    /***
+     * Returns particle list
+     * @return particle list
+     */
+    public LinkedList<Particle> getParticles() {
+        return particles;
     }
 
     private void destroy(Missile missile, Iterator<Entity> it) {
@@ -253,6 +300,7 @@ public class GameData {
     private void initLists() {
         entityLines = new LinkedList[Y_SIZE];
         playerMissiles = new LinkedList<>();
+        particles = new LinkedList<>();
 
         initList(entityLines);
     }
@@ -275,25 +323,33 @@ public class GameData {
         return entityLines[x].getFirst();
     }
 
-    private boolean playerCollides() {
+    private Entity playerCollides() {
         float x = player.getX();
 
-        return playerCollides(x) || playerCollides(x - 1) || playerCollides(x + 1);
+        Entity e1 = playerCollides(x);
+        Entity e2 = playerCollides(x - 1);
+        Entity e3 = playerCollides(x + 1);
+
+        if (e1 != null) return e1;
+        if (e2 != null) return e2;
+        if (e3 != null) return e3;
+
+        return null;
     }
 
-    private boolean playerCollides(float px) {
+    private Entity playerCollides(float px) {
         if (px < 0 || px > GameData.X_SIZE - 1) {
-            return false;
+            return null;
         }
 
         int x = (int) px;
 
         if (entityLines[x].size() == 0) {
-            return false;
+            return null;
         }
 
         Entity entity = entityLines[x].getLast();
 
-        return player.collides(entity);
+        return player.collides(entity) ? entity : null;
     }
 }
