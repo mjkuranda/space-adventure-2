@@ -94,7 +94,7 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
     public void damage(int count) {
         durability -= count;
 
-        if (durability <= 0) {
+        if (!isAlive()) {
             destroy();
         }
     }
@@ -131,6 +131,10 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
         this.y = y;
 
         return this;
+    }
+
+    public boolean isAlive() {
+        return durability > 0;
     }
 
     public float getWidth() {

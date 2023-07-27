@@ -58,7 +58,7 @@ public class GameData {
         var missileIt = playerMissiles.iterator();
 
         while (missileIt.hasNext()) {
-            var missile = missileIt.next();
+            Missile missile = (Missile) missileIt.next();
             int x = (int) missile.getX();
             missile.move();
 
@@ -83,10 +83,13 @@ public class GameData {
             }
 
             if (e != null) {
+                e.damage(missile.getDamage());
                 destroy(missile, missileIt);
-                destroy(e);
+                particles.add(new Particle(GameAnimation.EXPLOSION, missile.getX(), missile.getY(), missile.getShape()));
 
-                particles.add(new Particle(GameAnimation.EXPLOSION, e.getX(), e.getY(), e.getShape()));
+                if (!e.isAlive()) {
+                    particles.add(new Particle(GameAnimation.EXPLOSION, e.getX(), e.getY(), e.getShape()));
+                }
 
                 continue;
             }
