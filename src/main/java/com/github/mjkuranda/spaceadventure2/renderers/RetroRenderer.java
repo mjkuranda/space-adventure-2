@@ -3,11 +3,16 @@ package com.github.mjkuranda.spaceadventure2.renderers;
 import com.github.mjkuranda.spaceadventure2.GameData;
 import com.github.mjkuranda.spaceadventure2.PlayerStatistics;
 import com.github.mjkuranda.spaceadventure2.entities.Entity;
+import com.github.mjkuranda.spaceadventure2.entities.SpaceEntity;
 import com.github.mjkuranda.spaceadventure2.entities.Spaceship;
 import com.github.mjkuranda.spaceadventure2.resources.GameImage;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.geom.Vector2f;
+
+import java.awt.*;
+import java.awt.geom.Dimension2D;
 
 public class RetroRenderer extends Renderer {
 
@@ -51,6 +56,7 @@ public class RetroRenderer extends Renderer {
     protected void renderEntities(Graphics g) {
         renderSpaceEntities(g);
         renderPlayerMissiles(g);
+        renderParticles();
         renderPlayer();
     }
 
@@ -69,6 +75,13 @@ public class RetroRenderer extends Renderer {
 
         for (var missile : data.getPlayerMissiles()) {
             renderSpaceEntity(g, data.getPlayer(), missile, true);
+        }
+    }
+
+    private void renderParticles() {
+        for (var particle : data.getParticles()) {
+            Vector2f[] coords = getCoordinatesToRender(particle, data.getPlayer());
+            particle.getAnimation().draw(coords[0].x - 25, coords[0].y - 25);
         }
     }
 
@@ -143,6 +156,34 @@ public class RetroRenderer extends Renderer {
 
         // Render line
         // g.drawLine(x1, y1, x2, y2);
+    }
+
+    private Vector2f[] getCoordinatesToRender(Entity e, SpaceEntity p) {
+        // -0.5f because player is centered
+        float x = e.getX() - p.getX() - 0.5f;
+        int deltaX = (int) (x * 64);
+
+        float yMapped = (float) (Math.pow(e.getY(), 2) + 9 * e.getY() - 2);
+        float yPerc = yMapped / (440 + 44); // 18 -> weird
+        float size = (yPerc * (e.getWidth() * 160)) + (e.getWidth() * 32);
+
+        // Line
+        float x1 = MIDDLE_X + UNEXPLAINED_OFFSET + x * 32;
+        float y1 = MIDDLE_Y;
+        float x2 = MIDDLE_X + UNEXPLAINED_OFFSET + 128 + deltaX * 4;
+        float y2 = RENDERER_HEIGHT;
+
+        float a = (y2 - y1) / (x2 - x1);
+        float b = y1 - a * x1;
+        float xe = (x2 - x1) * yPerc;
+        float ye = a * (x1 + xe) + b;
+
+        float center = size / 2;
+
+        return new Vector2f[] {
+                new Vector2f(x1 + xe - center, ye - center),
+                new Vector2f(size, size)
+        };
     }
 
     private int getYDelta(int idx) {

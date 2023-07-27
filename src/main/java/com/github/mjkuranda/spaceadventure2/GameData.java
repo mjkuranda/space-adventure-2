@@ -4,6 +4,8 @@ import com.github.mjkuranda.spaceadventure2.entities.*;
 import com.github.mjkuranda.spaceadventure2.entities.missiles.LaserMissile;
 import com.github.mjkuranda.spaceadventure2.entities.missiles.Missile;
 import com.github.mjkuranda.spaceadventure2.entities.missiles.MissileType;
+import com.github.mjkuranda.spaceadventure2.entities.Particle;
+import com.github.mjkuranda.spaceadventure2.resources.GameAnimation;
 import com.github.mjkuranda.spaceadventure2.states.StatesId;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
@@ -24,6 +26,7 @@ public class GameData {
     /** All lines of map */
     private LinkedList<Entity>[] entityLines;
     private LinkedList<Entity> playerMissiles;
+    private LinkedList<Particle> particles;
 
     public GameData() {
         initLists();
@@ -83,11 +86,25 @@ public class GameData {
                 destroy(missile, missileIt);
                 destroy(e);
 
+                particles.add(new Particle(GameAnimation.EXPLOSION, e.getX(), e.getY(), e.getShape()));
+
                 continue;
             }
 
             if (isOutOfMap(missile)) {
                 remove(missile, missileIt);
+            }
+        }
+
+        /** Particle update */
+        var particleIt = particles.iterator();
+
+        while (particleIt.hasNext()) {
+            Particle particle = particleIt.next();
+
+            if (particle.isDead()) {
+                System.out.println("XXXX");
+                particleIt.remove();
             }
         }
 
@@ -137,6 +154,9 @@ public class GameData {
             line.clear();
         }
         playerMissiles.clear();
+
+        /** Resets particles */
+        particles.clear();
     }
 
     /**
@@ -192,6 +212,14 @@ public class GameData {
     }
 
     /***
+     * Spawns a new particle
+     * @param particle Particle
+     */
+    public void spawn(Particle particle) {
+        this.particles.add(particle);
+    }
+
+    /***
      * Returns a player spaceship
      * @return player Spaceship
      */
@@ -213,6 +241,14 @@ public class GameData {
      */
     public LinkedList<Entity> getPlayerMissiles() {
         return playerMissiles;
+    }
+
+    /***
+     * Returns particle list
+     * @return particle list
+     */
+    public LinkedList<Particle> getParticles() {
+        return particles;
     }
 
     private void destroy(Missile missile, Iterator<Entity> it) {
@@ -253,6 +289,7 @@ public class GameData {
     private void initLists() {
         entityLines = new LinkedList[Y_SIZE];
         playerMissiles = new LinkedList<>();
+        particles = new LinkedList<>();
 
         initList(entityLines);
     }

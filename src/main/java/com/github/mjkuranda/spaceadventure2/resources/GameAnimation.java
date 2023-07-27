@@ -11,7 +11,6 @@ public class GameAnimation implements GameResource<Animation> {
 
     private Animation animation;
 
-
     public GameAnimation(String spriteSheetPath, int tw, int th, int duration) throws SlickException {
         Image image = new Image(getResourcePath("animations", spriteSheetPath));
         animation = new Animation(new SpriteSheet(image, tw, th), duration);

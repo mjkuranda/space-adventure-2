@@ -149,6 +149,10 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
         return y + shape.getY();
     }
 
+    public Shape getShape() {
+        return shape;
+    }
+
     public Image getImage() {
         return image;
     }
