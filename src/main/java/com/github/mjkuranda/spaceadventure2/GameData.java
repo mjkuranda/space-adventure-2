@@ -103,7 +103,6 @@ public class GameData {
             Particle particle = particleIt.next();
 
             if (particle.isDead()) {
-                System.out.println("XXXX");
                 particleIt.remove();
             }
         }
