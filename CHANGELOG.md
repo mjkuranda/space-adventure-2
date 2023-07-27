@@ -9,9 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - [@mjkuranda](https://github.com/mjkuranda): GameAnimation as a game resource.
 - [@mjkuranda](https://github.com/mjkuranda): Spawning an explosion animation after destroying asteroid.
+- [@mjkuranda](https://github.com/mjkuranda): Damaging player spaceship.
 
 ### Changed
 - [@mjkuranda](https://github.com/mjkuranda): RetroRenderer refactored rendering entities.
+- [@mjkuranda](https://github.com/mjkuranda): Missiles damage other entities instead of immediately destroy them.
 
 ## [0.13.0] - 2023-07-26
 ### Added

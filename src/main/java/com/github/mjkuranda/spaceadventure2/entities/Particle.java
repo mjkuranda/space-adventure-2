@@ -16,6 +16,10 @@ public class Particle extends Entity {
         this.animation.start();
     }
 
+    public Particle(Animation animation, Entity e) {
+        this(animation, e.getX(), e.getY(), e.getShape());
+    }
+
     public boolean isDead() {
         return animation.isStopped();
     }

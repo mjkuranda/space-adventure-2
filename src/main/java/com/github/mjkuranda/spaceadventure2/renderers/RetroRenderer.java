@@ -3,6 +3,7 @@ package com.github.mjkuranda.spaceadventure2.renderers;
 import com.github.mjkuranda.spaceadventure2.GameData;
 import com.github.mjkuranda.spaceadventure2.PlayerStatistics;
 import com.github.mjkuranda.spaceadventure2.entities.Entity;
+import com.github.mjkuranda.spaceadventure2.entities.EntityType;
 import com.github.mjkuranda.spaceadventure2.entities.SpaceEntity;
 import com.github.mjkuranda.spaceadventure2.entities.Spaceship;
 import com.github.mjkuranda.spaceadventure2.resources.GameImage;
@@ -157,8 +158,10 @@ public class RetroRenderer extends Renderer {
 
         float center = size / 2;
 
+        float weirdOffset = e.getType() == EntityType.PARTICLE && e.getWidth() < 1.0f ? -16 : 0;
+
         return new Vector2f[] {
-                new Vector2f(x1 + xe - center, ye - center),
+                new Vector2f(x1 + xe - center + weirdOffset, ye - center),
                 new Vector2f(size, size)
         };
     }

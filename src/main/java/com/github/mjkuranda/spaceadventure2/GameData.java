@@ -85,10 +85,10 @@ public class GameData {
             if (e != null) {
                 e.damage(missile.getDamage());
                 destroy(missile, missileIt);
-                particles.add(new Particle(GameAnimation.EXPLOSION, missile.getX(), missile.getY(), missile.getShape()));
+                particles.add(new Particle(GameAnimation.EXPLOSION, missile));
 
                 if (!e.isAlive()) {
-                    particles.add(new Particle(GameAnimation.EXPLOSION, e.getX(), e.getY(), e.getShape()));
+                    particles.add(new Particle(GameAnimation.EXPLOSION, e));
                 }
 
                 continue;
@@ -131,9 +131,18 @@ public class GameData {
             spawn(MissileType.LASER);
         }
 
-        if (playerCollides()) {
-            game.enterState(StatesId.GAME_OVER);
-            reset();
+        /** Player collision */
+        Entity e = playerCollides();
+
+        if (e != null) {
+            player.damage(e.getDurability());
+            spawn(new Particle(GameAnimation.EXPLOSION, e));
+            e.destroy();
+
+            if (!player.isAlive()) {
+                game.enterState(StatesId.GAME_OVER);
+                reset();
+            }
         }
 
         /** Spawn new entities */
@@ -314,25 +323,33 @@ public class GameData {
         return entityLines[x].getFirst();
     }
 
-    private boolean playerCollides() {
+    private Entity playerCollides() {
         float x = player.getX();
 
-        return playerCollides(x) || playerCollides(x - 1) || playerCollides(x + 1);
+        Entity e1 = playerCollides(x);
+        Entity e2 = playerCollides(x - 1);
+        Entity e3 = playerCollides(x + 1);
+
+        if (e1 != null) return e1;
+        if (e2 != null) return e2;
+        if (e3 != null) return e3;
+
+        return null;
     }
 
-    private boolean playerCollides(float px) {
+    private Entity playerCollides(float px) {
         if (px < 0 || px > GameData.X_SIZE - 1) {
-            return false;
+            return null;
         }
 
         int x = (int) px;
 
         if (entityLines[x].size() == 0) {
-            return false;
+            return null;
         }
 
         Entity entity = entityLines[x].getLast();
 
-        return player.collides(entity);
+        return player.collides(entity) ? entity : null;
     }
 }

@@ -87,6 +87,10 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
     }
 
     public void remove() {
+        if (subscriber == null) {
+            return;
+        }
+
         subscriber.remove(this);
     }
 
@@ -131,6 +135,10 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
         this.y = y;
 
         return this;
+    }
+
+    public int getDurability() {
+        return durability;
     }
 
     public boolean isAlive() {
