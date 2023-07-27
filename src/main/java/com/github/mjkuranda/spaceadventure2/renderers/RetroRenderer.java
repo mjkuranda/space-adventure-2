@@ -81,7 +81,7 @@ public class RetroRenderer extends Renderer {
     private void renderParticles() {
         for (var particle : data.getParticles()) {
             Vector2f[] coords = getCoordinatesToRender(particle, data.getPlayer());
-            particle.getAnimation().draw(coords[0].x - 25, coords[0].y - 25);
+            particle.getAnimation().draw(coords[0].x, coords[0].y, coords[1].x, coords[1].y);
         }
     }
 
