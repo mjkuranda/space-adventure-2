@@ -11,9 +11,6 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Vector2f;
 
-import java.awt.*;
-import java.awt.geom.Dimension2D;
-
 public class RetroRenderer extends Renderer {
 
     private static final int RENDERER_WIDTH = 1280;
@@ -122,40 +119,20 @@ public class RetroRenderer extends Renderer {
     }
 
     private void renderSpaceEntity(Graphics g, Spaceship p, Entity e, boolean isMissile) {
-        // -0.5f because player is centered
-        float x = e.getX() - p.getX() - 0.5f;
-        int deltaX = (int) (x * 64);
+        Vector2f[] coords = getCoordinatesToRender(e, p);
 
-        float yMapped = (float) (Math.pow(e.getY(), 2) + 9 * e.getY() - 2);
-        float yPerc = yMapped / (440 + 44); // 18 -> weird
-        float size = (yPerc * (e.getWidth() * 160)) + (e.getWidth() * 32);
-
-        // Line
-        float x1 = MIDDLE_X + UNEXPLAINED_OFFSET + x * 32;
-        float y1 = MIDDLE_Y;
-        float x2 = MIDDLE_X + UNEXPLAINED_OFFSET + 128 + deltaX * 4;
-        float y2 = RENDERER_HEIGHT;
-
-        float a = (y2 - y1) / (x2 - x1);
-        float b = y1 - a * x1;
-        float xe = (x2 - x1) * yPerc;
-        float ye = a * (x1 + xe) + b;
-
-        float center = size / 2;
+        float x = coords[0].x;
+        float y = coords[0].y;
+        float size = coords[1].x;
 
         if (isMissile) {
-            g.fillOval(x1 + xe - center, ye - center, size, size);
+            g.fillOval(x, y, size, size);
 
             return;
         }
 
         Image img = e.getImage();
-        img.draw(x1 + xe - center, ye - center, size, size);
-
-        //g.fillRect(x1 + xe - center, ye - center, size, size);
-
-        // Render line
-        // g.drawLine(x1, y1, x2, y2);
+        img.draw(x, y, size, size);
     }
 
     private Vector2f[] getCoordinatesToRender(Entity e, SpaceEntity p) {
