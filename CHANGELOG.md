@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.14.0] - 2023-07-27
 ### Added
 - [@mjkuranda](https://github.com/mjkuranda): GameAnimation as a game resource.
+- [@mjkuranda](https://github.com/mjkuranda): Spawning an explosion animation after destroying asteroid.
 
 ## [0.13.0] - 2023-07-26
 ### Added
