@@ -1,5 +1,6 @@
 package com.github.mjkuranda.spaceadventure2;
 
+import com.github.mjkuranda.spaceadventure2.resources.GameAnimation;
 import com.github.mjkuranda.spaceadventure2.resources.GameFont;
 import com.github.mjkuranda.spaceadventure2.resources.GameImage;
 import com.github.mjkuranda.spaceadventure2.states.GameOverState;
@@ -16,7 +17,9 @@ import java.util.logging.Logger;
 
 public class SpaceAdventure2 extends StateBasedGame {
 
-    private static final String GAME_TITLE = "Space Adventure II";
+    public static final String GAME_TITLE   = "Space Adventure II";
+    public static final String GAME_VERSION = "v0.14.0";
+    public static final String GAME_CREATOR = "Marek Kuranda";
 
     public SpaceAdventure2() {
         super(GAME_TITLE);
@@ -31,6 +34,7 @@ public class SpaceAdventure2 extends StateBasedGame {
         } catch (IOException | FontFormatException e) {
             throw new RuntimeException(e);
         }
+        GameAnimation.load();
 
         addState(new MainMenuState(this));
         addState(new GameState());
