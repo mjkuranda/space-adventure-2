@@ -141,6 +141,7 @@ public class GameData {
 
             if (!player.isAlive()) {
                 game.enterState(StatesId.GAME_OVER_MENU);
+                in.clearKeyPressedRecord();
                 reset();
             }
         }
