@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - [@mjkuranda](https://github.com/mjkuranda): Height of `>` and `<` characters in MenuOption.
+- [@mjkuranda](https://github.com/mjkuranda): Entities do not give points after destroying them by collision with spaceship.
 
 ## [0.14.0] - 2023-07-27
 ### Added

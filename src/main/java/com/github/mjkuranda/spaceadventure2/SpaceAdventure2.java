@@ -37,10 +37,9 @@ public class SpaceAdventure2 extends StateBasedGame {
         }
         GameAnimation.load();
 
-        addState(new GameOverMenuState(this));
         addState(new MainMenuState(this));
         addState(new GameState());
-        addState(new GameOverState());
+        addState(new GameOverMenuState(this));
         addState(new IntroState());
     }
 

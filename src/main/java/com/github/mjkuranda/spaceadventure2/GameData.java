@@ -137,7 +137,7 @@ public class GameData {
         if (e != null) {
             player.damage(e.getDurability());
             spawn(new Particle(GameAnimation.EXPLOSION, e));
-            e.destroy();
+            e.remove();
 
             if (!player.isAlive()) {
                 game.enterState(StatesId.GAME_OVER_MENU);
