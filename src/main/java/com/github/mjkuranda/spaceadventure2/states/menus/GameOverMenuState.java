@@ -34,7 +34,5 @@ public class GameOverMenuState extends MenuState {
     }
 
     @Override
-    public void renderPartials(GameContainer container, Graphics g) {
-        g.drawString(playerName.get(), 100, 100);
-    }
+    public void renderPartials(GameContainer container, Graphics g) {}
 }

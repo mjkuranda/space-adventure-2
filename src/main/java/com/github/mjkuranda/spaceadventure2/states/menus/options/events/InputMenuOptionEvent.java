@@ -29,6 +29,12 @@ public class InputMenuOptionEvent implements MenuOptionEvent {
             return;
         }
 
+        if (value.get().length() >= 21) {
+            input.clearKeyPressedRecord();
+
+            return;
+        }
+
         value.update(value.get() + KeyNameFactory.get(input));
     }
 }
