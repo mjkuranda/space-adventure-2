@@ -1,12 +1,13 @@
 package com.github.mjkuranda.spaceadventure2.states.menus.options.events;
 
+import com.github.mjkuranda.spaceadventure2.states.menus.options.values.StringMenuOptionValue;
 import org.newdawn.slick.Input;
 
 public class InputMenuOptionEvent implements MenuOptionEvent {
 
-    private String value;
+    private StringMenuOptionValue value;
 
-    public InputMenuOptionEvent(String value) {
+    public InputMenuOptionEvent(StringMenuOptionValue value) {
         this.value = value;
     }
 
@@ -20,6 +21,6 @@ public class InputMenuOptionEvent implements MenuOptionEvent {
     public void onChange(Input input) {
         System.out.println(input);
 
-        value = value + "x";
+        value.update(value.get() + "x");
     }
 }

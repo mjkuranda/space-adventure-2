@@ -6,18 +6,19 @@ import com.github.mjkuranda.spaceadventure2.states.menus.options.MenuOption;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.SimpleMenuOption;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.events.EnterStateMenuOptionEvent;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.events.InputMenuOptionEvent;
+import com.github.mjkuranda.spaceadventure2.states.menus.options.values.StringMenuOptionValue;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class GameOverMenuState extends MenuState {
 
-    private String playerName;
+    private StringMenuOptionValue playerName;
 
     public GameOverMenuState(StateBasedGame game) {
         super(null);
 
-        playerName = new String("");
+        playerName = new StringMenuOptionValue("");
 
         super.bindOptions(new MenuOption[] {
                 new InputMenuOption(playerName)
@@ -34,6 +35,6 @@ public class GameOverMenuState extends MenuState {
 
     @Override
     public void renderPartials(GameContainer container, Graphics g) {
-        g.drawString(playerName, 100, 100);
+        g.drawString(playerName.get(), 100, 100);
     }
 }
