@@ -29,7 +29,7 @@ public class InputMenuOptionEvent implements MenuOptionEvent {
             return;
         }
 
-        if (value.get().length() >= 21) {
+        if (value.get().length() >= 16) {
             input.clearKeyPressedRecord();
 
             return;

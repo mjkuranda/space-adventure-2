@@ -22,8 +22,11 @@ public class InputMenuOption extends MenuOption {
 
         Vector2f coords = getCoords(container, idx, length);
         float fontHeight = GameFont.VCR_OSD_MONO.getHeight("Lorem ipsum");
+        float xOffset = (
+                GameFont.VCR_OSD_MONO.getWidth("12340000123400001234000012") - GameFont.VCR_OSD_MONO.getWidth("1234000012340000")
+        ) / 4.0f;
         float yOffset = (float) OPTION_HEIGHT / 2 - (float) fontHeight / 2;
-        g.drawString(value.get(), coords.x, coords.y + yOffset);
+        g.drawString(value.get(), coords.x + xOffset, coords.y + yOffset);
         g.drawString("Input your name", coords.x, coords.y - 1.5f * fontHeight);
     }
 }

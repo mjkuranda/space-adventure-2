@@ -3,7 +3,6 @@ package com.github.mjkuranda.spaceadventure2;
 import com.github.mjkuranda.spaceadventure2.resources.GameAnimation;
 import com.github.mjkuranda.spaceadventure2.resources.GameFont;
 import com.github.mjkuranda.spaceadventure2.resources.GameImage;
-import com.github.mjkuranda.spaceadventure2.states.GameOverState;
 import com.github.mjkuranda.spaceadventure2.states.GameState;
 import com.github.mjkuranda.spaceadventure2.states.IntroState;
 import com.github.mjkuranda.spaceadventure2.states.menus.GameOverMenuState;
