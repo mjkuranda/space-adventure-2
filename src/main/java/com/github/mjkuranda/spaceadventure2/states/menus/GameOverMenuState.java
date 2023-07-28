@@ -25,6 +25,8 @@ public class GameOverMenuState extends MenuState {
         super.bindOptions(new MenuOption[] {
                 new InputMenuOption(playerName)
                         .bindOnChangeEvent(new InputMenuOptionEvent(playerName)),
+                new SimpleMenuOption("Play again")
+                        .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, StatesId.GAME)),
                 new SimpleMenuOption("Back to main menu")
                         .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, StatesId.MAIN_MENU))
         });

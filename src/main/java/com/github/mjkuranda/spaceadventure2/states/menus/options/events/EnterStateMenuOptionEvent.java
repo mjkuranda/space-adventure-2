@@ -1,5 +1,6 @@
 package com.github.mjkuranda.spaceadventure2.states.menus.options.events;
 
+import com.github.mjkuranda.spaceadventure2.PlayerStatistics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -16,6 +17,7 @@ public class EnterStateMenuOptionEvent implements MenuOptionEvent {
     @Override
     public void onSelect() {
         game.enterState(stateId);
+        PlayerStatistics.getInstance().clear();
     }
 
     @Override

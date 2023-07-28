@@ -140,7 +140,7 @@ public class GameData {
             e.destroy();
 
             if (!player.isAlive()) {
-                game.enterState(StatesId.GAME_OVER);
+                game.enterState(StatesId.GAME_OVER_MENU);
                 reset();
             }
         }
