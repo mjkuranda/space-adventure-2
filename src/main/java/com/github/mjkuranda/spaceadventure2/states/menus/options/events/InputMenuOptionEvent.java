@@ -19,6 +19,16 @@ public class InputMenuOptionEvent implements MenuOptionEvent {
 
     @Override
     public void onChange(Input input) {
+        if (input.isKeyPressed(Input.KEY_BACK)) {
+            if (value.get().length() == 0) {
+                return;
+            }
+
+            value.update(value.get().substring(0, value.get().length() - 1));
+
+            return;
+        }
+
         value.update(value.get() + KeyNameFactory.get(input));
     }
 }
