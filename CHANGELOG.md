@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.15.0] - 2023-07-28
+### Added
+- [@mjkuranda](https://github.com/mjkuranda): MenuOptionValue, StringMenuOptionValue to store form values.
+- [@mjkuranda](https://github.com/mjkuranda): InputMenuOptionEvent to handling inputting keys.
+- [@mjkuranda](https://github.com/mjkuranda): InputMenuOption as formant to inputting string.
+
+### Changed
+- [@mjkuranda](https://github.com/mjkuranda): GameOverState menu state.
+
+### Fixed
+- [@mjkuranda](https://github.com/mjkuranda): Height of `>` and `<` characters in MenuOption.
+- [@mjkuranda](https://github.com/mjkuranda): Entities do not give points after destroying them by collision with spaceship.
+
 ## [0.14.0] - 2023-07-27
 ### Added
 - [@mjkuranda](https://github.com/mjkuranda): GameAnimation as a game resource.
