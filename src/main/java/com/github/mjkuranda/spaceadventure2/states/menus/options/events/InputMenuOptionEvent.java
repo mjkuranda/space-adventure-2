@@ -3,9 +3,6 @@ package com.github.mjkuranda.spaceadventure2.states.menus.options.events;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.values.StringMenuOptionValue;
 import org.newdawn.slick.Input;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class InputMenuOptionEvent implements MenuOptionEvent {
 
     private StringMenuOptionValue value;
@@ -28,55 +25,6 @@ public class InputMenuOptionEvent implements MenuOptionEvent {
 
 class KeyNameFactory {
 
-    private Map<Integer, Character> keyMapped = new HashMap<>() {{
-        put(Input.KEY_1, '1');
-        put(Input.KEY_2, '2');
-        put(Input.KEY_3, '3');
-        put(Input.KEY_4, '4');
-        put(Input.KEY_5, '5');
-        put(Input.KEY_6, '6');
-        put(Input.KEY_7, '7');
-        put(Input.KEY_8, '8');
-        put(Input.KEY_9, '9');
-        put(Input.KEY_0, '0');
-        put(Input.KEY_NUMPAD0, '0');
-        put(Input.KEY_NUMPAD1, '1');
-        put(Input.KEY_NUMPAD2, '2');
-        put(Input.KEY_NUMPAD3, '3');
-        put(Input.KEY_NUMPAD4, '4');
-        put(Input.KEY_NUMPAD5, '5');
-        put(Input.KEY_NUMPAD6, '6');
-        put(Input.KEY_NUMPAD7, '7');
-        put(Input.KEY_NUMPAD8, '8');
-        put(Input.KEY_NUMPAD9, '9');
-        put(Input.KEY_Q, 'Q');
-        put(Input.KEY_W, 'W');
-        put(Input.KEY_E, 'E');
-        put(Input.KEY_R, 'R');
-        put(Input.KEY_T, 'T');
-        put(Input.KEY_Y, 'Y');
-        put(Input.KEY_U, 'U');
-        put(Input.KEY_I, 'I');
-        put(Input.KEY_O, 'O');
-        put(Input.KEY_P, 'P');
-        put(Input.KEY_A, 'A');
-        put(Input.KEY_S, 'S');
-        put(Input.KEY_D, 'D');
-        put(Input.KEY_F, 'F');
-        put(Input.KEY_G, 'G');
-        put(Input.KEY_H, 'H');
-        put(Input.KEY_J, 'J');
-        put(Input.KEY_K, 'K');
-        put(Input.KEY_L, 'L');
-        put(Input.KEY_Z, 'Z');
-        put(Input.KEY_X, 'X');
-        put(Input.KEY_C, 'C');
-        put(Input.KEY_V, 'V');
-        put(Input.KEY_B, 'B');
-        put(Input.KEY_N, 'N');
-        put(Input.KEY_M, 'M');
-    }};
-
     public static String get(Input input) {
         int keyCode = getKeyCode(input);
 
@@ -92,10 +40,117 @@ class KeyNameFactory {
     }
 
     private static int getKeyCode(Input input) {
-        if (input.isKeyPressed(Input.KEY_1)) {
+        if (input.isKeyPressed(Input.KEY_1) || input.isKeyPressed(Input.KEY_NUMPAD1)) {
             return Input.KEY_1;
         }
-        // TODO: The other keys
+        if (input.isKeyPressed(Input.KEY_2) || input.isKeyPressed(Input.KEY_NUMPAD2)) {
+            return Input.KEY_2;
+        }
+        if (input.isKeyPressed(Input.KEY_3) || input.isKeyPressed(Input.KEY_NUMPAD3)) {
+            return Input.KEY_3;
+        }
+        if (input.isKeyPressed(Input.KEY_4) || input.isKeyPressed(Input.KEY_NUMPAD4)) {
+            return Input.KEY_4;
+        }
+        if (input.isKeyPressed(Input.KEY_5) || input.isKeyPressed(Input.KEY_NUMPAD5)) {
+            return Input.KEY_5;
+        }
+        if (input.isKeyPressed(Input.KEY_6) || input.isKeyPressed(Input.KEY_NUMPAD6)) {
+            return Input.KEY_6;
+        }
+        if (input.isKeyPressed(Input.KEY_7) || input.isKeyPressed(Input.KEY_NUMPAD7)) {
+            return Input.KEY_7;
+        }
+        if (input.isKeyPressed(Input.KEY_8) || input.isKeyPressed(Input.KEY_NUMPAD8)) {
+            return Input.KEY_8;
+        }
+        if (input.isKeyPressed(Input.KEY_9) || input.isKeyPressed(Input.KEY_NUMPAD9)) {
+            return Input.KEY_9;
+        }
+        if (input.isKeyPressed(Input.KEY_0) || input.isKeyPressed(Input.KEY_NUMPAD0)) {
+            return Input.KEY_0;
+        }
+        if (input.isKeyPressed(Input.KEY_Q)) {
+            return Input.KEY_Q;
+        }
+        if (input.isKeyPressed(Input.KEY_W)) {
+            return Input.KEY_W;
+        }
+        if (input.isKeyPressed(Input.KEY_E)) {
+            return Input.KEY_E;
+        }
+        if (input.isKeyPressed(Input.KEY_R)) {
+            return Input.KEY_R;
+        }
+        if (input.isKeyPressed(Input.KEY_T)) {
+            return Input.KEY_T;
+        }
+        if (input.isKeyPressed(Input.KEY_Y)) {
+            return Input.KEY_Y;
+        }
+        if (input.isKeyPressed(Input.KEY_U)) {
+            return Input.KEY_U;
+        }
+        if (input.isKeyPressed(Input.KEY_I)) {
+            return Input.KEY_I;
+        }
+        if (input.isKeyPressed(Input.KEY_O)) {
+            return Input.KEY_O;
+        }
+        if (input.isKeyPressed(Input.KEY_P)) {
+            return Input.KEY_P;
+        }
+        if (input.isKeyPressed(Input.KEY_A)) {
+            return Input.KEY_A;
+        }
+        if (input.isKeyPressed(Input.KEY_S)) {
+            return Input.KEY_S;
+        }
+        if (input.isKeyPressed(Input.KEY_D)) {
+            return Input.KEY_D;
+        }
+        if (input.isKeyPressed(Input.KEY_F)) {
+            return Input.KEY_F;
+        }
+        if (input.isKeyPressed(Input.KEY_G)) {
+            return Input.KEY_G;
+        }
+        if (input.isKeyPressed(Input.KEY_H)) {
+            return Input.KEY_H;
+        }
+        if (input.isKeyPressed(Input.KEY_J)) {
+            return Input.KEY_J;
+        }
+        if (input.isKeyPressed(Input.KEY_J)) {
+            return Input.KEY_J;
+        }
+        if (input.isKeyPressed(Input.KEY_K)) {
+            return Input.KEY_K;
+        }
+        if (input.isKeyPressed(Input.KEY_L)) {
+            return Input.KEY_L;
+        }
+        if (input.isKeyPressed(Input.KEY_Z)) {
+            return Input.KEY_Z;
+        }
+        if (input.isKeyPressed(Input.KEY_X)) {
+            return Input.KEY_X;
+        }
+        if (input.isKeyPressed(Input.KEY_C)) {
+            return Input.KEY_C;
+        }
+        if (input.isKeyPressed(Input.KEY_V)) {
+            return Input.KEY_V;
+        }
+        if (input.isKeyPressed(Input.KEY_B)) {
+            return Input.KEY_B;
+        }
+        if (input.isKeyPressed(Input.KEY_N)) {
+            return Input.KEY_N;
+        }
+        if (input.isKeyPressed(Input.KEY_M)) {
+            return Input.KEY_M;
+        }
 
         return -1;
     }
