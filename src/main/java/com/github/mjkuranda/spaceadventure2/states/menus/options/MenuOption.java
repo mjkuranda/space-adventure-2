@@ -28,8 +28,8 @@ public abstract class MenuOption implements MenuOptionEvent {
         float x = centerX;
         float y = centerY + idx * OPTION_SPACE;
 
-        float textX = x + (float) OPTION_WIDTH / 2 - (float) GameFont.VCR_OSD_MONO.getWidth(title) / 2;
-        float textY = y + (float) OPTION_HEIGHT / 2 - (float) GameFont.VCR_OSD_MONO.getHeight(title) / 2;
+        float textX = x + (float) OPTION_WIDTH / 2 - (float) GameFont.VCR_OSD_MONO.getWidth(title.equals("") ? "x" : title) / 2;
+        float textY = y + (float) OPTION_HEIGHT / 2 - (float) GameFont.VCR_OSD_MONO.getHeight(title.equals("") ? "x" : title) / 2;
 
         g.setColor(Color.white);
         g.drawRect(x, y, OPTION_WIDTH, OPTION_HEIGHT);

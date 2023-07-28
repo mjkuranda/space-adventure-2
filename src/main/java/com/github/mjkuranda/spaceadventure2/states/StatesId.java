@@ -6,4 +6,5 @@ public interface StatesId {
     int GAME_OVER = 2;
 
     int MAIN_MENU = 10;
+    int GAME_OVER_MENU = 11;
 }

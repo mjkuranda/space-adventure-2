@@ -19,6 +19,12 @@ public abstract class MenuState extends BasicGameState {
         this.currentOption = 0;
     }
 
+    public MenuState bindOptions(MenuOption[] options) {
+        this.options = options;
+
+        return this;
+    }
+
     @Override
     public abstract int getID();
 
