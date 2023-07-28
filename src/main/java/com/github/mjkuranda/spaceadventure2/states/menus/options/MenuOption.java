@@ -5,6 +5,7 @@ import com.github.mjkuranda.spaceadventure2.states.menus.options.events.MenuOpti
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 
 public abstract class MenuOption implements MenuOptionEvent {
 
@@ -57,6 +58,11 @@ public abstract class MenuOption implements MenuOptionEvent {
         }
 
         onChange.onChange(direction);
+    }
+
+    @Override
+    public void onChange(Input input) {
+        onChange.onChange(input);
     }
 
     public MenuOption bindOnSelectEvent(MenuOptionEvent event) {

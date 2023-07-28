@@ -1,5 +1,6 @@
 package com.github.mjkuranda.spaceadventure2.states.menus.options.events;
 
+import org.newdawn.slick.Input;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class EnterStateMenuOptionEvent implements MenuOptionEvent {
@@ -19,4 +20,7 @@ public class EnterStateMenuOptionEvent implements MenuOptionEvent {
 
     @Override
     public void onChange(int direction) {}
+
+    @Override
+    public void onChange(Input input) {}
 }

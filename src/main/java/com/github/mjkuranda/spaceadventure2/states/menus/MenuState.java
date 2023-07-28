@@ -50,14 +50,6 @@ public abstract class MenuState extends BasicGameState {
             options[currentOption].onSelect();
         }
 
-        if (in.isKeyPressed(Input.KEY_LEFT)) {
-            options[currentOption].onChange(-1);
-        }
-
-        if (in.isKeyPressed(Input.KEY_RIGHT)) {
-            options[currentOption].onChange(1);
-        }
-
         if (in.isKeyPressed(Input.KEY_UP)) {
             currentOption--;
 
@@ -73,5 +65,13 @@ public abstract class MenuState extends BasicGameState {
                 currentOption = 0;
             }
         }
+
+        /** Value handling */
+        if (in.isKeyPressed(Input.KEY_LEFT)) {
+            options[currentOption].onChange(-1);
+        } else
+        if (in.isKeyPressed(Input.KEY_RIGHT)) {
+            options[currentOption].onChange(1);
+        } else options[currentOption].onChange(in);
     }
 }
