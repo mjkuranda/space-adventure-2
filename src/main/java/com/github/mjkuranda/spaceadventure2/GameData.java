@@ -176,19 +176,25 @@ public class GameData {
      * @param type EntityType
      */
     public void spawn(EntityType type) {
-        float x = new Random().nextFloat() * X_SIZE;
+        Random r = new Random();
+
+        int x = r.nextInt(X_SIZE);
         float y = 0;
+        float xOffset = (float) (Math.random() * 0.5f);
 
-        if (x < 0) x = 0;
-        if (x > X_SIZE - 1) x = X_SIZE - 1;
+        if (Math.random() > 0.5f) {
+            xOffset *= -1;
+        }
 
-        int xInt = (int) x;
+        if (x + xOffset < 0 || x + xOffset > X_SIZE - 1) {
+            xOffset = 0;
+        }
 
         Entity entity = getEntity(type)
-                .setCoords(x, y)
-                .setSubscriber(entityLines[xInt]);
+                .setCoords(x + xOffset, y)
+                .setSubscriber(entityLines[x]);
 
-        entityLines[xInt].add(entity);
+        entityLines[x].add(entity);
     }
 
     /***
@@ -349,7 +355,7 @@ public class GameData {
             return null;
         }
 
-        Entity entity = entityLines[x].getLast();
+        Entity entity = entityLines[x].getFirst();
 
         return player.collides(entity) ? entity : null;
     }
