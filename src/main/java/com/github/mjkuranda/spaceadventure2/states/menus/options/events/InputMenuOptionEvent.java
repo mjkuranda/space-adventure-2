@@ -48,6 +48,10 @@ class KeyNameFactory {
             return "";
         }
 
+        if (keyCode == Input.KEY_SPACE) {
+            return " ";
+        }
+
         if (input.isKeyDown(Input.KEY_LSHIFT) || input.isKeyDown(Input.KEY_RSHIFT)) {
             return Input.getKeyName(keyCode);
         }
@@ -166,6 +170,9 @@ class KeyNameFactory {
         }
         if (input.isKeyPressed(Input.KEY_M)) {
             return Input.KEY_M;
+        }
+        if (input.isKeyPressed(Input.KEY_SPACE)) {
+            return Input.KEY_SPACE;
         }
 
         return -1;
