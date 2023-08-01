@@ -61,10 +61,8 @@ public class RetroRenderer extends Renderer {
     private void renderSpaceEntities(Graphics g) {
         g.setColor(Color.gray);
 
-        for (var line : data.getSpaceEntityList()) {
-            for (var entity : line) {
-                renderSpaceEntity(g, data.getPlayer(), entity);
-            }
+        for (var entity : data.getMappedEntities()) {
+            renderSpaceEntity(g, data.getPlayer(), entity);
         }
     }
 
@@ -87,7 +85,7 @@ public class RetroRenderer extends Renderer {
         int playerWidth = 192;
 
         int xPlayer = RENDERER_WIDTH / 2 - (playerWidth / 2);
-        int yPlayer = RENDERER_HEIGHT - 218;
+        int yPlayer = RENDERER_HEIGHT - 204;
 
         GameImage.SPACESHIP.draw(xPlayer, yPlayer, 0.37f);
     }

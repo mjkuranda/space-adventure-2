@@ -11,21 +11,28 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.state.StateBasedGame;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Random;
+import java.util.*;
 
 public class GameData {
 
     public static final int X_SIZE = 16;
     public static final int Y_SIZE = 16;
 
+    public static final int MAX_ENTITY_LIST = 32;
+
     /** Player spaceship */
     private Spaceship player;
 
     /** All lines of map */
     private LinkedList<Entity>[] entityLines;
+
+    /** Mapped entities */
+    private Deque<Entity> entities;
+
+    /** All missiles shoot by player */
     private LinkedList<Entity> playerMissiles;
+
+    /** All particles in map */
     private LinkedList<Particle> particles;
 
     public GameData() {
@@ -165,6 +172,7 @@ public class GameData {
         for (var line : entityLines) {
             line.clear();
         }
+        entities.clear();
         playerMissiles.clear();
 
         /** Resets particles */
@@ -176,6 +184,12 @@ public class GameData {
      * @param type EntityType
      */
     public void spawn(EntityType type) {
+        if (entities.size() >= MAX_ENTITY_LIST) {
+            System.err.println("GameData/spawn\tError:\tmaximal count of entities is exceeded!");
+
+            return;
+        }
+
         Random r = new Random();
 
         int x = r.nextInt(X_SIZE);
@@ -192,9 +206,11 @@ public class GameData {
 
         Entity entity = getEntity(type)
                 .setCoords(x + xOffset, y)
-                .setSubscriber(entityLines[x]);
+                .setSubscriber(entityLines[x])
+                .setSubscriberOfMapped(entities);
 
         entityLines[x].add(entity);
+        entities.addFirst(entity);
     }
 
     /***
@@ -269,6 +285,14 @@ public class GameData {
         return particles;
     }
 
+    /***
+     * Returns mapped entities to proper rendering
+     * @return entity list
+     */
+    public Deque<Entity> getMappedEntities() {
+        return entities;
+    }
+
     private void destroy(Missile missile, Iterator<Entity> it) {
         it.remove();
         missile.destroy();
@@ -306,6 +330,7 @@ public class GameData {
 
     private void initLists() {
         entityLines = new LinkedList[Y_SIZE];
+        entities = new ArrayDeque<>();
         playerMissiles = new LinkedList<>();
         particles = new LinkedList<>();
 

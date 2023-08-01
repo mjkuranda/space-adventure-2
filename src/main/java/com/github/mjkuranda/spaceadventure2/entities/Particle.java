@@ -8,7 +8,7 @@ public class Particle extends Entity {
     private Animation animation;
 
     public Particle(Animation animation, float x, float y, Shape shape) {
-        super(EntityType.PARTICLE, null, EntityTurn.INCOMING, shape, null, x, y, 0.0f, 0, 0);
+        super(EntityType.PARTICLE, null, null, EntityTurn.INCOMING, shape, null, x, y, 0.0f, 0, 0);
 
         this.animation = animation.copy();
 
