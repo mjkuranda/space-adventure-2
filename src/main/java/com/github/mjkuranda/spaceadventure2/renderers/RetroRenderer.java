@@ -61,10 +61,14 @@ public class RetroRenderer extends Renderer {
     private void renderSpaceEntities(Graphics g) {
         g.setColor(Color.gray);
 
-        for (var line : data.getSpaceEntityList()) {
-            for (var entity : line) {
-                renderSpaceEntity(g, data.getPlayer(), entity);
-            }
+//        for (var line : data.getSpaceEntityList()) {
+//            for (var entity : line) {
+//                renderSpaceEntity(g, data.getPlayer(), entity);
+//            }
+//        }
+
+        for (var entity : data.getMappedEntities()) {
+            renderSpaceEntity(g, data.getPlayer(), entity);
         }
     }
 

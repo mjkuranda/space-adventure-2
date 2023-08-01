@@ -5,6 +5,7 @@ import com.github.mjkuranda.spaceadventure2.PlayerStatistics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Shape;
 
+import java.util.Deque;
 import java.util.LinkedList;
 import static java.lang.Math.sqrt;
 import static java.lang.Math.pow;
@@ -16,6 +17,9 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
 
     /** Entity collection */
     private LinkedList<Entity> subscriber;
+
+    /** Entity mapped collection */
+    private Deque<Entity> subscriberOfMapped;
 
     /** Entity turn */
     private EntityTurn turn;
@@ -38,9 +42,10 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
     /** Entity image */
     private Image image;
 
-    public Entity(EntityType type, LinkedList<Entity> subscriber, EntityTurn turn, Shape shape, Image image, float x, float y, float speed, int durability, int score) {
+    public Entity(EntityType type, LinkedList<Entity> subscriber, Deque<Entity> subscriberOfMapped, EntityTurn turn, Shape shape, Image image, float x, float y, float speed, int durability, int score) {
         this.type = type;
         this.subscriber = subscriber;
+        this.subscriberOfMapped = subscriberOfMapped;
         this.turn = turn;
         this.shape = shape;
         this.image = image;
@@ -92,6 +97,12 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
         }
 
         subscriber.remove(this);
+
+        if (subscriberOfMapped == null) {
+            return;
+        }
+
+        subscriberOfMapped.remove(this);
     }
 
     @Override
@@ -175,6 +186,12 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
 
     public Entity setSubscriber(LinkedList<Entity> subscriber) {
         this.subscriber = subscriber;
+
+        return this;
+    }
+
+    public Entity setSubscriberOfMapped(Deque<Entity> subscriberOfMapped) {
+        this.subscriberOfMapped = subscriberOfMapped;
 
         return this;
     }
