@@ -18,6 +18,8 @@ public class GameData {
     public static final int X_SIZE = 16;
     public static final int Y_SIZE = 16;
 
+    public static final int MAX_ENTITY_LIST = 32;
+
     /** Player spaceship */
     private Spaceship player;
 
@@ -182,6 +184,12 @@ public class GameData {
      * @param type EntityType
      */
     public void spawn(EntityType type) {
+        if (entities.size() >= MAX_ENTITY_LIST) {
+            System.err.println("GameData/spawn\tError:\tmaximal count of entities is exceeded!");
+
+            return;
+        }
+
         Random r = new Random();
 
         int x = r.nextInt(X_SIZE);
