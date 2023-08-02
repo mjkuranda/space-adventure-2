@@ -8,6 +8,9 @@ public class PlayerStatistics {
 
     private static PlayerStatistics stats;
 
+    /** Player name */
+    private String name;
+
     /** Player score points */
     private int score;
 
@@ -34,8 +37,17 @@ public class PlayerStatistics {
      * Clears the data
      */
     public void clear() {
+        this.name = null;
         this.score = 0;
         this.distance = 0;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void addScore(int score) {
