@@ -25,7 +25,7 @@ public class NewGameMenuState extends MenuState {
                 new InputMenuOption(playerName)
                         .bindOnChangeEvent(new InputMenuOptionEvent(playerName)),
                 new SimpleMenuOption("Play!")
-                        .bindOnSelectEvent(new NewGameMenuOptionEvent(game, StatesId.GAME, playerName)),
+                        .bindOnSelectEvent(new NewGameMenuOptionEvent(game, StatesId.GAME, this, playerName)),
                 new SimpleMenuOption("Back to main menu")
                         .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, StatesId.MAIN_MENU))
         });
