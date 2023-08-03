@@ -29,4 +29,8 @@ public class InputMenuOption extends MenuOption {
         g.drawString(value.get(), coords.x + xOffset, coords.y + yOffset);
         g.drawString("Input your name", coords.x, coords.y - 1.5f * fontHeight);
     }
+
+    public void reset() {
+        this.value.update("");
+    }
 }

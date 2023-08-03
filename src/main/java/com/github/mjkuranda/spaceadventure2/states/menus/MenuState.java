@@ -25,6 +25,14 @@ public abstract class MenuState extends BasicGameState {
         return this;
     }
 
+    public void reset() {
+        for (var option : options) {
+            option.reset();
+        }
+
+        currentOption = 0;
+    }
+
     @Override
     public abstract int getID();
 

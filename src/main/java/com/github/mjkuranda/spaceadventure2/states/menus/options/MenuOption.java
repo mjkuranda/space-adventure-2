@@ -41,6 +41,8 @@ public abstract class MenuOption implements MenuOptionEvent {
         }
     }
 
+    public void reset() {}
+
     @Override
     public void onSelect() {
         if (onSelect == null) {
