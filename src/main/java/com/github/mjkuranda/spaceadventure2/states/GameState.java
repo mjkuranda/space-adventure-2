@@ -52,6 +52,7 @@ public class GameState extends BasicGameState {
         g.setColor(Color.white);
         g.drawString("Score: " + stats.getScore(), container.getWidth() - 256, 16);
         g.drawString("Distance: " + (int) (stats.getDistance()), container.getWidth() - 256, 48);
+        g.drawString(stats.getName(), container.getWidth() - 256, 80);
     }
 
     @Override

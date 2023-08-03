@@ -17,7 +17,7 @@ public class MainMenuState extends MenuState {
     public MainMenuState(StateBasedGame game) {
         super(new MenuOption[] {
                 new SimpleMenuOption("Start")
-                        .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, StatesId.GAME)),
+                        .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, StatesId.NEW_GAME_MENU)),
                 new SimpleMenuOption("Exit")
                         .bindOnSelectEvent(new ExitGameMenuOptionEvent())
         });
