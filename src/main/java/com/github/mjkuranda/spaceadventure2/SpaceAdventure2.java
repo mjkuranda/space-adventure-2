@@ -5,6 +5,7 @@ import com.github.mjkuranda.spaceadventure2.resources.GameFont;
 import com.github.mjkuranda.spaceadventure2.resources.GameImage;
 import com.github.mjkuranda.spaceadventure2.states.GameState;
 import com.github.mjkuranda.spaceadventure2.states.IntroState;
+import com.github.mjkuranda.spaceadventure2.states.LoadingState;
 import com.github.mjkuranda.spaceadventure2.states.menus.GameOverMenuState;
 import com.github.mjkuranda.spaceadventure2.states.menus.MainMenuState;
 import com.github.mjkuranda.spaceadventure2.states.menus.NewGameMenuState;
@@ -19,7 +20,7 @@ import java.util.logging.Logger;
 public class SpaceAdventure2 extends StateBasedGame {
 
     public static final String GAME_TITLE   = "Space Adventure II";
-    public static final String GAME_VERSION = "v0.16.1";
+    public static final String GAME_VERSION = "v0.17.0";
     public static final String GAME_CREATOR = "Marek Kuranda";
 
     public SpaceAdventure2() {
@@ -28,15 +29,7 @@ public class SpaceAdventure2 extends StateBasedGame {
 
     @Override
     public void initStatesList(GameContainer container) throws SlickException {
-        // FIXME: Loading resources in `LoadingState` state.
-        GameImage.load();
-        try {
-            GameFont.load();
-        } catch (IOException | FontFormatException e) {
-            throw new RuntimeException(e);
-        }
-        GameAnimation.load();
-
+        addState(new LoadingState());
         addState(new MainMenuState(this));
         addState(new NewGameMenuState(this));
         addState(new GameState());

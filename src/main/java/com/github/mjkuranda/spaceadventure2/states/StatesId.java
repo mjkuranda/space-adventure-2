@@ -1,8 +1,9 @@
 package com.github.mjkuranda.spaceadventure2.states;
 
 public interface StatesId {
-    int INTRO = 0;
-    int GAME = 1;
+    int LOADING = 0;
+    int INTRO = 1;
+    int GAME = 2;
 
     int MAIN_MENU = 10;
     int GAME_OVER_MENU = 11;
