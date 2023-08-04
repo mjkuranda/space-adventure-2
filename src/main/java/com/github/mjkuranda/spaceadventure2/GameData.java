@@ -7,6 +7,8 @@ import com.github.mjkuranda.spaceadventure2.entities.missiles.MissileType;
 import com.github.mjkuranda.spaceadventure2.entities.Particle;
 import com.github.mjkuranda.spaceadventure2.resources.GameAnimation;
 import com.github.mjkuranda.spaceadventure2.states.StatesId;
+import com.github.mjkuranda.spaceadventure2.states.highscore.HighScoreHandler;
+import com.github.mjkuranda.spaceadventure2.states.highscore.HighScoreRecord;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.state.StateBasedGame;
@@ -147,6 +149,9 @@ public class GameData {
             e.remove();
 
             if (!player.isAlive()) {
+                PlayerStatistics stats = PlayerStatistics.getInstance();
+                HighScoreHandler.getInstance().inputRecord(new HighScoreRecord(stats.getName(), stats.getScore()));
+
                 game.enterState(StatesId.GAME_OVER_MENU);
                 in.clearKeyPressedRecord();
                 reset();

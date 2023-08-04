@@ -3,6 +3,8 @@ package com.github.mjkuranda.spaceadventure2.states;
 import com.github.mjkuranda.spaceadventure2.resources.GameAnimation;
 import com.github.mjkuranda.spaceadventure2.resources.GameFont;
 import com.github.mjkuranda.spaceadventure2.resources.GameImage;
+import com.github.mjkuranda.spaceadventure2.states.highscore.HighScoreHandler;
+import com.github.mjkuranda.spaceadventure2.states.highscore.HighScoreRecord;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -67,6 +69,16 @@ public class LoadingState extends BasicGameState {
 
             return;
         }
+
+        HighScoreHandler handler = HighScoreHandler.getInstance();
+        handler.inputRecord(new HighScoreRecord("X", 5));
+        handler.inputRecord(new HighScoreRecord("Y", 3));
+        handler.inputRecord(new HighScoreRecord("Z", 2));
+        handler.inputRecord(new HighScoreRecord("W", 10));
+        handler.inputRecord(new HighScoreRecord("V", 1));
+        System.out.println(handler.getRecords());
+        handler.updateRecords();
+        System.out.println(handler.fetchRecords());
 
         game.enterState(StatesId.MAIN_MENU);
     }
