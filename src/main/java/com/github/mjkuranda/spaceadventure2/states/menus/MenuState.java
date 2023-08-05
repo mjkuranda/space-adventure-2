@@ -14,6 +14,10 @@ public abstract class MenuState extends BasicGameState {
 
     private int currentOption;
 
+    public MenuState() {
+        this(null);
+    }
+
     public MenuState(MenuOption[] options) {
         this.options = options;
         this.currentOption = 0;

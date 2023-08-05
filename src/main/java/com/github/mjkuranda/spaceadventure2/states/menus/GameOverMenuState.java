@@ -13,11 +13,13 @@ import org.newdawn.slick.state.StateBasedGame;
 public class GameOverMenuState extends MenuState {
 
     public GameOverMenuState(StateBasedGame game) {
-        super(new MenuOption[] {
+        super();
+
+        this.bindOptions(new MenuOption[] {
                 new SimpleMenuOption("Play again")
-                        .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, StatesId.GAME)),
+                        .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, this, StatesId.GAME)),
                 new SimpleMenuOption("Back to main menu")
-                        .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, StatesId.MAIN_MENU))
+                        .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, this, StatesId.MAIN_MENU))
         });
     }
 

@@ -15,11 +15,13 @@ import org.newdawn.slick.state.StateBasedGame;
 public class MainMenuState extends MenuState {
 
     public MainMenuState(StateBasedGame game) {
-        super(new MenuOption[] {
+        super();
+
+        this.bindOptions(new MenuOption[] {
                 new SimpleMenuOption("Start")
-                        .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, StatesId.NEW_GAME_MENU)),
+                        .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, this, StatesId.NEW_GAME_MENU)),
                 new SimpleMenuOption("High Score")
-                        .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, StatesId.HIGH_SCORE)),
+                        .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, this, StatesId.HIGH_SCORE)),
                 new SimpleMenuOption("Exit")
                         .bindOnSelectEvent(new ExitGameMenuOptionEvent())
         });
@@ -50,7 +52,7 @@ public class MainMenuState extends MenuState {
         float creatorY = (float) container.getHeight() - fontHeight;
 
         // Game texts
-        g.drawString(title, textX, 300);
+        g.drawString(title, textX, 256);
         g.drawString(version, versionX, versionY);
         g.drawString(creator, creatorX, creatorY);
         g.fillRect(container.getWidth() - 24, creatorY, 2, 4);

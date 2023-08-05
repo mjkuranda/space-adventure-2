@@ -17,7 +17,7 @@ public class NewGameMenuState extends MenuState {
     private StringMenuOptionValue playerName;
 
     public NewGameMenuState(StateBasedGame game) {
-        super(null);
+        super();
 
         playerName = new StringMenuOptionValue("");
 
@@ -27,7 +27,7 @@ public class NewGameMenuState extends MenuState {
                 new SimpleMenuOption("Play!")
                         .bindOnSelectEvent(new NewGameMenuOptionEvent(game, StatesId.GAME, this, playerName)),
                 new SimpleMenuOption("Back to main menu")
-                        .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, StatesId.MAIN_MENU))
+                        .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, this, StatesId.MAIN_MENU))
         });
     }
 

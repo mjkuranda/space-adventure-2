@@ -6,6 +6,7 @@ import com.github.mjkuranda.spaceadventure2.resources.GameImage;
 import com.github.mjkuranda.spaceadventure2.states.GameState;
 import com.github.mjkuranda.spaceadventure2.states.IntroState;
 import com.github.mjkuranda.spaceadventure2.states.LoadingState;
+import com.github.mjkuranda.spaceadventure2.states.highscore.HighScoreState;
 import com.github.mjkuranda.spaceadventure2.states.menus.GameOverMenuState;
 import com.github.mjkuranda.spaceadventure2.states.menus.MainMenuState;
 import com.github.mjkuranda.spaceadventure2.states.menus.NewGameMenuState;
@@ -34,6 +35,7 @@ public class SpaceAdventure2 extends StateBasedGame {
         addState(new NewGameMenuState(this));
         addState(new GameState());
         addState(new GameOverMenuState(this));
+        addState(new HighScoreState(this));
         addState(new IntroState());
     }
 
