@@ -38,7 +38,7 @@ interface HighScoreManageable {
 
 public class HighScoreHandler implements HighScoreManageable {
 
-    private static final int MAX_RECORDS_COUNT = 10;
+    public static final int MAX_RECORDS_COUNT = 10;
 
     private static final String RESULT_FILE_PATH = "src/main/resources/hs-bests.dat";
 

@@ -8,9 +8,12 @@ public class HighScoreRecord implements Serializable, Comparable<HighScoreRecord
 
     private int score;
 
-    public HighScoreRecord(String playerName, int score) {
+    private String date;
+
+    public HighScoreRecord(String playerName, int score, String date) {
         this.playerName = playerName;
         this.score = score;
+        this.date = date;
     }
 
     @Override
@@ -18,7 +21,19 @@ public class HighScoreRecord implements Serializable, Comparable<HighScoreRecord
         return record.score - score;
     }
 
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
     public String toString() {
-        return playerName + ":" + score;
+        return playerName + ":" + score + ":" + date;
     }
 }

@@ -13,6 +13,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.state.StateBasedGame;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class GameData {
@@ -150,7 +151,7 @@ public class GameData {
 
             if (!player.isAlive()) {
                 PlayerStatistics stats = PlayerStatistics.getInstance();
-                HighScoreHandler.getInstance().inputRecord(new HighScoreRecord(stats.getName(), stats.getScore()));
+                HighScoreHandler.getInstance().inputRecord(new HighScoreRecord(stats.getName(), stats.getScore(), LocalDate.now().toString()));
 
                 game.enterState(StatesId.GAME_OVER_MENU);
                 in.clearKeyPressedRecord();
