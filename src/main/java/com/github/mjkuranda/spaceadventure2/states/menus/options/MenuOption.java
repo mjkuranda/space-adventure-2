@@ -10,9 +10,9 @@ import org.newdawn.slick.geom.Vector2f;
 
 public abstract class MenuOption implements MenuOptionEvent {
 
-    protected static final int OPTION_WIDTH   = 200;
-    protected static final int OPTION_HEIGHT  = 50;
-    protected static final int OPTION_SPACE   = 100;
+    public static final int OPTION_WIDTH   = 200;
+    public static final int OPTION_HEIGHT  = 50;
+    public static final int OPTION_SPACE   = 100;
 
     protected String title;
     protected MenuOptionEvent onSelect;
@@ -23,7 +23,11 @@ public abstract class MenuOption implements MenuOptionEvent {
     }
 
     public void render(GameContainer container, Graphics g, int idx, int currentOption, int length) {
-        Vector2f coords = getCoords(container, idx, length);
+        render(container, g, idx, currentOption, length, 0, 0);
+    }
+
+    public void render(GameContainer container, Graphics g, int idx, int currentOption, int length, float startX, float startY) {
+        Vector2f coords = getCoords(container, idx, length, startX, startY);
         float x = coords.x;
         float y = coords.y;
 
@@ -82,7 +86,11 @@ public abstract class MenuOption implements MenuOptionEvent {
         return this;
     }
 
-    protected Vector2f getCoords(GameContainer container, int idx, int length) {
+    protected Vector2f getCoords(GameContainer container, int idx, int length, float startX, float startY) {
+        if (startX != 0 || startY != 0) {
+            return new Vector2f(startX, startY + idx * OPTION_SPACE);
+        }
+
         float containerSize = length * OPTION_HEIGHT + (length - 1) * OPTION_SPACE;
 
         float centerX = (float) (container.getWidth() / 2) - (float) (OPTION_WIDTH / 2);

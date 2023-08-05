@@ -10,9 +10,9 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public abstract class MenuState extends BasicGameState {
 
-    private MenuOption[] options;
+    protected MenuOption[] options;
 
-    private int currentOption;
+    protected int currentOption;
 
     public MenuState() {
         this(null);

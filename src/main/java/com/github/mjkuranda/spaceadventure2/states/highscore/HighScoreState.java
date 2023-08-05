@@ -9,6 +9,7 @@ import com.github.mjkuranda.spaceadventure2.states.menus.options.events.ExitGame
 import com.github.mjkuranda.spaceadventure2.states.menus.options.events.ResetHighScoreMenuOptionEvent;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class HighScoreState extends MenuState {
@@ -16,9 +17,13 @@ public class HighScoreState extends MenuState {
     private static final int RECORD_WIDTH = 512;
     private static final int RECORD_HEIGHT = 64;
 
-    private int tableX;
+    private float tableX;
 
-    private int tableY;
+    private float tableY;
+
+    private float optionX;
+
+    private float optionY;
 
     public HighScoreState(StateBasedGame game) {
         super();
@@ -31,8 +36,20 @@ public class HighScoreState extends MenuState {
                         .bindOnSelectEvent(new ExitGameMenuOptionEvent())
         });
 
-        this.tableX = 0;
-        this.tableY = 0;
+        this.tableX = game.getContainer().getWidth() / 2.0f - RECORD_WIDTH / 2.0f;
+        this.tableY = game.getContainer().getHeight() / 2.0f - (RECORD_HEIGHT * (HighScoreHandler.MAX_RECORDS_COUNT + 1)) / 2.0f - 128;
+
+        this.optionX = game.getContainer().getWidth() / 2.0f - MenuOption.OPTION_WIDTH / 2.0f;
+        this.optionY = tableY + (RECORD_HEIGHT * (HighScoreHandler.MAX_RECORDS_COUNT + 1)) + 64;
+    }
+
+    @Override
+    public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+        renderPartials(container, g);
+
+        for (int i = 0; i < options.length; i++) {
+            options[i].render(container, g, i, currentOption, options.length, optionX, optionY);
+        }
     }
 
     @Override
