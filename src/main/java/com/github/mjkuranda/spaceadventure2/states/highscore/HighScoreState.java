@@ -55,9 +55,9 @@ public class HighScoreState extends MenuState {
         g.drawLine(tableX + 192,  tableY + line * RECORD_HEIGHT, tableX + 192, tableY + line * RECORD_HEIGHT + RECORD_HEIGHT);
         g.drawLine(tableX + 384, tableY + line * RECORD_HEIGHT, tableX + 384, tableY + line * RECORD_HEIGHT + RECORD_HEIGHT);
 
-        g.drawString(playerName, tableX, tableY + line * RECORD_HEIGHT);
-        g.drawString(score, tableX + 192, tableY + line * RECORD_HEIGHT);
-        g.drawString(date, tableX + 384, tableY + line * RECORD_HEIGHT);
+        renderStringContent(g, playerName, tableX, tableY + line * RECORD_HEIGHT, 192);
+        renderStringContent(g, score, tableX + 192, tableY + line * RECORD_HEIGHT, 192);
+        renderStringContent(g, date, tableX + 384, tableY + line * RECORD_HEIGHT, 128);
     }
 
     private void renderRecord(Graphics g, int line, HighScoreRecord record) {
@@ -66,5 +66,12 @@ public class HighScoreState extends MenuState {
         }
 
         renderRecord(g, line, record.getPlayerName(), record.getScore() + "", record.getDate());
+    }
+
+    private void renderStringContent(Graphics g, String s, float x, float y, int width) {
+        int sWidth = GameFont.VCR_OSD_MONO.getWidth(s);
+        int sHeight = GameFont.VCR_OSD_MONO.getHeight(s);
+
+        g.drawString(s, x + (float) (width - sWidth) / 2, y + (float) (RECORD_HEIGHT - sHeight) / 2);
     }
 }
