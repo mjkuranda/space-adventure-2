@@ -70,25 +70,24 @@ public class LoadingState extends BasicGameState {
             return;
         }
 
-        // FIXME: Remove it
-        HighScoreHandler handler = HighScoreHandler.getInstance();
-        handler.inputRecord(new HighScoreRecord("X", 5, "2023-01-01"));
-        handler.inputRecord(new HighScoreRecord("Y", 3, "2023-01-01"));
-        handler.inputRecord(new HighScoreRecord("Z", 2, "2023-01-01"));
-        handler.inputRecord(new HighScoreRecord("W", 10, "2023-01-01"));
-        handler.inputRecord(new HighScoreRecord("K", 11, "2023-01-01"));
-        handler.inputRecord(new HighScoreRecord("L", 10, "2023-01-01"));
-        handler.inputRecord(new HighScoreRecord("G", 13, "2023-01-01"));
-        handler.inputRecord(new HighScoreRecord("H", 18, "2023-01-01"));
-        handler.inputRecord(new HighScoreRecord("S", 13, "2023-01-01"));
-        handler.inputRecord(new HighScoreRecord("D1234567890123456", 50, "2023-01-01"));
-        handler.inputRecord(new HighScoreRecord("V", 1, "2023-01-01"));
-        System.out.println(handler.getRecords());
-        handler.updateRecords();
-
         if (!areHighScoreRecordsLoaded) {
             areHighScoreRecordsLoaded = true;
             resourceName = "high scores";
+            // FIXME: Remove it
+//            HighScoreHandler handler = HighScoreHandler.getInstance();
+//            handler.inputRecord(new HighScoreRecord("X", 5, "2023-01-01"));
+//            handler.inputRecord(new HighScoreRecord("Y", 3, "2023-01-01"));
+//            handler.inputRecord(new HighScoreRecord("Z", 2, "2023-01-01"));
+//            handler.inputRecord(new HighScoreRecord("W", 10, "2023-01-01"));
+//            handler.inputRecord(new HighScoreRecord("K", 11, "2023-01-01"));
+//            handler.inputRecord(new HighScoreRecord("L", 10, "2023-01-01"));
+//            handler.inputRecord(new HighScoreRecord("G", 13, "2023-01-01"));
+//            handler.inputRecord(new HighScoreRecord("H", 18, "2023-01-01"));
+//            handler.inputRecord(new HighScoreRecord("S", 13, "2023-01-01"));
+//            handler.inputRecord(new HighScoreRecord("D1234567890123456", 50, "2023-01-01"));
+//            handler.inputRecord(new HighScoreRecord("V", 1, "2023-01-01"));
+//        System.out.println(handler.getRecords());
+//        handler.updateRecords();
             HighScoreHandler.getInstance().fetchRecords();
 
             return;
