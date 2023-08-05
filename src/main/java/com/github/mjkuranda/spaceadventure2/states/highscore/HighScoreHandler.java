@@ -40,6 +40,8 @@ public class HighScoreHandler implements HighScoreManageable {
 
     private static final int MAX_RECORDS_COUNT = 10;
 
+    private static final String RESULT_FILE_PATH = "src/main/resources/hs-bests.dat";
+
     public static HighScoreHandler handler;
 
     private List<HighScoreRecord> records;
@@ -71,7 +73,7 @@ public class HighScoreHandler implements HighScoreManageable {
     @Override
     public List<HighScoreRecord> fetchRecords() {
         try {
-            FileInputStream fis = new FileInputStream("hs-bests.dat");
+            FileInputStream fis = new FileInputStream(RESULT_FILE_PATH);
             ObjectInputStream ois = new ObjectInputStream(fis);
             HighScoreRecordListDto dto = (HighScoreRecordListDto) ois.readObject();
             ois.close();
@@ -89,7 +91,7 @@ public class HighScoreHandler implements HighScoreManageable {
         HighScoreRecordListDto dto = new HighScoreRecordListDto(records);
 
         try {
-            FileOutputStream fos = new FileOutputStream("hs-bests.dat");
+            FileOutputStream fos = new FileOutputStream(RESULT_FILE_PATH);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(dto);
             oos.close();

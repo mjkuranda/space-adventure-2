@@ -72,19 +72,19 @@ public class LoadingState extends BasicGameState {
 
         // FIXME: Remove it
         HighScoreHandler handler = HighScoreHandler.getInstance();
-        handler.inputRecord(new HighScoreRecord("X", 5));
-        handler.inputRecord(new HighScoreRecord("Y", 3));
-        handler.inputRecord(new HighScoreRecord("Z", 2));
-        handler.inputRecord(new HighScoreRecord("W", 10));
-        handler.inputRecord(new HighScoreRecord("K", 11));
-        handler.inputRecord(new HighScoreRecord("L", 10));
-        handler.inputRecord(new HighScoreRecord("G", 13));
-        handler.inputRecord(new HighScoreRecord("H", 18));
-        handler.inputRecord(new HighScoreRecord("S", 13));
-        handler.inputRecord(new HighScoreRecord("D", 50));
-        handler.inputRecord(new HighScoreRecord("V", 1));
-        System.out.println(handler.getRecords());
-        handler.updateRecords();
+//        handler.inputRecord(new HighScoreRecord("X", 5));
+//        handler.inputRecord(new HighScoreRecord("Y", 3));
+//        handler.inputRecord(new HighScoreRecord("Z", 2));
+//        handler.inputRecord(new HighScoreRecord("W", 10));
+//        handler.inputRecord(new HighScoreRecord("K", 11));
+//        handler.inputRecord(new HighScoreRecord("L", 10));
+//        handler.inputRecord(new HighScoreRecord("G", 13));
+//        handler.inputRecord(new HighScoreRecord("H", 18));
+//        handler.inputRecord(new HighScoreRecord("S", 13));
+//        handler.inputRecord(new HighScoreRecord("D", 50));
+//        handler.inputRecord(new HighScoreRecord("V", 1));
+//        System.out.println(handler.getRecords());
+//        handler.updateRecords();
         System.out.println(handler.fetchRecords());
 
         game.enterState(StatesId.MAIN_MENU);

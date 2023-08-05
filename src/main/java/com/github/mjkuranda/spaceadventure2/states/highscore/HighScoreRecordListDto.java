@@ -14,4 +14,21 @@ public class HighScoreRecordListDto implements Serializable {
     public List<HighScoreRecord> getRecords() {
         return records;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+
+        for (int i = 0; i < records.size(); i++) {
+            var record = records.get(i);
+
+            str.append(record.toString());
+
+            if (i < records.size() - 1) {
+                str.append(",");
+            }
+        }
+
+        return str.toString();
+    }
 }

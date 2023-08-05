@@ -19,6 +19,6 @@ public class HighScoreRecord implements Serializable, Comparable<HighScoreRecord
     }
 
     public String toString() {
-        return "Player: " + playerName + ", gained: " + score;
+        return playerName + ":" + score;
     }
 }
