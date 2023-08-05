@@ -7,6 +7,7 @@ import com.github.mjkuranda.spaceadventure2.states.menus.options.MenuOption;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.SimpleMenuOption;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.events.ExitGameMenuOptionEvent;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.events.ResetHighScoreMenuOptionEvent;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -71,7 +72,20 @@ public class HighScoreState extends MenuState {
         }
     }
 
+    private void renderRecord(Graphics g, int line, HighScoreRecord record) {
+        if (record == null) {
+            renderRecord(g, line, "", "", "");
+
+            return;
+        }
+
+        renderRecord(g, line, record.getPlayerName(), record.getScore() + "", record.getDate());
+    }
+
     private void renderRecord(Graphics g, int line, String playerName, String score, String date) {
+        renderRecordBackground(g, line, tableX, tableY + line * RECORD_HEIGHT);
+
+        g.setColor(Color.white);
         g.drawRect(tableX, tableY + line * RECORD_HEIGHT, RECORD_WIDTH, RECORD_HEIGHT);
         g.drawLine(tableX + 192,  tableY + line * RECORD_HEIGHT, tableX + 192, tableY + line * RECORD_HEIGHT + RECORD_HEIGHT);
         g.drawLine(tableX + 384, tableY + line * RECORD_HEIGHT, tableX + 384, tableY + line * RECORD_HEIGHT + RECORD_HEIGHT);
@@ -81,14 +95,17 @@ public class HighScoreState extends MenuState {
         renderStringContent(g, date, tableX + 384, tableY + line * RECORD_HEIGHT, 128);
     }
 
-    private void renderRecord(Graphics g, int line, HighScoreRecord record) {
-        if (record == null) {
-            renderRecord(g, line, "", "", "");
+    private void renderRecordBackground(Graphics g, int line, float x, float y) {
+        Color color = switch (line) {
+            case 0 -> Color.darkGray;
+            case 1 -> Color.orange;
+            case 2 -> Color.lightGray;
+            case 3 -> new Color(210,105,30);
+            default -> Color.gray;
+        };
 
-            return;
-        }
-
-        renderRecord(g, line, record.getPlayerName(), record.getScore() + "", record.getDate());
+        g.setColor(color);
+        g.fillRect(x, y, RECORD_WIDTH, RECORD_HEIGHT);
     }
 
     private void renderStringContent(Graphics g, String s, float x, float y, int width) {
