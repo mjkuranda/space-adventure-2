@@ -2,6 +2,8 @@ package com.github.mjkuranda.spaceadventure2.states.highscore;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 interface HighScoreManageable {
@@ -36,6 +38,8 @@ interface HighScoreManageable {
 
 public class HighScoreHandler implements HighScoreManageable {
 
+    private static final int MAX_RECORDS_COUNT = 10;
+
     public static HighScoreHandler handler;
 
     private List<HighScoreRecord> records;
@@ -55,6 +59,13 @@ public class HighScoreHandler implements HighScoreManageable {
     @Override
     public void inputRecord(HighScoreRecord record) {
         records.add(record);
+        Collections.sort(records);
+
+        if (records.size() > MAX_RECORDS_COUNT) {
+            records.remove(10);
+        }
+
+        updateRecords();
     }
 
     @Override
@@ -89,7 +100,8 @@ public class HighScoreHandler implements HighScoreManageable {
 
     @Override
     public void resetRecords() {
-
+        records.clear();
+        updateRecords();
     }
 
     @Override
