@@ -6,6 +6,7 @@ import com.github.mjkuranda.spaceadventure2.states.menus.MenuState;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.MenuOption;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.SimpleMenuOption;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.events.ExitGameMenuOptionEvent;
+import com.github.mjkuranda.spaceadventure2.states.menus.options.events.ResetHighScoreMenuOptionEvent;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
@@ -23,6 +24,8 @@ public class HighScoreState extends MenuState {
         super();
 
         this.bindOptions(new MenuOption[] {
+                new SimpleMenuOption("Reset high scores")
+                        .bindOnSelectEvent(new ResetHighScoreMenuOptionEvent()),
                 new SimpleMenuOption("Back to the menu")
 //                        .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, this, StatesId.MAIN_MENU))
                         .bindOnSelectEvent(new ExitGameMenuOptionEvent())
@@ -46,7 +49,8 @@ public class HighScoreState extends MenuState {
         renderRecord(g, 0, "Player", "Score", "Date");
 
         for (int i = 0; i < HighScoreHandler.MAX_RECORDS_COUNT; i++) {
-            renderRecord(g, i + 1, records.get(i));
+            HighScoreRecord record = records.size() > i ? records.get(i) : null;
+            renderRecord(g, i + 1, record);
         }
     }
 
@@ -63,6 +67,8 @@ public class HighScoreState extends MenuState {
     private void renderRecord(Graphics g, int line, HighScoreRecord record) {
         if (record == null) {
             renderRecord(g, line, "", "", "");
+
+            return;
         }
 
         renderRecord(g, line, record.getPlayerName(), record.getScore() + "", record.getDate());
