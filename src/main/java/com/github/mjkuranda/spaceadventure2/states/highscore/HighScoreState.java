@@ -5,7 +5,7 @@ import com.github.mjkuranda.spaceadventure2.states.StatesId;
 import com.github.mjkuranda.spaceadventure2.states.menus.MenuState;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.MenuOption;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.SimpleMenuOption;
-import com.github.mjkuranda.spaceadventure2.states.menus.options.events.ExitGameMenuOptionEvent;
+import com.github.mjkuranda.spaceadventure2.states.menus.options.events.EnterStateMenuOptionEvent;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.events.ResetHighScoreMenuOptionEvent;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -33,8 +33,7 @@ public class HighScoreState extends MenuState {
                 new SimpleMenuOption("Reset high scores")
                         .bindOnSelectEvent(new ResetHighScoreMenuOptionEvent()),
                 new SimpleMenuOption("Back to the menu")
-//                        .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, this, StatesId.MAIN_MENU))
-                        .bindOnSelectEvent(new ExitGameMenuOptionEvent())
+                        .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, this, StatesId.MAIN_MENU))
         });
 
         this.tableX = game.getContainer().getWidth() / 2.0f - RECORD_WIDTH / 2.0f;
@@ -87,11 +86,13 @@ public class HighScoreState extends MenuState {
 
         g.setColor(Color.white);
         g.drawRect(tableX, tableY + line * RECORD_HEIGHT, RECORD_WIDTH, RECORD_HEIGHT);
-        g.drawLine(tableX + 192,  tableY + line * RECORD_HEIGHT, tableX + 192, tableY + line * RECORD_HEIGHT + RECORD_HEIGHT);
+        g.drawLine(tableX + 96,  tableY + line * RECORD_HEIGHT, tableX + 96, tableY + line * RECORD_HEIGHT + RECORD_HEIGHT);
+        g.drawLine(tableX + 288,  tableY + line * RECORD_HEIGHT, tableX + 288, tableY + line * RECORD_HEIGHT + RECORD_HEIGHT);
         g.drawLine(tableX + 384, tableY + line * RECORD_HEIGHT, tableX + 384, tableY + line * RECORD_HEIGHT + RECORD_HEIGHT);
 
-        renderStringContent(g, playerName, tableX, tableY + line * RECORD_HEIGHT, 192);
-        renderStringContent(g, score, tableX + 192, tableY + line * RECORD_HEIGHT, 192);
+        renderStringContent(g, line == 0 ? "Position" : line + "", tableX, tableY + line * RECORD_HEIGHT, 96);
+        renderStringContent(g, playerName, tableX + 96, tableY + line * RECORD_HEIGHT, 192);
+        renderStringContent(g, score, tableX + 288, tableY + line * RECORD_HEIGHT, 96);
         renderStringContent(g, date, tableX + 384, tableY + line * RECORD_HEIGHT, 128);
     }
 

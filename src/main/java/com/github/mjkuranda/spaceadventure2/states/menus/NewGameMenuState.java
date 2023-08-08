@@ -37,7 +37,5 @@ public class NewGameMenuState extends MenuState {
     }
 
     @Override
-    public void renderPartials(GameContainer container, Graphics g) {
-
-    }
+    public void renderPartials(GameContainer container, Graphics g) {}
 }
