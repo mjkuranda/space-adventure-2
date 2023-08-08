@@ -3,6 +3,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 /out/
+src/main/resources/hs-bests.dat
 
 ### IntelliJ IDEA ###
 .idea/modules.xml

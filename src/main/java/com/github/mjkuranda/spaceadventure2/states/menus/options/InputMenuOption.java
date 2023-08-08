@@ -20,7 +20,7 @@ public class InputMenuOption extends MenuOption {
     public void render(GameContainer container, Graphics g, int idx, int currentOption, int length) {
         super.render(container, g, idx, currentOption, length);
 
-        Vector2f coords = getCoords(container, idx, length);
+        Vector2f coords = getCoords(container, idx, length, 0, 0);
         float fontHeight = GameFont.VCR_OSD_MONO.getHeight("Lorem ipsum");
         float xOffset = (
                 GameFont.VCR_OSD_MONO.getWidth("12340000123400001234000012") - GameFont.VCR_OSD_MONO.getWidth("1234000012340000")

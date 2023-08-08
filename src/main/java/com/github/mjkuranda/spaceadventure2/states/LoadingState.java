@@ -3,6 +3,8 @@ package com.github.mjkuranda.spaceadventure2.states;
 import com.github.mjkuranda.spaceadventure2.resources.GameAnimation;
 import com.github.mjkuranda.spaceadventure2.resources.GameFont;
 import com.github.mjkuranda.spaceadventure2.resources.GameImage;
+import com.github.mjkuranda.spaceadventure2.states.highscore.HighScoreHandler;
+import com.github.mjkuranda.spaceadventure2.states.highscore.HighScoreRecord;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -16,7 +18,7 @@ public class LoadingState extends BasicGameState {
 
     private String resourceName = "";
 
-    private boolean areImagesLoaded, areFontsLoaded, areAnimationsLoaded;
+    private boolean areImagesLoaded, areFontsLoaded, areAnimationsLoaded, areHighScoreRecordsLoaded;
 
     @Override
     public int getID() {
@@ -64,6 +66,14 @@ public class LoadingState extends BasicGameState {
             areAnimationsLoaded = true;
             resourceName = "animations";
             GameAnimation.load();
+
+            return;
+        }
+
+        if (!areHighScoreRecordsLoaded) {
+            areHighScoreRecordsLoaded = true;
+            resourceName = "high scores";
+            HighScoreHandler.getInstance().fetchRecords();
 
             return;
         }

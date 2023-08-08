@@ -12,17 +12,16 @@ public class NewGameMenuOptionEvent extends EnterStateMenuOptionEvent {
     private StringMenuOptionValue playerName;
 
     public NewGameMenuOptionEvent(StateBasedGame game, int stateId, MenuState menu, StringMenuOptionValue playerName) {
-        super(game, stateId);
+        super(game, menu, stateId);
 
-        this.menu = menu;
         this.playerName = playerName;
     }
 
     @Override
     public void onSelect() {
-        super.onSelect();
-
+        PlayerStatistics.getInstance().clear();
         PlayerStatistics.getInstance().setName(playerName.get());
-        menu.reset();
+
+        super.onSelect();
     }
 }
