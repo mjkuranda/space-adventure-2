@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - [@mjkuranda](https://github.com/mjkuranda): Spacecraft vibration after collision.
 
+### Changed
+- [@mjkuranda](https://github.com/mjkuranda): `PlayerStatistics` to `PlayerData`.
+
 ## [0.18.1] - 2023-08-09
 ### Fixed
 - [@mjkuranda](https://github.com/mjkuranda): Resetting player statistics.

@@ -1,7 +1,7 @@
 package com.github.mjkuranda.spaceadventure2.states;
 
 import com.github.mjkuranda.spaceadventure2.GameData;
-import com.github.mjkuranda.spaceadventure2.PlayerStatistics;
+import com.github.mjkuranda.spaceadventure2.PlayerData;
 import com.github.mjkuranda.spaceadventure2.renderers.ArcadeRenderer;
 import com.github.mjkuranda.spaceadventure2.renderers.Renderer;
 import com.github.mjkuranda.spaceadventure2.renderers.RetroRenderer;
@@ -17,14 +17,14 @@ public class GameState extends BasicGameState {
     private GameData data;
 
     /** Player statistics */
-    private PlayerStatistics stats;
+    private PlayerData stats;
 
     /** Game data renderer */
     private Renderer renderer;
 
     public GameState() {
         data = new GameData();
-        stats = PlayerStatistics.getInstance();
+        stats = PlayerData.getInstance();
 
         ARCADE_RENDERER = new ArcadeRenderer(data);
         RETRO_RENDERER = new RetroRenderer(data);

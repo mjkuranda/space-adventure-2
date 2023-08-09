@@ -1,7 +1,7 @@
 package com.github.mjkuranda.spaceadventure2.entities;
 
 import com.github.mjkuranda.spaceadventure2.GameData;
-import com.github.mjkuranda.spaceadventure2.PlayerStatistics;
+import com.github.mjkuranda.spaceadventure2.PlayerData;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Shape;
 
@@ -88,7 +88,7 @@ public abstract class Entity implements Moveable, Destroyable, Damageable {
     @Override
     public void destroy() {
         remove();
-        PlayerStatistics.getInstance().addScore(score);
+        PlayerData.getInstance().addScore(score);
     }
 
     public void remove() {

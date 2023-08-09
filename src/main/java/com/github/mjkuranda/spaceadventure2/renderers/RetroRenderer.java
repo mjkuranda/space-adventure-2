@@ -1,7 +1,7 @@
 package com.github.mjkuranda.spaceadventure2.renderers;
 
 import com.github.mjkuranda.spaceadventure2.GameData;
-import com.github.mjkuranda.spaceadventure2.PlayerStatistics;
+import com.github.mjkuranda.spaceadventure2.PlayerData;
 import com.github.mjkuranda.spaceadventure2.entities.Entity;
 import com.github.mjkuranda.spaceadventure2.entities.EntityType;
 import com.github.mjkuranda.spaceadventure2.entities.SpaceEntity;
@@ -34,7 +34,7 @@ public class RetroRenderer extends Renderer {
         int xOffset = (int) ((playerX - 8.0f) * 8);
 
         Image img = GameImage.BACKGROUND;
-        float inc = PlayerStatistics.getInstance().getDistance() / 2;
+        float inc = PlayerData.getInstance().getDistance() / 2;
         img.draw(-xOffset - 64 - (inc / 2), 0 - (inc / 2), img.getWidth() + inc, img.getHeight() + inc);
     }
 
@@ -90,7 +90,7 @@ public class RetroRenderer extends Renderer {
         int yPlayer = RENDERER_HEIGHT - 204;
 
         Random r = new Random();
-        int vibration = Math.max(PlayerStatistics.getInstance().getVibration(), 1);
+        int vibration = Math.max(PlayerData.getInstance().getVibration(), 1);
 
         int xOffset = r.nextInt(vibration) - (vibration / 2);
         int yOffset = r.nextInt(vibration) - (vibration / 2);
