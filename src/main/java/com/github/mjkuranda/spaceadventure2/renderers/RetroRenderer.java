@@ -90,7 +90,7 @@ public class RetroRenderer extends Renderer {
         int yPlayer = RENDERER_HEIGHT - 204;
 
         Random r = new Random();
-        int vibration = Math.max(PlayerData.getInstance().getVibration(), 1);
+        int vibration = (int) Math.max(PlayerData.getInstance().getVibration(), 1);
 
         int xOffset = r.nextInt(vibration) - (vibration / 2);
         int yOffset = r.nextInt(vibration) - (vibration / 2);

@@ -18,7 +18,7 @@ public class PlayerData {
     private float distance;
 
     /** Player data */
-    private int vibration;
+    private float vibration;
 
     private PlayerData() {
         //
@@ -43,6 +43,7 @@ public class PlayerData {
         this.name = null;
         this.score = 0;
         this.distance = 0;
+        this.vibration = 0;
     }
 
     /**
@@ -51,21 +52,22 @@ public class PlayerData {
     public void reset() {
         this.score = 0;
         this.distance = 0;
+        this.vibration = 0;
     }
 
     public void vibrate() {
-        this.vibration += 35;
+        this.vibration += 15;
     }
 
     public void unvibrate() {
-        this.vibration -= 1;
+        this.vibration -= 0.25f;
 
         if (vibration < 0) {
             vibration = 0;
         }
     }
 
-    public int getVibration() {
+    public float getVibration() {
         return vibration;
     }
 

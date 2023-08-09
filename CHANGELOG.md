@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - [@mjkuranda](https://github.com/mjkuranda): `PlayerStatistics` to `PlayerData`.
+- [@mjkuranda](https://github.com/mjkuranda): `LaserMissile` from `50` to `75`.
 
 ## [0.18.1] - 2023-08-09
 ### Fixed
