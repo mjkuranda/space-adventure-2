@@ -1,6 +1,6 @@
 package com.github.mjkuranda.spaceadventure2.states.menus.options.events.decorators;
 
-import com.github.mjkuranda.spaceadventure2.PlayerStatistics;
+import com.github.mjkuranda.spaceadventure2.PlayerData;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.events.MenuOptionEvent;
 import org.newdawn.slick.Input;
 
@@ -15,7 +15,7 @@ public class ResetPlayerStatisticsEvent extends MenuOptionEventDecorator {
     @Override
     public void onSelect() {
         event.onSelect();
-        PlayerStatistics.getInstance().reset();
+        PlayerData.getInstance().reset();
     }
 
     @Override

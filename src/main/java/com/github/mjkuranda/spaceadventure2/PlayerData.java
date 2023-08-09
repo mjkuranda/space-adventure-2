@@ -4,9 +4,9 @@ package com.github.mjkuranda.spaceadventure2;
  * This class contains data about player
  * such as score points, shoot missiles, etc.
  */
-public class PlayerStatistics {
+public class PlayerData {
 
-    private static PlayerStatistics stats;
+    private static PlayerData data;
 
     /** Player name */
     private String name;
@@ -17,7 +17,10 @@ public class PlayerStatistics {
     /** Player distance */
     private float distance;
 
-    private PlayerStatistics() {
+    /** Player data */
+    private float vibration;
+
+    private PlayerData() {
         //
     }
 
@@ -25,12 +28,12 @@ public class PlayerStatistics {
      * Returns player statistics
      * @return PlayerStatistics
      */
-    public static PlayerStatistics getInstance() {
-        if (stats == null) {
-            stats = new PlayerStatistics();
+    public static PlayerData getInstance() {
+        if (data == null) {
+            data = new PlayerData();
         }
 
-        return stats;
+        return data;
     }
 
     /**
@@ -40,6 +43,7 @@ public class PlayerStatistics {
         this.name = null;
         this.score = 0;
         this.distance = 0;
+        this.vibration = 0;
     }
 
     /**
@@ -48,6 +52,23 @@ public class PlayerStatistics {
     public void reset() {
         this.score = 0;
         this.distance = 0;
+        this.vibration = 0;
+    }
+
+    public void vibrate() {
+        this.vibration += 15;
+    }
+
+    public void unvibrate() {
+        this.vibration -= 0.25f;
+
+        if (vibration < 0) {
+            vibration = 0;
+        }
+    }
+
+    public float getVibration() {
+        return vibration;
     }
 
     public void setName(String name) {

@@ -121,7 +121,7 @@ public class GameData {
         }
 
         /** Player update */
-        PlayerStatistics.getInstance().addDistance(player.getSpeed());
+        PlayerData.getInstance().addDistance(player.getSpeed());
 
         Input in = container.getInput();
 
@@ -143,14 +143,16 @@ public class GameData {
 
         /** Player collision */
         Entity e = playerCollides();
+        PlayerData.getInstance().unvibrate();
 
         if (e != null) {
             player.damage(e.getDurability());
             spawn(new Particle(GameAnimation.EXPLOSION, e));
             e.remove();
+            PlayerData.getInstance().vibrate();
 
             if (!player.isAlive()) {
-                PlayerStatistics stats = PlayerStatistics.getInstance();
+                PlayerData stats = PlayerData.getInstance();
                 HighScoreHandler.getInstance().inputRecord(new HighScoreRecord(stats.getName(), stats.getScore(), LocalDate.now().toString()));
 
                 game.enterState(StatesId.GAME_OVER_MENU);

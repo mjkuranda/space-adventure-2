@@ -1,6 +1,6 @@
 package com.github.mjkuranda.spaceadventure2.states.menus;
 
-import com.github.mjkuranda.spaceadventure2.PlayerStatistics;
+import com.github.mjkuranda.spaceadventure2.PlayerData;
 import com.github.mjkuranda.spaceadventure2.resources.GameFont;
 import com.github.mjkuranda.spaceadventure2.states.StatesId;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.MenuOption;
@@ -36,8 +36,8 @@ public class GameOverMenuState extends MenuState {
     @Override
     public void renderPartials(GameContainer container, Graphics g) {
         renderPartial(container, g, "GAME OVER", 200);
-        renderPartial(container, g, PlayerStatistics.getInstance().getName(), 256);
-        renderPartial(container, g, "Your score: " + PlayerStatistics.getInstance().getScore(), 280);
+        renderPartial(container, g, PlayerData.getInstance().getName(), 256);
+        renderPartial(container, g, "Your score: " + PlayerData.getInstance().getScore(), 280);
     }
 
     private void renderPartial(GameContainer container, Graphics g, String str, float y) {

@@ -1,7 +1,7 @@
 package com.github.mjkuranda.spaceadventure2.renderers;
 
 import com.github.mjkuranda.spaceadventure2.GameData;
-import com.github.mjkuranda.spaceadventure2.PlayerStatistics;
+import com.github.mjkuranda.spaceadventure2.PlayerData;
 import com.github.mjkuranda.spaceadventure2.entities.Entity;
 import com.github.mjkuranda.spaceadventure2.entities.EntityType;
 import com.github.mjkuranda.spaceadventure2.entities.SpaceEntity;
@@ -11,6 +11,8 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Vector2f;
+
+import java.util.Random;
 
 public class RetroRenderer extends Renderer {
 
@@ -32,7 +34,7 @@ public class RetroRenderer extends Renderer {
         int xOffset = (int) ((playerX - 8.0f) * 8);
 
         Image img = GameImage.BACKGROUND;
-        float inc = PlayerStatistics.getInstance().getDistance() / 2;
+        float inc = PlayerData.getInstance().getDistance() / 2;
         img.draw(-xOffset - 64 - (inc / 2), 0 - (inc / 2), img.getWidth() + inc, img.getHeight() + inc);
     }
 
@@ -87,7 +89,13 @@ public class RetroRenderer extends Renderer {
         int xPlayer = RENDERER_WIDTH / 2 - (playerWidth / 2);
         int yPlayer = RENDERER_HEIGHT - 204;
 
-        GameImage.SPACESHIP.draw(xPlayer, yPlayer, 0.37f);
+        Random r = new Random();
+        int vibration = (int) Math.max(PlayerData.getInstance().getVibration(), 1);
+
+        int xOffset = r.nextInt(vibration) - (vibration / 2);
+        int yOffset = r.nextInt(vibration) - (vibration / 2);
+
+        GameImage.SPACESHIP.draw(xPlayer + xOffset, yPlayer + yOffset, 0.37f);
     }
 
     private void drawColumn(Graphics g, float x) {

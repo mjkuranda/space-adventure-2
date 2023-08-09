@@ -1,6 +1,6 @@
 package com.github.mjkuranda.spaceadventure2.states.menus.options.events.decorators;
 
-import com.github.mjkuranda.spaceadventure2.PlayerStatistics;
+import com.github.mjkuranda.spaceadventure2.PlayerData;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.events.MenuOptionEvent;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.values.StringMenuOptionValue;
 import org.newdawn.slick.Input;
@@ -18,7 +18,7 @@ public class NewGameEvent extends MenuOptionEventDecorator {
 
     @Override
     public void onSelect() {
-        PlayerStatistics.getInstance().setName(playerName.get());
+        PlayerData.getInstance().setName(playerName.get());
         event.onSelect();
     }
 
