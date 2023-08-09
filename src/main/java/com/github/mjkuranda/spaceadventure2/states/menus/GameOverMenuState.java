@@ -6,6 +6,7 @@ import com.github.mjkuranda.spaceadventure2.states.StatesId;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.MenuOption;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.SimpleMenuOption;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.events.EnterStateMenuOptionEvent;
+import com.github.mjkuranda.spaceadventure2.states.menus.options.events.decorators.ResetPlayerStatisticsEvent;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
@@ -17,9 +18,13 @@ public class GameOverMenuState extends MenuState {
 
         this.bindOptions(new MenuOption[] {
                 new SimpleMenuOption("Play again")
-                        .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, this, StatesId.GAME)),
+                        .bindOnSelectEvent(
+                                new ResetPlayerStatisticsEvent(
+                                        new EnterStateMenuOptionEvent(game, this, StatesId.GAME))),
                 new SimpleMenuOption("Back to main menu")
-                        .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, this, StatesId.MAIN_MENU))
+                        .bindOnSelectEvent(
+                                new ResetPlayerStatisticsEvent(
+                                        new EnterStateMenuOptionEvent(game, this, StatesId.MAIN_MENU)))
         });
     }
 
