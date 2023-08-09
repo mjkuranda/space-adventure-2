@@ -143,11 +143,13 @@ public class GameData {
 
         /** Player collision */
         Entity e = playerCollides();
+        PlayerStatistics.getInstance().unvibrate();
 
         if (e != null) {
             player.damage(e.getDurability());
             spawn(new Particle(GameAnimation.EXPLOSION, e));
             e.remove();
+            PlayerStatistics.getInstance().vibrate();
 
             if (!player.isAlive()) {
                 PlayerStatistics stats = PlayerStatistics.getInstance();

@@ -17,6 +17,9 @@ public class PlayerStatistics {
     /** Player distance */
     private float distance;
 
+    /** Player data */
+    private int vibration;
+
     private PlayerStatistics() {
         //
     }
@@ -48,6 +51,22 @@ public class PlayerStatistics {
     public void reset() {
         this.score = 0;
         this.distance = 0;
+    }
+
+    public void vibrate() {
+        this.vibration += 35;
+    }
+
+    public void unvibrate() {
+        this.vibration -= 1;
+
+        if (vibration < 0) {
+            vibration = 0;
+        }
+    }
+
+    public int getVibration() {
+        return vibration;
     }
 
     public void setName(String name) {

@@ -12,6 +12,8 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Vector2f;
 
+import java.util.Random;
+
 public class RetroRenderer extends Renderer {
 
     private static final int RENDERER_WIDTH = 1280;
@@ -87,7 +89,13 @@ public class RetroRenderer extends Renderer {
         int xPlayer = RENDERER_WIDTH / 2 - (playerWidth / 2);
         int yPlayer = RENDERER_HEIGHT - 204;
 
-        GameImage.SPACESHIP.draw(xPlayer, yPlayer, 0.37f);
+        Random r = new Random();
+        int vibration = Math.max(PlayerStatistics.getInstance().getVibration(), 1);
+
+        int xOffset = r.nextInt(vibration) - (vibration / 2);
+        int yOffset = r.nextInt(vibration) - (vibration / 2);
+
+        GameImage.SPACESHIP.draw(xPlayer + xOffset, yPlayer + yOffset, 0.37f);
     }
 
     private void drawColumn(Graphics g, float x) {
