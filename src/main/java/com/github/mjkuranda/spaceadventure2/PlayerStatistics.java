@@ -42,6 +42,14 @@ public class PlayerStatistics {
         this.distance = 0;
     }
 
+    /**
+     * Resets data
+     */
+    public void reset() {
+        this.score = 0;
+        this.distance = 0;
+    }
+
     public void setName(String name) {
         this.name = name;
     }

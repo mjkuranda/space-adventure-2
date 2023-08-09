@@ -1,7 +1,6 @@
 package com.github.mjkuranda.spaceadventure2.entities.shootable;
 
 import com.github.mjkuranda.spaceadventure2.entities.Entity;
-import com.github.mjkuranda.spaceadventure2.entities.missiles.Missile;
 import com.github.mjkuranda.spaceadventure2.entities.missiles.MissileType;
 
 import java.util.LinkedList;

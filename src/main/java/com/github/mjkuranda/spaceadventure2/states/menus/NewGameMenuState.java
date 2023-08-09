@@ -6,7 +6,7 @@ import com.github.mjkuranda.spaceadventure2.states.menus.options.MenuOption;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.SimpleMenuOption;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.events.EnterStateMenuOptionEvent;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.events.InputMenuOptionEvent;
-import com.github.mjkuranda.spaceadventure2.states.menus.options.events.NewGameMenuOptionEvent;
+import com.github.mjkuranda.spaceadventure2.states.menus.options.events.decorators.NewGameEvent;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.values.StringMenuOptionValue;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -25,7 +25,9 @@ public class NewGameMenuState extends MenuState {
                 new InputMenuOption(playerName)
                         .bindOnChangeEvent(new InputMenuOptionEvent(playerName)),
                 new SimpleMenuOption("Play!")
-                        .bindOnSelectEvent(new NewGameMenuOptionEvent(game, StatesId.GAME, this, playerName)),
+                        .bindOnSelectEvent(
+                                new NewGameEvent(
+                                        new EnterStateMenuOptionEvent(game, this, StatesId.GAME), playerName)),
                 new SimpleMenuOption("Back to main menu")
                         .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, this, StatesId.MAIN_MENU))
         });

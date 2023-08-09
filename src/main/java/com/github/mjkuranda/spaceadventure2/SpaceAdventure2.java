@@ -14,14 +14,13 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 
 import java.awt.*;
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SpaceAdventure2 extends StateBasedGame {
 
     public static final String GAME_TITLE   = "Space Adventure II";
-    public static final String GAME_VERSION = "v0.18.0";
+    public static final String GAME_VERSION = "v0.18.1";
     public static final String GAME_CREATOR = "Marek Kuranda";
 
     public SpaceAdventure2() {
