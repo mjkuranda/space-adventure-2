@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.20.0] - 2023-09-11
+### Added
+- [@mjkuranda](https://github.com/mjkuranda): Game time up to 5 minutes.
+- [@mjkuranda](https://github.com/mjkuranda): Spawning a new entity probability depending on left game time.
+- [@mjkuranda](https://github.com/mjkuranda): Missile count.
+- [@mjkuranda](https://github.com/mjkuranda): Gathering 2 or 3 missiles by destroying asteroids.
+
 ## [0.19.0] - 2023-08-09
 ### Added
 - [@mjkuranda](https://github.com/mjkuranda): Spacecraft vibration after collision.

@@ -23,6 +23,11 @@ public class GameData {
 
     public static final int MAX_ENTITY_LIST = 32;
 
+    public static final int GAME_TIME_LENGTH = 1000 * 60 * 5; // 5 minutes
+
+    /** Start game time */
+    private static long startTime;
+
     /** Player spaceship */
     private Spaceship player;
 
@@ -50,6 +55,11 @@ public class GameData {
      * @param game StateBasedGame
      */
     public void update(GameContainer container, StateBasedGame game) {
+        /** Check game time */
+        if (hasGameEnded()) {
+            gameOver(game);
+        }
+
         /** Update entities */
         for (var line : entityLines) {
             var it = line.iterator();
@@ -99,6 +109,7 @@ public class GameData {
 
                 if (!e.isAlive()) {
                     particles.add(new Particle(GameAnimation.EXPLOSION, e));
+                    PlayerData.getInstance().addMissiles(new Random().nextInt(2) + 2);
                 }
 
                 continue;
@@ -137,8 +148,11 @@ public class GameData {
             spawn(EntityType.ASTEROID);
         }
 
-        if (in.isKeyPressed(Input.KEY_SPACE)) {
+        PlayerData playerData = PlayerData.getInstance();
+
+        if (in.isKeyPressed(Input.KEY_SPACE) && playerData.hasMissile()) {
             spawn(MissileType.LASER);
+            playerData.takeMissile();
         }
 
         /** Player collision */
@@ -152,19 +166,14 @@ public class GameData {
             PlayerData.getInstance().vibrate();
 
             if (!player.isAlive()) {
-                PlayerData stats = PlayerData.getInstance();
-                HighScoreHandler.getInstance().inputRecord(new HighScoreRecord(stats.getName(), stats.getScore(), LocalDate.now().toString()));
-
-                game.enterState(StatesId.GAME_OVER_MENU);
-                in.clearKeyPressedRecord();
-                reset();
+                gameOver(game);
             }
         }
 
         /** Spawn new entities */
         float prob = new Random().nextFloat();
 
-        if (prob < 0.01) {
+        if (prob < getProbabilityToSpawnEntity()) {
             spawn(EntityType.ASTEROID);
         }
     }
@@ -219,6 +228,49 @@ public class GameData {
 
         entityLines[x].add(entity);
         entities.addFirst(entity);
+    }
+
+    public void gameOver(StateBasedGame game) {
+        PlayerData stats = PlayerData.getInstance();
+        HighScoreHandler.getInstance().inputRecord(new HighScoreRecord(stats.getName(), stats.getScore(), LocalDate.now().toString()));
+
+        game.enterState(StatesId.GAME_OVER_MENU);
+        game.getContainer().getInput().clearKeyPressedRecord();
+        reset();
+    }
+
+    /**
+     * Returns probability to spawn a new entity
+     * @return 1%-10% probability to spawn a new entity
+     */
+    private float getProbabilityToSpawnEntity() {
+        float ratio = (float) (System.currentTimeMillis() - startTime) / (float) GAME_TIME_LENGTH;
+
+        return ratio * 0.09f + 0.01f;
+    }
+
+    /***
+     * Sets a new game start time
+     */
+    public static void startNewGame() {
+        startTime = System.currentTimeMillis();
+        PlayerData.getInstance().reset();
+    }
+
+    /***
+     * Returns remaining game time
+     * @return remaining time to the finish of game
+     */
+    public static long getRemainingTime() {
+        return (startTime + GAME_TIME_LENGTH) - System.currentTimeMillis();
+    }
+
+    /***
+     * Returns if game has ended or not
+     * @return if game has ended or not
+     */
+    private static boolean hasGameEnded() {
+        return getRemainingTime() < 0;
     }
 
     /***

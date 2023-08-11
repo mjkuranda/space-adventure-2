@@ -53,6 +53,9 @@ public class GameState extends BasicGameState {
         g.drawString("Score: " + stats.getScore(), container.getWidth() - 256, 16);
         g.drawString("Distance: " + (int) (stats.getDistance()), container.getWidth() - 256, 48);
         g.drawString(stats.getName(), container.getWidth() - 256, 80);
+
+        g.drawString("Remained time [ms]: " + GameData.getRemainingTime(), container.getWidth() - 256,  112);
+        g.drawString("Missile count: " + stats.getMissileCount(), container.getWidth() - 256, 144);
     }
 
     @Override
