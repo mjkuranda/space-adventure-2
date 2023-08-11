@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.20.0] - 2023-09-11
 ### Added
-- [@mjkuranda](https://github.com/mjkuranda):
+- [@mjkuranda](https://github.com/mjkuranda): Game time up to 5 minutes.
+- [@mjkuranda](https://github.com/mjkuranda): Spawning a new entity probability depending on left game time.
 
 ## [0.19.0] - 2023-08-09
 ### Added

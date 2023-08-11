@@ -23,7 +23,7 @@ public class GameData {
 
     public static final int MAX_ENTITY_LIST = 32;
 
-    public static final int GAME_TIME_LENGTH = 1000 * 10; // 10 seconds
+    public static final int GAME_TIME_LENGTH = 1000 * 60 * 5; // 5 minutes
 
     /** Start game time */
     private static long startTime;
@@ -169,7 +169,7 @@ public class GameData {
         /** Spawn new entities */
         float prob = new Random().nextFloat();
 
-        if (prob < 0.01) {
+        if (prob < getProbabilityToSpawnEntity()) {
             spawn(EntityType.ASTEROID);
         }
     }
@@ -233,6 +233,16 @@ public class GameData {
         game.enterState(StatesId.GAME_OVER_MENU);
         game.getContainer().getInput().clearKeyPressedRecord();
         reset();
+    }
+
+    /**
+     * Returns probability to spawn a new entity
+     * @return 1%-10% probability to spawn a new entity
+     */
+    private float getProbabilityToSpawnEntity() {
+        float ratio = (float) (System.currentTimeMillis() - startTime) / (float) GAME_TIME_LENGTH;
+
+        return ratio * 0.09f + 0.01f;
     }
 
     /***
