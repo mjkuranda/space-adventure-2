@@ -23,6 +23,11 @@ public class GameData {
 
     public static final int MAX_ENTITY_LIST = 32;
 
+    public static final int GAME_TIME_LENGTH = 1000 * 10; // 10 seconds
+
+    /** Start game time */
+    private static long startTime;
+
     /** Player spaceship */
     private Spaceship player;
 
@@ -50,6 +55,11 @@ public class GameData {
      * @param game StateBasedGame
      */
     public void update(GameContainer container, StateBasedGame game) {
+        /** Check game time */
+        if (hasGameEnded()) {
+            gameOver(game);
+        }
+
         /** Update entities */
         for (var line : entityLines) {
             var it = line.iterator();
@@ -152,12 +162,7 @@ public class GameData {
             PlayerData.getInstance().vibrate();
 
             if (!player.isAlive()) {
-                PlayerData stats = PlayerData.getInstance();
-                HighScoreHandler.getInstance().inputRecord(new HighScoreRecord(stats.getName(), stats.getScore(), LocalDate.now().toString()));
-
-                game.enterState(StatesId.GAME_OVER_MENU);
-                in.clearKeyPressedRecord();
-                reset();
+                gameOver(game);
             }
         }
 
@@ -219,6 +224,38 @@ public class GameData {
 
         entityLines[x].add(entity);
         entities.addFirst(entity);
+    }
+
+    public void gameOver(StateBasedGame game) {
+        PlayerData stats = PlayerData.getInstance();
+        HighScoreHandler.getInstance().inputRecord(new HighScoreRecord(stats.getName(), stats.getScore(), LocalDate.now().toString()));
+
+        game.enterState(StatesId.GAME_OVER_MENU);
+        game.getContainer().getInput().clearKeyPressedRecord();
+        reset();
+    }
+
+    /***
+     * Sets a new game start time
+     */
+    public static void startNewGame() {
+        startTime = System.currentTimeMillis();
+    }
+
+    /***
+     * Returns remaining game time
+     * @return remaining time to the finish of game
+     */
+    public static long getRemainingTime() {
+        return (startTime + GAME_TIME_LENGTH) - System.currentTimeMillis();
+    }
+
+    /***
+     * Returns if game has ended or not
+     * @return if game has ended or not
+     */
+    private static boolean hasGameEnded() {
+        return getRemainingTime() < 0;
     }
 
     /***

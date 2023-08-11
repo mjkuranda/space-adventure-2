@@ -1,5 +1,6 @@
 package com.github.mjkuranda.spaceadventure2.states.menus.options.events.decorators;
 
+import com.github.mjkuranda.spaceadventure2.GameData;
 import com.github.mjkuranda.spaceadventure2.PlayerData;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.events.MenuOptionEvent;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.values.StringMenuOptionValue;
@@ -19,6 +20,7 @@ public class NewGameEvent extends MenuOptionEventDecorator {
     @Override
     public void onSelect() {
         PlayerData.getInstance().setName(playerName.get());
+        GameData.startNewGame();
         event.onSelect();
     }
 
