@@ -17,8 +17,11 @@ public class PlayerData {
     /** Player distance */
     private float distance;
 
-    /** Player data */
+    /** Player vibration */
     private float vibration;
+
+    /** Player missile count */
+    private int missileCount;
 
     private PlayerData() {
         //
@@ -44,6 +47,7 @@ public class PlayerData {
         this.score = 0;
         this.distance = 0;
         this.vibration = 0;
+        this.missileCount = 10;
     }
 
     /**
@@ -53,6 +57,7 @@ public class PlayerData {
         this.score = 0;
         this.distance = 0;
         this.vibration = 0;
+        this.missileCount = 10;
     }
 
     public void vibrate() {
@@ -65,6 +70,22 @@ public class PlayerData {
         if (vibration < 0) {
             vibration = 0;
         }
+    }
+
+    public int getMissileCount() {
+        return missileCount;
+    }
+
+    public boolean hasMissile() {
+        return missileCount > 0;
+    }
+
+    public void addMissiles(int count) {
+        missileCount += count;
+    }
+
+    public void takeMissile() {
+        missileCount--;
     }
 
     public float getVibration() {

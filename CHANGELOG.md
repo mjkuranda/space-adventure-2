@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - [@mjkuranda](https://github.com/mjkuranda): Game time up to 5 minutes.
 - [@mjkuranda](https://github.com/mjkuranda): Spawning a new entity probability depending on left game time.
+- [@mjkuranda](https://github.com/mjkuranda): Missile count.
+- [@mjkuranda](https://github.com/mjkuranda): Gathering 2 or 3 missiles by destroying asteroids.
 
 ## [0.19.0] - 2023-08-09
 ### Added

@@ -109,6 +109,7 @@ public class GameData {
 
                 if (!e.isAlive()) {
                     particles.add(new Particle(GameAnimation.EXPLOSION, e));
+                    PlayerData.getInstance().addMissiles(new Random().nextInt(2) + 2);
                 }
 
                 continue;
@@ -147,8 +148,11 @@ public class GameData {
             spawn(EntityType.ASTEROID);
         }
 
-        if (in.isKeyPressed(Input.KEY_SPACE)) {
+        PlayerData playerData = PlayerData.getInstance();
+
+        if (in.isKeyPressed(Input.KEY_SPACE) && playerData.hasMissile()) {
             spawn(MissileType.LASER);
+            playerData.takeMissile();
         }
 
         /** Player collision */
@@ -250,6 +254,7 @@ public class GameData {
      */
     public static void startNewGame() {
         startTime = System.currentTimeMillis();
+        PlayerData.getInstance().reset();
     }
 
     /***
