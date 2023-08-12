@@ -5,6 +5,7 @@ import com.github.mjkuranda.spaceadventure2.PlayerData;
 import com.github.mjkuranda.spaceadventure2.renderers.ArcadeRenderer;
 import com.github.mjkuranda.spaceadventure2.renderers.Renderer;
 import com.github.mjkuranda.spaceadventure2.renderers.RetroRenderer;
+import com.github.mjkuranda.spaceadventure2.resources.GameFont;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -62,7 +63,7 @@ public class GameState extends BasicGameState {
         g.drawString("Remained time [ms]: " + GameData.getRemainingTime(), container.getWidth() - 256,  112);
         g.drawString("Missile count: " + stats.getMissileCount(), container.getWidth() - 256, 144);
 
-        bar.render(g);
+        bar.render(g, 5);
     }
 
     @Override
@@ -125,20 +126,40 @@ class GameBar {
         return SQUARE_HEIGHT + 1;
     }
 
-    private Color getColor() {
+    private Color getColor(int value) {
+        float ratio = (float) value / (float) size;
+
+        if (ratio < 0.33) {
+            return Color.red;
+        }
+
+        if (ratio < 0.66) {
+            return Color.yellow;
+        }
+
         return Color.green;
     }
 
     public void render(Graphics g) {
+        render(g, 0);
+    }
+
+    public void render(Graphics g, int value) {
+        // Draw a border
         g.setColor(Color.white);
         g.drawRect(x, y, getWidth(), getHeight());
 
-        g.setColor(getColor());
-
-        for (int i = 0; i < size; i++) {
+        // Draw squares
+        g.setColor(getColor(value));
+        for (int i = 0; i < value; i++) {
             int xOffset = (i * SQUARE_WIDTH) + ((i > 0 ? i : 0) * SQUARE_SPACE);
 
             g.fillRect(x + 1 + xOffset, y + 1, SQUARE_WIDTH, SQUARE_HEIGHT);
         }
+
+        // Draw a label
+        int strSize = GameFont.VCR_OSD_MONO.getWidth(label);
+        g.setColor(Color.white);
+        g.drawString(label, x + getWidth() - strSize, y + getHeight());
     }
 }
