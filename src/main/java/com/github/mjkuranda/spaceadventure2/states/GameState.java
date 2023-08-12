@@ -58,12 +58,14 @@ public class GameState extends BasicGameState {
 
     private void renderUI(GameContainer container, Graphics g) {
         g.setColor(Color.white);
-        g.drawString("Score: " + stats.getScore(), container.getWidth() - 256, 16);
-        g.drawString("Distance: " + (int) (stats.getDistance()), container.getWidth() - 256, 48);
-        g.drawString(stats.getName(), container.getWidth() - 256, 80);
+        g.setFont(GameFont.VCR_OSD_MONO);
 
-        g.drawString("Remained time [ms]: " + GameData.getRemainingTime(), container.getWidth() - 256,  112);
-        g.drawString("Missile count: " + stats.getMissileCount(), container.getWidth() - 256, 144);
+        String playerName = stats.getName();
+        g.drawString(playerName, container.getWidth() / 2 - GameFont.VCR_OSD_MONO.getWidth(playerName) / 2, 16);
+        String scoreText = "Score: " + stats.getScore();
+        g.drawString(scoreText, container.getWidth() / 2 - GameFont.VCR_OSD_MONO.getWidth(scoreText) / 2, 48);
+        g.drawString("Missile count: " + stats.getMissileCount(), container.getWidth() - durabilityBar.getWidth() - 32, 96);
+
 
         durabilityBar.render(g, data.getPlayer().getDurability(), container.getWidth() - durabilityBar.getWidth() - 32, 32);
         gameTimeBar.render(g, GameData.getRemainingTime(), container.getWidth() / 2 - gameTimeBar.getWidth() / 2, container.getHeight() - gameTimeBar.getHeight() - 32);

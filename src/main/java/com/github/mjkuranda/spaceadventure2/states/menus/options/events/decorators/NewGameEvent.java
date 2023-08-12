@@ -19,7 +19,9 @@ public class NewGameEvent extends MenuOptionEventDecorator {
 
     @Override
     public void onSelect() {
-        PlayerData.getInstance().setName(playerName.get());
+        String playerName = this.playerName.get().length() > 0 ? this.playerName.get() : "Noname";
+
+        PlayerData.getInstance().setName(playerName);
         GameData.startNewGame();
         event.onSelect();
     }
