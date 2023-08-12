@@ -27,6 +27,9 @@ public class GameState extends BasicGameState {
     /** Game bars */
     private GameBar durabilityBar, gameTimeBar;
 
+    /** Info rendering */
+    private boolean isEnabledInfoRendering;
+
     public GameState() {
         data = new GameData();
         stats = PlayerData.getInstance();
@@ -54,6 +57,10 @@ public class GameState extends BasicGameState {
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         renderer.render(g);
         renderUI(container, g);
+
+        if (isEnabledInfoRendering) {
+            renderInfo(g, container);
+        }
     }
 
     private void renderUI(GameContainer container, Graphics g) {
@@ -71,6 +78,10 @@ public class GameState extends BasicGameState {
         gameTimeBar.render(g, GameData.getRemainingTime(), container.getWidth() / 2 - gameTimeBar.getWidth() / 2, container.getHeight() - gameTimeBar.getHeight() - 32);
     }
 
+    private void renderInfo(Graphics g, GameContainer container) {
+        g.drawString("FPS: " + container.getFPS(), 16, 16);
+    }
+
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         data.update(container, game);
@@ -83,6 +94,10 @@ public class GameState extends BasicGameState {
 
         if (in.isKeyPressed(Input.KEY_M)) {
             renderer.toggleMesh();
+        }
+
+        if (in.isKeyPressed(Input.KEY_H)) {
+            isEnabledInfoRendering = !isEnabledInfoRendering;
         }
 
         /** Handle renderers */

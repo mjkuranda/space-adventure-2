@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [@mjkuranda](https://github.com/mjkuranda): Time and durability as game bars.
 - [@mjkuranda](https://github.com/mjkuranda): Score, nickname and missile count as text on the screen.
 - [@mjkuranda](https://github.com/mjkuranda): Empty input for your name gives `Noname` player name.
+- [@mjkuranda](https://github.com/mjkuranda): Info rendering - press `H` to toggle its.
 
 ## [0.20.0] - 2023-08-11
 ### Added
