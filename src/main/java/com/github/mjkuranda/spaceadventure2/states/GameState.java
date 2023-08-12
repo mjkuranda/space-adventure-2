@@ -160,7 +160,7 @@ class GameBar {
         // Draw squares
         int val = value.intValue();
         g.setColor(getColor(val));
-        int squares = (int) (getFulfillmentRatio(val) * (float) squareCount);
+        int squares = (int) Math.ceil((getFulfillmentRatio(val) * (float) squareCount));
         for (int i = 0; i < squares; i++) {
             int xOffset = (i * SQUARE_WIDTH) + ((i > 0 ? i : 0) * SQUARE_SPACE);
 
