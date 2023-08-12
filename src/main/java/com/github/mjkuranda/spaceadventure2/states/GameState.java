@@ -146,6 +146,12 @@ class GameBar {
         return Color.green;
     }
 
+    private float getFulfillmentRatio(int value) {
+        float ratio = (float) value / (float) maxValue;
+
+        return Math.round(ratio * 100.0f) / 100.0f;
+    }
+
     public <T extends Number> void render(Graphics g, T value, int x, int y) {
         // Draw a border
         g.setColor(Color.white);
@@ -154,7 +160,7 @@ class GameBar {
         // Draw squares
         int val = value.intValue();
         g.setColor(getColor(val));
-        int squares = (int) (((float) val / (float) maxValue) * (float) squareCount);
+        int squares = (int) (getFulfillmentRatio(val) * (float) squareCount);
         for (int i = 0; i < squares; i++) {
             int xOffset = (i * SQUARE_WIDTH) + ((i > 0 ? i : 0) * SQUARE_SPACE);
 
