@@ -22,6 +22,9 @@ public class GameState extends BasicGameState {
     /** Game data renderer */
     private Renderer renderer;
 
+    /** Game bars */
+    private GameBar bar;
+
     public GameState() {
         data = new GameData();
         stats = PlayerData.getInstance();
@@ -30,6 +33,8 @@ public class GameState extends BasicGameState {
         RETRO_RENDERER = new RetroRenderer(data);
 
         renderer = RETRO_RENDERER;
+
+        bar = new GameBar("Test", 10);
     }
 
     @Override
@@ -56,6 +61,8 @@ public class GameState extends BasicGameState {
 
         g.drawString("Remained time [ms]: " + GameData.getRemainingTime(), container.getWidth() - 256,  112);
         g.drawString("Missile count: " + stats.getMissileCount(), container.getWidth() - 256, 144);
+
+        bar.render(g);
     }
 
     @Override
@@ -79,6 +86,59 @@ public class GameState extends BasicGameState {
 
         if (in.isKeyPressed(Input.KEY_2)) {
             renderer = RETRO_RENDERER;
+        }
+    }
+}
+
+class GameBar {
+
+    private static final int SQUARE_WIDTH = 16;
+    private static final int SQUARE_HEIGHT = 32;
+
+    private static final int SQUARE_SPACE = 2;
+
+    /** Description what this bar is */
+    private final String label;
+
+    /** Count of squares in bar */
+    private final int size;
+
+    /** Bar coordinates */
+    private int x, y;
+
+    public GameBar(String label, int size, int x, int y) {
+        this.label = label;
+        this.size = size;
+        this.x = x;
+        this.y = y;
+    }
+
+    public GameBar(String label, int size) {
+        this(label, size, 0, 0);
+    }
+
+    private int getWidth() {
+        return size * SQUARE_WIDTH + (size - 1) * SQUARE_SPACE + 1;
+    }
+
+    private int getHeight() {
+        return SQUARE_HEIGHT + 1;
+    }
+
+    private Color getColor() {
+        return Color.green;
+    }
+
+    public void render(Graphics g) {
+        g.setColor(Color.white);
+        g.drawRect(x, y, getWidth(), getHeight());
+
+        g.setColor(getColor());
+
+        for (int i = 0; i < size; i++) {
+            int xOffset = (i * SQUARE_WIDTH) + ((i > 0 ? i : 0) * SQUARE_SPACE);
+
+            g.fillRect(x + 1 + xOffset, y + 1, SQUARE_WIDTH, SQUARE_HEIGHT);
         }
     }
 }
