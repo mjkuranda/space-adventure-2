@@ -29,7 +29,7 @@ public class GameData {
     private static long startTime;
 
     /** Player spaceship */
-    private Spaceship player;
+    private static Spaceship player;
 
     /** All lines of map */
     private LinkedList<Entity>[] entityLines;
@@ -38,7 +38,7 @@ public class GameData {
     private Deque<Entity> entities;
 
     /** All missiles shoot by player */
-    private LinkedList<Entity> playerMissiles;
+    private static LinkedList<Entity> playerMissiles;
 
     /** All particles in map */
     private LinkedList<Particle> particles;
@@ -255,6 +255,7 @@ public class GameData {
     public static void startNewGame() {
         startTime = System.currentTimeMillis();
         PlayerData.getInstance().reset();
+        player = new Spaceship(playerMissiles, X_SIZE / 2.0f, Y_SIZE - 2);
     }
 
     /***

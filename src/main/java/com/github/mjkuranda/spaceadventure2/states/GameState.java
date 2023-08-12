@@ -37,7 +37,7 @@ public class GameState extends BasicGameState {
         renderer = RETRO_RENDERER;
 
         durabilityBar = new GameBar("Durability", Spaceship.DURABILITY);
-        gameTimeBar = new GameBar("Time to end", GameData.GAME_TIME_LENGTH);
+        gameTimeBar = new LongGameBar("Time to end", GameData.GAME_TIME_LENGTH);
     }
 
     @Override
@@ -94,6 +94,14 @@ public class GameState extends BasicGameState {
     }
 }
 
+class LongGameBar extends GameBar {
+    public LongGameBar(String label, int maxValue) {
+        super(label, maxValue);
+
+        this.squareCount = 25;
+    }
+}
+
 class GameBar {
 
     private static final int SQUARE_WIDTH = 16;
@@ -101,7 +109,7 @@ class GameBar {
 
     private static final int SQUARE_SPACE = 2;
 
-    private static final int SQUARE_COUNT = 10;
+    protected int squareCount = 10;
 
     /** Description what this bar is */
     private final String label;
@@ -115,7 +123,7 @@ class GameBar {
     }
 
     public int getWidth() {
-        return SQUARE_COUNT * SQUARE_WIDTH + (SQUARE_COUNT - 1) * SQUARE_SPACE + 1;
+        return squareCount * SQUARE_WIDTH + (squareCount - 1) * SQUARE_SPACE + 1;
     }
 
     public int getHeight() {
@@ -144,7 +152,7 @@ class GameBar {
         // Draw squares
         int val = value.intValue();
         g.setColor(getColor(val));
-        int squares = (int) (((float) val / (float) maxValue) * (float) SQUARE_COUNT);
+        int squares = (int) (((float) val / (float) maxValue) * (float) squareCount);
         for (int i = 0; i < squares; i++) {
             int xOffset = (i * SQUARE_WIDTH) + ((i > 0 ? i : 0) * SQUARE_SPACE);
 
