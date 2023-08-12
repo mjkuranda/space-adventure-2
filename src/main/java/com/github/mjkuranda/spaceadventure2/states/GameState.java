@@ -71,8 +71,8 @@ public class GameState extends BasicGameState {
         g.drawString(playerName, container.getWidth() / 2 - GameFont.VCR_OSD_MONO.getWidth(playerName) / 2, 16);
         String scoreText = "Score: " + stats.getScore();
         g.drawString(scoreText, container.getWidth() / 2 - GameFont.VCR_OSD_MONO.getWidth(scoreText) / 2, 48);
-        g.drawString("Missile count: " + stats.getMissileCount(), container.getWidth() - durabilityBar.getWidth() - 32, 96);
-
+        String missileText = "Missile count: " + stats.getMissileCount();
+        g.drawString(missileText, container.getWidth() - GameFont.VCR_OSD_MONO.getWidth(missileText) - 32, 96);
 
         durabilityBar.render(g, data.getPlayer().getDurability(), container.getWidth() - durabilityBar.getWidth() - 32, 32);
         gameTimeBar.render(g, GameData.getRemainingTime(), container.getWidth() / 2 - gameTimeBar.getWidth() / 2, container.getHeight() - gameTimeBar.getHeight() - 32);
