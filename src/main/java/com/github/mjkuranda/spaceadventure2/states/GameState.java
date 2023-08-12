@@ -2,6 +2,7 @@ package com.github.mjkuranda.spaceadventure2.states;
 
 import com.github.mjkuranda.spaceadventure2.GameData;
 import com.github.mjkuranda.spaceadventure2.PlayerData;
+import com.github.mjkuranda.spaceadventure2.entities.Spaceship;
 import com.github.mjkuranda.spaceadventure2.renderers.ArcadeRenderer;
 import com.github.mjkuranda.spaceadventure2.renderers.Renderer;
 import com.github.mjkuranda.spaceadventure2.renderers.RetroRenderer;
@@ -24,7 +25,7 @@ public class GameState extends BasicGameState {
     private Renderer renderer;
 
     /** Game bars */
-    private GameBar bar;
+    private GameBar durabilityBar, gameTimeBar;
 
     public GameState() {
         data = new GameData();
@@ -35,7 +36,8 @@ public class GameState extends BasicGameState {
 
         renderer = RETRO_RENDERER;
 
-        bar = new GameBar("Test", 10);
+        durabilityBar = new GameBar("Durability", Spaceship.DURABILITY);
+        gameTimeBar = new GameBar("Time to end", GameData.GAME_TIME_LENGTH);
     }
 
     @Override
@@ -63,7 +65,8 @@ public class GameState extends BasicGameState {
         g.drawString("Remained time [ms]: " + GameData.getRemainingTime(), container.getWidth() - 256,  112);
         g.drawString("Missile count: " + stats.getMissileCount(), container.getWidth() - 256, 144);
 
-        bar.render(g, 5);
+        durabilityBar.render(g, data.getPlayer().getDurability(), container.getWidth() - durabilityBar.getWidth() - 32, 32);
+        gameTimeBar.render(g, GameData.getRemainingTime(), container.getWidth() / 2 - gameTimeBar.getWidth() / 2, container.getHeight() - gameTimeBar.getHeight() - 32);
     }
 
     @Override
@@ -98,36 +101,29 @@ class GameBar {
 
     private static final int SQUARE_SPACE = 2;
 
+    private static final int SQUARE_COUNT = 10;
+
     /** Description what this bar is */
     private final String label;
 
     /** Count of squares in bar */
-    private final int size;
+    private final int maxValue;
 
-    /** Bar coordinates */
-    private int x, y;
-
-    public GameBar(String label, int size, int x, int y) {
+    public GameBar(String label, int maxValue) {
         this.label = label;
-        this.size = size;
-        this.x = x;
-        this.y = y;
+        this.maxValue = maxValue;
     }
 
-    public GameBar(String label, int size) {
-        this(label, size, 0, 0);
+    public int getWidth() {
+        return SQUARE_COUNT * SQUARE_WIDTH + (SQUARE_COUNT - 1) * SQUARE_SPACE + 1;
     }
 
-    private int getWidth() {
-        return size * SQUARE_WIDTH + (size - 1) * SQUARE_SPACE + 1;
-    }
-
-    private int getHeight() {
+    public int getHeight() {
         return SQUARE_HEIGHT + 1;
     }
 
     private Color getColor(int value) {
-        float ratio = (float) value / (float) size;
+        float ratio = (float) value / (float) maxValue;
 
         if (ratio < 0.33) {
             return Color.red;
@@ -140,18 +136,16 @@ class GameBar {
         return Color.green;
     }
 
-    public void render(Graphics g) {
-        render(g, 0);
-    }
-
-    public void render(Graphics g, int value) {
+    public <T extends Number> void render(Graphics g, T value, int x, int y) {
         // Draw a border
         g.setColor(Color.white);
         g.drawRect(x, y, getWidth(), getHeight());
 
         // Draw squares
-        g.setColor(getColor(value));
-        for (int i = 0; i < value; i++) {
+        int val = value.intValue();
+        g.setColor(getColor(val));
+        int squares = (int) (((float) val / (float) maxValue) * (float) SQUARE_COUNT);
+        for (int i = 0; i < squares; i++) {
             int xOffset = (i * SQUARE_WIDTH) + ((i > 0 ? i : 0) * SQUARE_SPACE);
 
             g.fillRect(x + 1 + xOffset, y + 1, SQUARE_WIDTH, SQUARE_HEIGHT);
