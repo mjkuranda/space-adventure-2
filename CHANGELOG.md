@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.22.0] - 2023-08-14
 ### Added
 - [@mjkuranda](https://github.com/mjkuranda): Fading out and in text label in main menu.
+- [@mjkuranda](https://github.com/mjkuranda): Fading out and in sign next to input string menu option.
+- [@mjkuranda](https://github.com/mjkuranda): Space screens animation from `Space Adventure 2019`.
 
 ## [0.21.0] - 2023-08-12
 ### Added
