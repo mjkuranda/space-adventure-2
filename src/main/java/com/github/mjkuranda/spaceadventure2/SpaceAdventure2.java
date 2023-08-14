@@ -5,6 +5,7 @@ import com.github.mjkuranda.spaceadventure2.states.IntroState;
 import com.github.mjkuranda.spaceadventure2.states.LoadingState;
 import com.github.mjkuranda.spaceadventure2.states.highscore.HighScoreState;
 import com.github.mjkuranda.spaceadventure2.states.menus.GameOverMenuState;
+import com.github.mjkuranda.spaceadventure2.states.menus.HowToPlayMenuState;
 import com.github.mjkuranda.spaceadventure2.states.menus.MainMenuState;
 import com.github.mjkuranda.spaceadventure2.states.menus.NewGameMenuState;
 import org.newdawn.slick.*;
@@ -32,6 +33,7 @@ public class SpaceAdventure2 extends StateBasedGame {
         addState(new GameState());
         addState(new GameOverMenuState(this));
         addState(new HighScoreState(this));
+        addState(new HowToPlayMenuState(this));
         addState(new IntroState());
     }
 
