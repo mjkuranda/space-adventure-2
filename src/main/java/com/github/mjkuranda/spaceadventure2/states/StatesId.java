@@ -9,4 +9,5 @@ public interface StatesId {
     int GAME_OVER_MENU = 11;
     int NEW_GAME_MENU = 12;
     int HIGH_SCORE = 13;
+    int HOW_TO_PLAY = 14;
 }

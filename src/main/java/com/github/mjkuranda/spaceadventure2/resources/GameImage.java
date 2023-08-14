@@ -9,6 +9,10 @@ public class GameImage implements GameResource<Image> {
     public static Image SPACESHIP;
 
     public static Image BACKGROUND;
+    public static Image BACKGROUND_1;
+    public static Image BACKGROUND_2;
+    public static Image BACKGROUND_3;
+    public static Image BACKGROUND_4;
 
     private Image img;
 
@@ -28,6 +32,10 @@ public class GameImage implements GameResource<Image> {
 
     private static void initBackgrounds() throws SlickException {
         BACKGROUND = new GameImage("backgrounds/background.png").get();
+        BACKGROUND_1 = new GameImage("backgrounds/background-1.jpg").get();
+        BACKGROUND_2 = new GameImage("backgrounds/background-2.jpg").get();
+        BACKGROUND_3 = new GameImage("backgrounds/background-3.jpg").get();
+        BACKGROUND_4 = new GameImage("backgrounds/background-4.jpg").get();
     }
 
     @Override

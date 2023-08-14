@@ -16,8 +16,6 @@ import java.io.IOException;
 
 public class LoadingState extends BasicGameState {
 
-    private String resourceName = "";
-
     private boolean areImagesLoaded, areFontsLoaded, areAnimationsLoaded, areHighScoreRecordsLoaded;
 
     @Override
@@ -30,7 +28,7 @@ public class LoadingState extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        String str = "Loading " + resourceName + "...";
+        String str = "Loading " + getLoadingResourceName() + "...";
 
         int strWidth = g.getFont().getWidth(str);
         int strHeight = g.getFont().getHeight(str);
@@ -44,7 +42,6 @@ public class LoadingState extends BasicGameState {
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         if (!areImagesLoaded) {
             areImagesLoaded = true;
-            resourceName = "images";
             GameImage.load();
 
             return;
@@ -52,7 +49,6 @@ public class LoadingState extends BasicGameState {
 
         if (!areFontsLoaded) {
             areFontsLoaded = true;
-            resourceName = "fonts";
             try {
                 GameFont.load();
             } catch (IOException | FontFormatException e) {
@@ -64,7 +60,6 @@ public class LoadingState extends BasicGameState {
 
         if (!areAnimationsLoaded) {
             areAnimationsLoaded = true;
-            resourceName = "animations";
             GameAnimation.load();
 
             return;
@@ -72,12 +67,31 @@ public class LoadingState extends BasicGameState {
 
         if (!areHighScoreRecordsLoaded) {
             areHighScoreRecordsLoaded = true;
-            resourceName = "high scores";
             HighScoreHandler.getInstance().fetchRecords();
 
             return;
         }
 
         game.enterState(StatesId.MAIN_MENU);
+    }
+
+    private String getLoadingResourceName() {
+        if (!areImagesLoaded) {
+            return "images";
+        }
+
+        if (!areFontsLoaded) {
+            return "fonts";
+        }
+
+        if (!areAnimationsLoaded) {
+            return "animations";
+        }
+
+        if (!areHighScoreRecordsLoaded) {
+            return "high scores";
+        }
+
+        return "completed";
     }
 }
