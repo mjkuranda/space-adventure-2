@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [@mjkuranda](https://github.com/mjkuranda): Fading out and in sign next to input string menu option.
 - [@mjkuranda](https://github.com/mjkuranda): Space screens animation from `Space Adventure 2019`.
 
+### Fixed
+- [@mjkuranda](https://github.com/mjkuranda): Loading resource names in `LoadingState`.
+
 ## [0.21.0] - 2023-08-12
 ### Added
 - [@mjkuranda](https://github.com/mjkuranda): `GameBar` component.
