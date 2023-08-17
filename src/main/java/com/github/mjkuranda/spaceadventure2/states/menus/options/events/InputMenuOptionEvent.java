@@ -1,7 +1,11 @@
 package com.github.mjkuranda.spaceadventure2.states.menus.options.events;
 
+import com.github.mjkuranda.spaceadventure2.resources.GameSound;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.values.StringMenuOptionValue;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Sound;
+
+import java.util.Random;
 
 public class InputMenuOptionEvent implements MenuOptionEvent {
 
@@ -24,6 +28,7 @@ public class InputMenuOptionEvent implements MenuOptionEvent {
                 return;
             }
 
+            GameSound.KEY_BACKSPACE.play(1.0f, 0.5f);
             value.update(value.get().substring(0, value.get().length() - 1));
 
             return;
@@ -49,14 +54,30 @@ class KeyNameFactory {
         }
 
         if (keyCode == Input.KEY_SPACE) {
+            GameSound.KEY_SPACE_BAR.play();
+            
             return " ";
         }
+
+        playKeySound();
 
         if (input.isKeyDown(Input.KEY_LSHIFT) || input.isKeyDown(Input.KEY_RSHIFT)) {
             return Input.getKeyName(keyCode);
         }
 
         return Input.getKeyName(keyCode).toLowerCase();
+    }
+    
+    private static void playKeySound() {
+        Sound s = switch (new Random().nextInt(4)) {
+            case 0 -> GameSound.KEY_2;
+            case 1 -> GameSound.KEY_3;
+            case 2 -> GameSound.KEY_4;
+            case 3 -> GameSound.KEY_W;
+            default -> throw new IllegalStateException("Unexpected value: " + new Random().nextInt(4));
+        };
+        
+        s.play();
     }
 
     private static int getKeyCode(Input input) {

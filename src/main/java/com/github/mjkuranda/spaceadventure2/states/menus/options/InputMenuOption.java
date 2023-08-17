@@ -2,7 +2,6 @@ package com.github.mjkuranda.spaceadventure2.states.menus.options;
 
 import com.github.mjkuranda.spaceadventure2.resources.GameFont;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.values.StringMenuOptionValue;
-import org.lwjgl.Sys;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;

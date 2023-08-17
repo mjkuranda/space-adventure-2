@@ -1,5 +1,6 @@
 package com.github.mjkuranda.spaceadventure2.states.menus;
 
+import com.github.mjkuranda.spaceadventure2.resources.GameSound;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.MenuOption;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -59,10 +60,12 @@ public abstract class MenuState extends BasicGameState {
         Input in = container.getInput();
 
         if (in.isKeyPressed(Input.KEY_ENTER)) {
+            GameSound.CONFIRM.play();
             options[currentOption].onSelect();
         }
 
         if (in.isKeyPressed(Input.KEY_UP)) {
+            GameSound.BEEP.play();
             currentOption--;
 
             if (currentOption < 0) {
@@ -71,6 +74,7 @@ public abstract class MenuState extends BasicGameState {
         }
 
         if (in.isKeyPressed(Input.KEY_DOWN)) {
+            GameSound.BEEP.play();
             currentOption++;
 
             if (currentOption >= options.length) {
@@ -81,9 +85,11 @@ public abstract class MenuState extends BasicGameState {
         /** Value handling */
         if (in.isKeyPressed(Input.KEY_LEFT)) {
             options[currentOption].onChange(-1);
+            GameSound.BEEP.play();
         } else
         if (in.isKeyPressed(Input.KEY_RIGHT)) {
             options[currentOption].onChange(1);
+            GameSound.BEEP.play();
         } else options[currentOption].onChange(in);
     }
 }

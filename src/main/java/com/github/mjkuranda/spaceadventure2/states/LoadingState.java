@@ -3,6 +3,7 @@ package com.github.mjkuranda.spaceadventure2.states;
 import com.github.mjkuranda.spaceadventure2.resources.GameAnimation;
 import com.github.mjkuranda.spaceadventure2.resources.GameFont;
 import com.github.mjkuranda.spaceadventure2.resources.GameImage;
+import com.github.mjkuranda.spaceadventure2.resources.GameSound;
 import com.github.mjkuranda.spaceadventure2.states.highscore.HighScoreHandler;
 import com.github.mjkuranda.spaceadventure2.states.highscore.HighScoreRecord;
 import org.newdawn.slick.GameContainer;
@@ -16,7 +17,7 @@ import java.io.IOException;
 
 public class LoadingState extends BasicGameState {
 
-    private boolean areImagesLoaded, areFontsLoaded, areAnimationsLoaded, areHighScoreRecordsLoaded;
+    private boolean areImagesLoaded, areFontsLoaded, areAnimationsLoaded, areHighScoreRecordsLoaded, areSoundsLoaded;
 
     @Override
     public int getID() {
@@ -72,6 +73,13 @@ public class LoadingState extends BasicGameState {
             return;
         }
 
+        if (!areSoundsLoaded) {
+            areSoundsLoaded = true;
+            GameSound.load();
+
+            return;
+        }
+
         game.enterState(StatesId.MAIN_MENU);
     }
 
@@ -90,6 +98,10 @@ public class LoadingState extends BasicGameState {
 
         if (!areHighScoreRecordsLoaded) {
             return "high scores";
+        }
+
+        if (!areSoundsLoaded) {
+            return "sounds";
         }
 
         return "completed";

@@ -6,6 +6,7 @@ import com.github.mjkuranda.spaceadventure2.entities.missiles.Missile;
 import com.github.mjkuranda.spaceadventure2.entities.missiles.MissileType;
 import com.github.mjkuranda.spaceadventure2.entities.Particle;
 import com.github.mjkuranda.spaceadventure2.resources.GameAnimation;
+import com.github.mjkuranda.spaceadventure2.resources.GameSound;
 import com.github.mjkuranda.spaceadventure2.states.StatesId;
 import com.github.mjkuranda.spaceadventure2.states.highscore.HighScoreHandler;
 import com.github.mjkuranda.spaceadventure2.states.highscore.HighScoreRecord;
@@ -108,8 +109,10 @@ public class GameData {
                 particles.add(new Particle(GameAnimation.EXPLOSION, missile));
 
                 if (!e.isAlive()) {
+                    Random r = new Random();
+                    (r.nextBoolean() ? GameSound.EXPLOSION_ASTEROID : GameSound.EXPLOSION_ASTEROID_2).play();
                     particles.add(new Particle(GameAnimation.EXPLOSION, e));
-                    PlayerData.getInstance().addMissiles(new Random().nextInt(2) + 2);
+                    PlayerData.getInstance().addMissiles(r.nextInt(2) + 2);
                 }
 
                 continue;
@@ -153,6 +156,7 @@ public class GameData {
         if (in.isKeyPressed(Input.KEY_SPACE) && playerData.hasMissile()) {
             spawn(MissileType.LASER);
             playerData.takeMissile();
+            GameSound.SHOOT.play(1.0f, 0.5f);
         }
 
         /** Player collision */
@@ -164,6 +168,7 @@ public class GameData {
             spawn(new Particle(GameAnimation.EXPLOSION, e));
             e.remove();
             PlayerData.getInstance().vibrate();
+            GameSound.EXPLOSION.play(1.0f, 0.5f);
 
             if (!player.isAlive()) {
                 gameOver(game);
@@ -236,6 +241,7 @@ public class GameData {
 
         game.enterState(StatesId.GAME_OVER_MENU);
         game.getContainer().getInput().clearKeyPressedRecord();
+        GameSound.GAME_OVER.play();
         reset();
     }
 

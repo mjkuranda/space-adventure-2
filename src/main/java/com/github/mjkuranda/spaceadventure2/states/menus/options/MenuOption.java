@@ -1,6 +1,7 @@
 package com.github.mjkuranda.spaceadventure2.states.menus.options;
 
 import com.github.mjkuranda.spaceadventure2.resources.GameFont;
+import com.github.mjkuranda.spaceadventure2.resources.GameSound;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.events.MenuOptionEvent;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
