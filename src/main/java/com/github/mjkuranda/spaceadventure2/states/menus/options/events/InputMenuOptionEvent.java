@@ -59,25 +59,13 @@ class KeyNameFactory {
             return " ";
         }
 
-        playKeySound();
+        GameSound.playKeySound();
 
         if (input.isKeyDown(Input.KEY_LSHIFT) || input.isKeyDown(Input.KEY_RSHIFT)) {
             return Input.getKeyName(keyCode);
         }
 
         return Input.getKeyName(keyCode).toLowerCase();
-    }
-    
-    private static void playKeySound() {
-        Sound s = switch (new Random().nextInt(4)) {
-            case 0 -> GameSound.KEY_2;
-            case 1 -> GameSound.KEY_3;
-            case 2 -> GameSound.KEY_4;
-            case 3 -> GameSound.KEY_W;
-            default -> throw new IllegalStateException("Unexpected value: " + new Random().nextInt(4));
-        };
-        
-        s.play();
     }
 
     private static int getKeyCode(Input input) {
