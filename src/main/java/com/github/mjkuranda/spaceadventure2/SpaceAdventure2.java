@@ -4,10 +4,7 @@ import com.github.mjkuranda.spaceadventure2.states.GameState;
 import com.github.mjkuranda.spaceadventure2.states.IntroState;
 import com.github.mjkuranda.spaceadventure2.states.LoadingState;
 import com.github.mjkuranda.spaceadventure2.states.highscore.HighScoreState;
-import com.github.mjkuranda.spaceadventure2.states.menus.GameOverMenuState;
-import com.github.mjkuranda.spaceadventure2.states.menus.HowToPlayMenuState;
-import com.github.mjkuranda.spaceadventure2.states.menus.MainMenuState;
-import com.github.mjkuranda.spaceadventure2.states.menus.NewGameMenuState;
+import com.github.mjkuranda.spaceadventure2.states.menus.*;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -18,7 +15,7 @@ import java.util.logging.Logger;
 public class SpaceAdventure2 extends StateBasedGame {
 
     public static final String GAME_TITLE   = "Space Adventure II";
-    public static final String GAME_VERSION = "v0.24.0";
+    public static final String GAME_VERSION = "v0.25.0";
     public static final String GAME_CREATOR = "Marek Kuranda";
 
     public SpaceAdventure2() {
@@ -34,6 +31,7 @@ public class SpaceAdventure2 extends StateBasedGame {
         addState(new GameOverMenuState(this));
         addState(new HighScoreState(this));
         addState(new HowToPlayMenuState(this));
+        addState(new CreditsMenuState(this));
         addState(new IntroState());
     }
 

@@ -29,6 +29,8 @@ public class MainMenuState extends MenuState {
                         .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, this, StatesId.HOW_TO_PLAY)),
                 new SimpleMenuOption("High Score")
                         .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, this, StatesId.HIGH_SCORE)),
+                new SimpleMenuOption("Credits")
+                        .bindOnSelectEvent(new EnterStateMenuOptionEvent(game, this, StatesId.CREDITS)),
                 new SimpleMenuOption("Exit")
                         .bindOnSelectEvent(new ExitGameMenuOptionEvent())
         });
@@ -59,7 +61,7 @@ public class MainMenuState extends MenuState {
         float creatorY = (float) container.getHeight() - fontHeight;
 
         // Game texts
-        g.drawString(title, textX, 160);
+        g.drawString(title, textX, 96);
         g.drawString(version, versionX, versionY);
         g.drawString(creator, creatorX, creatorY);
         g.fillRect(container.getWidth() - 24, creatorY, 2, 4);
