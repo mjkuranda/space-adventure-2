@@ -45,7 +45,7 @@ public class CreditsMenuState extends MenuState {
     private void initCredits() {
         this.creditSections = new LinkedList<>();
         this.creditSections.add(
-                new CreditSection("Author")
+                new CreditSection("Creator")
                         .addCredit(new CreditItem("Marek Kuranda"))
         );
         this.creditSections.add(
