@@ -3,6 +3,8 @@ package com.github.mjkuranda.spaceadventure2.resources;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 
+import java.util.Random;
+
 public class GameSound implements GameResource<Sound> {
 
     public static Sound BEEP;
@@ -41,6 +43,18 @@ public class GameSound implements GameResource<Sound> {
         KEY_SPACE_BAR = new GameSound("key-spacebar.ogg").get();
         KEY_W = new GameSound("keyw.ogg").get();
         SHOOT = new GameSound("shoot.ogg").get();
+    }
+
+    public static void playKeySound() {
+        Sound s = switch (new Random().nextInt(4)) {
+            case 0 -> GameSound.KEY_2;
+            case 1 -> GameSound.KEY_3;
+            case 2 -> GameSound.KEY_4;
+            case 3 -> GameSound.KEY_W;
+            default -> throw new IllegalStateException("Unexpected value: " + new Random().nextInt(4));
+        };
+
+        s.play(1.0f, 2.0f);
     }
 
     @Override
