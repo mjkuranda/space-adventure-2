@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - [@mjkuranda](https://github.com/mjkuranda): Game animations while switching any renderer.
+- [@mjkuranda](https://github.com/mjkuranda): Resetting input during entering to the game state.
 
 ## [0.25.0] - 2023-08-18
 ### Added
