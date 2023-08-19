@@ -112,7 +112,7 @@ public class GameData {
                     Random r = new Random();
                     (r.nextBoolean() ? GameSound.EXPLOSION_ASTEROID : GameSound.EXPLOSION_ASTEROID_2).play();
                     particles.add(new Particle(GameAnimation.EXPLOSION, e));
-                    PlayerData.getInstance().addMissiles(r.nextInt(2) + 2);
+                    PlayerData.getInstance().addMissiles(r.nextInt(3) + 2);
                 }
 
                 continue;
