@@ -86,6 +86,7 @@ public class LoadingState extends BasicGameState {
         }
 
         game.enterState(StatesId.MAIN_MENU);
+        game.getState(StatesId.MAIN_MENU).init(game.getContainer(), game);
     }
 
     private String getLoadingResourceName() {

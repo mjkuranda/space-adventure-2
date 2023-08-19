@@ -12,6 +12,7 @@ import com.github.mjkuranda.spaceadventure2.states.highscore.HighScoreHandler;
 import com.github.mjkuranda.spaceadventure2.states.highscore.HighScoreRecord;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import java.time.LocalDate;
@@ -112,7 +113,7 @@ public class GameData {
                     Random r = new Random();
                     (r.nextBoolean() ? GameSound.EXPLOSION_ASTEROID : GameSound.EXPLOSION_ASTEROID_2).play();
                     particles.add(new Particle(GameAnimation.EXPLOSION, e));
-                    PlayerData.getInstance().addMissiles(r.nextInt(2) + 2);
+                    PlayerData.getInstance().addMissiles(r.nextInt(3) + 2);
                 }
 
                 continue;
@@ -243,6 +244,12 @@ public class GameData {
         game.getContainer().getInput().clearKeyPressedRecord();
         GameSound.GAME_OVER.play();
         reset();
+
+        try {
+            game.getState(StatesId.GAME_OVER_MENU).init(game.getContainer(), game);
+        } catch (SlickException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**

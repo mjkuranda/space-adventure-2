@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.26.0] - 2023-08-19
+### Added
+- [@mjkuranda](https://github.com/mjkuranda): Explosions in Game over state.
+- [@mjkuranda](https://github.com/mjkuranda): Explosions in Main menu state.
+
+### Changed
+- [@mjkuranda](https://github.com/mjkuranda): Destroying an asteroid gives 2-4 new missiles.
+
+### Fixed
+- [@mjkuranda](https://github.com/mjkuranda): Game animations while switching any renderer.
+- [@mjkuranda](https://github.com/mjkuranda): Resetting input during entering to the game state.
+
 ## [0.25.0] - 2023-08-18
 ### Added
 - [@mjkuranda](https://github.com/mjkuranda): Credits state.

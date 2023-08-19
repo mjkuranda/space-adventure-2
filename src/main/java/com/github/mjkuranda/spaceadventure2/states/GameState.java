@@ -49,9 +49,7 @@ public class GameState extends BasicGameState {
     }
 
     @Override
-    public void init(GameContainer container, StateBasedGame game) throws SlickException {
-
-    }
+    public void init(GameContainer container, StateBasedGame game) {}
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {

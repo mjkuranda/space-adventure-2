@@ -56,5 +56,10 @@ public class ArcadeRenderer extends Renderer {
 
         g.setColor(Color.red);
         g.fillRect(START_X + player.getX() * GAME_OBJECT_SIZE, START_Y + player.getY() * GAME_OBJECT_SIZE, GAME_OBJECT_SIZE, GAME_OBJECT_SIZE);
+
+        /** Render particles */
+        for (var particle : getData().getParticles()) {
+            particle.getAnimation().draw(START_X + particle.getX() * GAME_OBJECT_SIZE, START_Y + particle.getY() * GAME_OBJECT_SIZE, GAME_OBJECT_SIZE, GAME_OBJECT_SIZE);
+        }
     }
 }

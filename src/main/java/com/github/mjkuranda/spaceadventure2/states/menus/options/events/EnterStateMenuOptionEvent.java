@@ -18,6 +18,7 @@ public class EnterStateMenuOptionEvent implements MenuOptionEvent {
 
     @Override
     public void onSelect() {
+        game.getContainer().getInput().clearKeyPressedRecord();
         game.enterState(stateId);
         menu.reset();
     }
