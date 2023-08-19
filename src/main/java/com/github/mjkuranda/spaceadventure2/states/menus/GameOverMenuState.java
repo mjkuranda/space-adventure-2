@@ -139,7 +139,7 @@ public class GameOverMenuState extends MenuState {
 
         Random r = new Random();
 
-        for (int i = 0; i < 4800; i++) {
+        for (int i = 0; i < 6400; i++) {
             float x = r.nextFloat() * (container.getWidth() + 256) - 128;
             float y = r.nextFloat() * (container.getHeight() + 256) - 128;
             Shape shape = switch (r.nextInt(3)) {
