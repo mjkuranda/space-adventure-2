@@ -24,6 +24,10 @@ public class RetroRenderer extends Renderer {
 
     private static final int UNEXPLAINED_OFFSET = 7;
 
+    private static final float MESH_OFFSET_MAX = 600.0f;
+
+    private float meshOffset;
+
     public RetroRenderer(GameData data) {
         super(data, true);
     }
@@ -41,13 +45,13 @@ public class RetroRenderer extends Renderer {
     @Override
     protected void renderMesh(Graphics g) {
         g.setColor(Color.red);
-        g.drawLine(0, RENDERER_HEIGHT / 2, RENDERER_WIDTH, RENDERER_HEIGHT / 2);
+        drawFirstRow(g);
 
         for (int i = -1; i < 16; i++) {
             drawColumn(g, i - data.getPlayer().getX());
         }
 
-        for (int i = 0; i < 16; i++) {
+        for (int i = 0; i < 18; i++) {
             drawRows(g, i);
         }
     }
@@ -115,8 +119,31 @@ public class RetroRenderer extends Renderer {
 
         int deltaY = getYDelta(idx);
         int offsetY = getYOffset(idx);
+        int nextOffsetY = getYOffset(idx + 1);
+        float percOffset = (meshOffset % 600.0f) / 600.0f;
+        float diffOffset = (nextOffsetY - offsetY) * percOffset;
+        meshOffset++;
 
-        int yLine = yStart + deltaY + offsetY;
+        int yLine = yStart + deltaY + offsetY + (int) diffOffset;
+
+        g.drawLine(xStart, yLine, xEnd, yLine);
+    }
+
+    private void drawFirstRow(Graphics g) {
+        int xStart = 0;
+        int yStart = RENDERER_HEIGHT / 2;
+        int xEnd = RENDERER_WIDTH;
+
+        int nextOffsetY = getYDelta(0);
+        float percOffset = (meshOffset % MESH_OFFSET_MAX) / MESH_OFFSET_MAX;
+        float diffOffset = nextOffsetY * percOffset;
+        meshOffset += 0.01f;
+
+        if ((int) diffOffset != 1) {
+            g.drawLine(0, RENDERER_HEIGHT / 2, RENDERER_WIDTH, RENDERER_HEIGHT / 2);
+        }
+
+        int yLine = yStart + (int) diffOffset;
 
         g.drawLine(xStart, yLine, xEnd, yLine);
     }
