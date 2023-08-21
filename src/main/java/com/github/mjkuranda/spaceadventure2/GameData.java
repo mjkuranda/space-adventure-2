@@ -527,6 +527,9 @@ class SpawnManager {
         return emptyLines.size() > 0;
     }
 
+    /**
+     * Updates per tick entity spawner
+     */
     public void update() {
         if (System.currentTimeMillis() - spawnUpdate >= 1000) {
             SpawnZone zone = recentLines.poll();
