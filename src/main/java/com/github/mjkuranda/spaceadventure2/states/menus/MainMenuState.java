@@ -20,6 +20,8 @@ import java.util.Random;
 
 public class MainMenuState extends MenuState {
 
+    private int optionX, optionY;
+
     /** Particle list for explosions */
     private List<Particle> particleList;
 
@@ -27,6 +29,9 @@ public class MainMenuState extends MenuState {
 
     public MainMenuState(StateBasedGame game) {
         super();
+
+        this.optionX = game.getContainer().getWidth() / 2 - MenuOption.OPTION_WIDTH / 2;
+        this.optionY = game.getContainer().getHeight() / 2 - 250;
 
         this.particleList = new LinkedList<>();
 
@@ -70,7 +75,11 @@ public class MainMenuState extends MenuState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        super.render(container, game, g);
+        renderPartials(container, g);
+
+        for (int i = 0; i < options.length; i++) {
+            options[i].render(container, g, i, currentOption, options.length, optionX, optionY);
+        }
 
         renderParticles();
     }
@@ -108,7 +117,7 @@ public class MainMenuState extends MenuState {
         float creatorY = (float) container.getHeight() - fontHeight;
 
         // Game texts
-        g.drawString(title, textX, 96);
+        g.drawString(title, textX, 144);
         g.drawString(version, versionX, versionY);
         g.drawString(creator, creatorX, creatorY);
         g.fillRect(container.getWidth() - 24, creatorY, 2, 4);
