@@ -8,6 +8,7 @@ import org.newdawn.slick.SpriteSheet;
 public class GameAnimation implements GameResource<Animation> {
 
     public static Animation EXPLOSION;
+    public static Animation SPACESHIP_FIRE;
 
     private Animation animation;
 
@@ -20,12 +21,17 @@ public class GameAnimation implements GameResource<Animation> {
         this(spriteSheetPath, 100, 100, 30);
     }
 
+    public GameAnimation(String spriteSheetPath, int tw, int th) throws SlickException {
+        this(spriteSheetPath, tw, th, 30);
+    }
+
     public GameAnimation(String spriteSheetPath, int duration) throws SlickException {
         this(spriteSheetPath, 100, 100, duration);
     }
 
     public static void load() throws SlickException {
         EXPLOSION = new GameAnimation("explosion.png").get();
+        SPACESHIP_FIRE = new GameAnimation("spaceship-fire.png", 64, 64, 10).get();
     }
 
     @Override

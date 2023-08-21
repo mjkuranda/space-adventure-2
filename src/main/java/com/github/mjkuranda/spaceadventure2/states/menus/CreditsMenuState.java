@@ -68,6 +68,7 @@ public class CreditsMenuState extends MenuState {
         );
         this.creditSections.add(
                 new CreditSection("Images")
+                        .addCredit(new CreditItem("Spaceship engine fire by BenHickling"))
                         .addCredit(new CreditItem("background-1 by FelixMittermeier from Pixabay"))
                         .addCredit(new CreditItem("background-2 by Gerd Altmann from Pixabay"))
                         .addCredit(new CreditItem("background-3 by Lumina Obscura from Pixabay"))

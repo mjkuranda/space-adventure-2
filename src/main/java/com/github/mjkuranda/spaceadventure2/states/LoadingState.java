@@ -2,7 +2,6 @@ package com.github.mjkuranda.spaceadventure2.states;
 
 import com.github.mjkuranda.spaceadventure2.resources.*;
 import com.github.mjkuranda.spaceadventure2.states.highscore.HighScoreHandler;
-import com.github.mjkuranda.spaceadventure2.states.highscore.HighScoreRecord;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;

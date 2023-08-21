@@ -6,6 +6,7 @@ import com.github.mjkuranda.spaceadventure2.entities.Entity;
 import com.github.mjkuranda.spaceadventure2.entities.EntityType;
 import com.github.mjkuranda.spaceadventure2.entities.SpaceEntity;
 import com.github.mjkuranda.spaceadventure2.entities.Spaceship;
+import com.github.mjkuranda.spaceadventure2.resources.GameAnimation;
 import com.github.mjkuranda.spaceadventure2.resources.GameImage;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
@@ -100,6 +101,12 @@ public class RetroRenderer extends Renderer {
         int yOffset = r.nextInt(vibration) - (vibration / 2);
 
         GameImage.SPACESHIP.draw(xPlayer + xOffset, yPlayer + yOffset, 0.37f);
+        GameAnimation.SPACESHIP_FIRE.draw(-256, -256);
+
+        Image spaceShipFire = GameAnimation.SPACESHIP_FIRE.getCurrentFrame();
+        spaceShipFire.setRotation(180);
+        spaceShipFire.draw(xPlayer + xOffset + 41, yPlayer + yOffset + 56);
+        spaceShipFire.draw(xPlayer + xOffset + 87, yPlayer + yOffset + 56);
     }
 
     private void drawColumn(Graphics g, float x) {
