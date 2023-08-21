@@ -79,7 +79,7 @@ public class LoadingState extends BasicGameState {
         if (!isMusicLoaded) {
             isMusicLoaded = true;
             GameMusic.load();
-            GameMusic.BACKGROUND_MUSIC.play(1.0f, 0.35f);
+            GameMusic.BACKGROUND_MUSIC.play(1.0f, 0.30f);
 
             return;
         }

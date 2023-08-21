@@ -13,6 +13,7 @@ import com.github.mjkuranda.spaceadventure2.states.highscore.HighScoreRecord;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 
 import java.time.LocalDate;
@@ -155,9 +156,9 @@ public class GameData {
         PlayerData playerData = PlayerData.getInstance();
 
         if (in.isKeyPressed(Input.KEY_SPACE) && playerData.hasMissile()) {
+            GameSound.SHOOT.play(1.0f, 0.5f);
             spawn(MissileType.LASER);
             playerData.takeMissile();
-            GameSound.SHOOT.play(1.0f, 0.5f);
         }
 
         /** Player collision */
@@ -165,16 +166,19 @@ public class GameData {
         PlayerData.getInstance().unvibrate();
 
         if (e != null) {
+            GameSound.EXPLOSION.play(1.0f, 0.5f);
             player.damage(e.getDurability());
             spawn(new Particle(GameAnimation.EXPLOSION, e));
             e.remove();
             PlayerData.getInstance().vibrate();
-            GameSound.EXPLOSION.play(1.0f, 0.5f);
 
             if (!player.isAlive()) {
                 gameOver(game);
             }
         }
+
+        /** Spawner update */
+        SpawnManager.getInstance().update();
 
         /** Spawn new entities */
         float prob = new Random().nextFloat();
@@ -200,6 +204,9 @@ public class GameData {
 
         /** Resets particles */
         particles.clear();
+
+        /** Resets spawn manager */
+        SpawnManager.getInstance().reset();
     }
 
     /**
@@ -213,10 +220,18 @@ public class GameData {
             return;
         }
 
-        Random r = new Random();
+        SpawnManager spawner = SpawnManager.getInstance();
 
-        int x = r.nextInt(X_SIZE);
-        float y = 0;
+        if (!spawner.canSpawnNewEntity()) {
+            System.err.println("GameData/spawn\tError:\tno empty lines to put a new entity!");
+
+            return;
+        }
+
+        Vector2f coordinates = spawner.getCoordinates();
+        int x = (int) coordinates.getX();
+        int y = (int) coordinates.getY();
+
         float xOffset = (float) (Math.random() * 0.5f);
 
         if (Math.random() > 0.5f) {
@@ -240,7 +255,6 @@ public class GameData {
         PlayerData stats = PlayerData.getInstance();
         HighScoreHandler.getInstance().inputRecord(new HighScoreRecord(stats.getName(), stats.getScore(), LocalDate.now().toString()));
 
-        game.enterState(StatesId.GAME_OVER_MENU);
         game.getContainer().getInput().clearKeyPressedRecord();
         GameSound.GAME_OVER.play();
         reset();
@@ -250,6 +264,8 @@ public class GameData {
         } catch (SlickException e) {
             throw new RuntimeException(e);
         }
+
+        game.enterState(StatesId.GAME_OVER_MENU);
     }
 
     /**
@@ -457,5 +473,116 @@ public class GameData {
         Entity entity = entityLines[x].getFirst();
 
         return player.collides(entity) ? entity : null;
+    }
+}
+
+class SpawnManager {
+
+    private static SpawnManager instance;
+
+    /** Empty lines */
+    private List<Integer> emptyLines;
+
+    /** Recent lines */
+    private Queue<SpawnZone> recentLines;
+
+    /** Last time when was removed the oldest record with lines */
+    private long spawnUpdate;
+
+    public SpawnManager() {
+        emptyLines = new LinkedList<>();
+        recentLines = new LinkedList<>();
+        spawnUpdate = System.currentTimeMillis();
+
+        for (int i = 0; i < GameData.X_SIZE; i++) {
+            emptyLines.add(i);
+        }
+    }
+
+    public static SpawnManager getInstance() {
+        if (instance == null) {
+            instance = new SpawnManager();
+        }
+
+        return instance;
+    }
+
+    /**
+     * Resets spawn manager
+     */
+    public void reset() {
+        emptyLines.clear();
+        recentLines.clear();
+
+        for (int i = 0; i < GameData.X_SIZE; i++) {
+            emptyLines.add(i);
+        }
+    }
+
+    /**
+     * Gives the coordinates of a new entity spawned on the map
+     * @return Vector2D with coordinates
+     */
+    public Vector2f getCoordinates() {
+        Random r = new Random();
+
+        int lineId = r.nextInt(emptyLines.size());
+        int line = emptyLines.get(lineId);
+        recentLines.add(new SpawnZone(line));
+        emptyLines.removeAll(Arrays.asList(line - 1, line, line + 1));
+
+        return new Vector2f(line, 0);
+    }
+
+    /**
+     * Returns flag if manager can spawn a new entity.
+     * It can have a problem with empty lines...
+     * @return flag, if it can spawn or not
+     */
+    public boolean canSpawnNewEntity() {
+        return emptyLines.size() > 0;
+    }
+
+    /**
+     * Updates per tick entity spawner
+     */
+    public void update() {
+        if (System.currentTimeMillis() - spawnUpdate >= 1000) {
+            SpawnZone zone = recentLines.poll();
+
+            if (zone != null) {
+                emptyLines.add(zone.getLines()[0]);
+                emptyLines.add(zone.getLines()[1]);
+                emptyLines.add(zone.getLines()[2]);
+            }
+
+            spawnUpdate = System.currentTimeMillis();
+        }
+    }
+
+    private class SpawnZone {
+        int[] lines;
+
+        public SpawnZone(int line) {
+            lines = new int[3];
+
+            if (line == 0) {
+                lines[0] = line;
+            } else {
+                lines[0] = line - 1;
+            }
+
+            if (line == GameData.X_SIZE - 1) {
+                lines[2] = line;
+            } else {
+                lines[2] = line + 1;
+            }
+
+            lines[1] = line;
+        }
+
+        public int[] getLines() {
+            return lines;
+        }
     }
 }
