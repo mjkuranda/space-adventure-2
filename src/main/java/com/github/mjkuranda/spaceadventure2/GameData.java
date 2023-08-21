@@ -13,6 +13,7 @@ import com.github.mjkuranda.spaceadventure2.states.highscore.HighScoreRecord;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 
 import java.time.LocalDate;
@@ -213,10 +214,18 @@ public class GameData {
             return;
         }
 
-        Random r = new Random();
+        SpawnManager spawner = SpawnManager.getInstance();
 
-        int x = r.nextInt(X_SIZE);
-        float y = 0;
+        if (!spawner.canSpawnNewEntity()) {
+            System.err.println("GameData/spawn\tError:\tno empty lines to put a new entity!");
+
+            return;
+        }
+
+        Vector2f coordinates = spawner.getCoordinates();
+        int x = (int) coordinates.getX();
+        int y = (int) coordinates.getY();
+
         float xOffset = (float) (Math.random() * 0.5f);
 
         if (Math.random() > 0.5f) {
@@ -457,5 +466,83 @@ public class GameData {
         Entity entity = entityLines[x].getFirst();
 
         return player.collides(entity) ? entity : null;
+    }
+}
+
+class SpawnManager {
+
+    private static SpawnManager instance;
+
+    /** Empty lines */
+    private List<Integer> emptyLines;
+
+    /** Recent lines */
+    private Queue<SpawnZone> recentLines;
+
+    public SpawnManager() {
+        emptyLines = new LinkedList<>();
+        recentLines = new LinkedList<>();
+
+        for (int i = 0; i < GameData.X_SIZE; i++) {
+            emptyLines.add(i);
+        }
+    }
+
+    public static SpawnManager getInstance() {
+        if (instance == null) {
+            instance = new SpawnManager();
+        }
+
+        return instance;
+    }
+
+    /**
+     * Gives the coordinates of a new entity spawned on the map
+     * @return Vector2D with coordinates
+     */
+    public Vector2f getCoordinates() {
+        Random r = new Random();
+
+        int lineId = r.nextInt(emptyLines.size());
+        int line = emptyLines.get(lineId);
+        recentLines.add(new SpawnZone(line));
+        emptyLines.removeAll(Arrays.asList(line - 1, line, line + 1));
+
+        return new Vector2f(line, 0);
+    }
+
+    /**
+     * Returns flag if manager can spawn a new entity.
+     * It can have a problem with empty lines...
+     * @return flag, if it can spawn or not
+     */
+    public boolean canSpawnNewEntity() {
+        return emptyLines.size() > 0;
+    }
+
+    private class SpawnZone {
+        int[] lines;
+
+        public SpawnZone(int line) {
+            lines = new int[3];
+
+            if (line == 0) {
+                lines[0] = line;
+            } else {
+                lines[0] = line - 1;
+            }
+
+            if (line == GameData.X_SIZE - 1) {
+                lines[2] = line;
+            } else {
+                lines[2] = line + 1;
+            }
+
+            lines[1] = line;
+        }
+
+        public int[] getLines() {
+            return lines;
+        }
     }
 }
