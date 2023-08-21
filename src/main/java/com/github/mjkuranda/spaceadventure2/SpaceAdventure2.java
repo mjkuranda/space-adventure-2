@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 public class SpaceAdventure2 extends StateBasedGame {
 
     public static final String GAME_TITLE   = "Space Adventure II";
-    public static final String GAME_VERSION = "v0.28.1";
+    public static final String GAME_VERSION = "v0.29.0";
     public static final String GAME_CREATOR = "Marek Kuranda";
 
     public SpaceAdventure2() {
