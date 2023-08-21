@@ -177,6 +177,9 @@ public class GameData {
             }
         }
 
+        /** Spawner update */
+        SpawnManager.getInstance().update();
+
         /** Spawn new entities */
         float prob = new Random().nextFloat();
 
@@ -479,9 +482,13 @@ class SpawnManager {
     /** Recent lines */
     private Queue<SpawnZone> recentLines;
 
+    /** Last time when was removed the oldest record with lines */
+    private long spawnUpdate;
+
     public SpawnManager() {
         emptyLines = new LinkedList<>();
         recentLines = new LinkedList<>();
+        spawnUpdate = System.currentTimeMillis();
 
         for (int i = 0; i < GameData.X_SIZE; i++) {
             emptyLines.add(i);
@@ -518,6 +525,20 @@ class SpawnManager {
      */
     public boolean canSpawnNewEntity() {
         return emptyLines.size() > 0;
+    }
+
+    public void update() {
+        if (System.currentTimeMillis() - spawnUpdate >= 1000) {
+            SpawnZone zone = recentLines.poll();
+
+            if (zone != null) {
+                emptyLines.add(zone.getLines()[0]);
+                emptyLines.add(zone.getLines()[1]);
+                emptyLines.add(zone.getLines()[2]);
+            }
+
+            spawnUpdate = System.currentTimeMillis();
+        }
     }
 
     private class SpawnZone {
