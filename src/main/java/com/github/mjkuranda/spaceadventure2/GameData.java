@@ -255,7 +255,6 @@ public class GameData {
         PlayerData stats = PlayerData.getInstance();
         HighScoreHandler.getInstance().inputRecord(new HighScoreRecord(stats.getName(), stats.getScore(), LocalDate.now().toString()));
 
-        game.enterState(StatesId.GAME_OVER_MENU);
         game.getContainer().getInput().clearKeyPressedRecord();
         GameSound.GAME_OVER.play();
         reset();
@@ -265,6 +264,8 @@ public class GameData {
         } catch (SlickException e) {
             throw new RuntimeException(e);
         }
+
+        game.enterState(StatesId.GAME_OVER_MENU);
     }
 
     /**
