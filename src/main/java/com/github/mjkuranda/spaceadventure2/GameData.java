@@ -156,9 +156,9 @@ public class GameData {
         PlayerData playerData = PlayerData.getInstance();
 
         if (in.isKeyPressed(Input.KEY_SPACE) && playerData.hasMissile()) {
+            GameSound.SHOOT.play(1.0f, 0.5f);
             spawn(MissileType.LASER);
             playerData.takeMissile();
-            GameSound.SHOOT.play(1.0f, 0.5f);
         }
 
         /** Player collision */
@@ -166,11 +166,11 @@ public class GameData {
         PlayerData.getInstance().unvibrate();
 
         if (e != null) {
+            GameSound.EXPLOSION.play(1.0f, 0.5f);
             player.damage(e.getDurability());
             spawn(new Particle(GameAnimation.EXPLOSION, e));
             e.remove();
             PlayerData.getInstance().vibrate();
-            GameSound.EXPLOSION.play(1.0f, 0.5f);
 
             if (!player.isAlive()) {
                 gameOver(game);
@@ -204,6 +204,9 @@ public class GameData {
 
         /** Resets particles */
         particles.clear();
+
+        /** Resets spawn manager */
+        SpawnManager.getInstance().reset();
     }
 
     /**
@@ -501,6 +504,18 @@ class SpawnManager {
         }
 
         return instance;
+    }
+
+    /**
+     * Resets spawn manager
+     */
+    public void reset() {
+        emptyLines.clear();
+        recentLines.clear();
+
+        for (int i = 0; i < GameData.X_SIZE; i++) {
+            emptyLines.add(i);
+        }
     }
 
     /**
