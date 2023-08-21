@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.29.0] - 2023-08-21
 ### Changed
 - [@mjkuranda](https://github.com/mjkuranda): Background music looped.
+- [@mjkuranda](https://github.com/mjkuranda): Centering options in main menu.
 
 ## [0.28.1] - 2023-08-21
 ### Fixed
