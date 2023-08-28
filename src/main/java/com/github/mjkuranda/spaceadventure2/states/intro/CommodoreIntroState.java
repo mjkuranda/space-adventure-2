@@ -3,6 +3,7 @@ package com.github.mjkuranda.spaceadventure2.states.intro;
 import com.github.mjkuranda.spaceadventure2.SpaceAdventure2;
 import com.github.mjkuranda.spaceadventure2.resources.GameFont;
 import com.github.mjkuranda.spaceadventure2.resources.GameImage;
+import com.github.mjkuranda.spaceadventure2.resources.GameSound;
 import com.github.mjkuranda.spaceadventure2.states.StatesId;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -71,9 +72,21 @@ public class CommodoreIntroState extends BasicGameState {
             return;
         }
 
-        long size = (time - 2000) / 250;
+        String newGameText = getGameText(time);
 
-        gameText = gameTextFull.substring(0, (int) size);
+        if (gameText.length() != newGameText.length()) {
+            gameText = newGameText;
+
+            switch (gameText.length()) {
+                case 5:
+                case 12:
+                    GameSound.KEY_SPACE_BAR.play();
+                    break;
+                default:
+                    GameSound.playKeySound();
+                    break;
+            }
+        }
     }
 
     private void renderCommodoreBackgroundScreen(GameContainer container, Graphics g) {
@@ -94,5 +107,15 @@ public class CommodoreIntroState extends BasicGameState {
 
     private void renderGameText(Graphics g) {
         g.drawString(gameText, screenX, screenY + 16 * 7);
+    }
+
+    private String getGameText(long time) {
+        long size = (time - 2000) / 250;
+
+        if (size > gameTextFull.length()) {
+            return gameTextFull;
+        }
+
+        return gameTextFull.substring(0, (int) size);
     }
 }
