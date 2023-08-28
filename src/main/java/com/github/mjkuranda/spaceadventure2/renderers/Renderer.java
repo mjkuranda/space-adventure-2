@@ -18,14 +18,14 @@ public abstract class Renderer {
     }
 
     /** Renders screen */
-    public void render(GameContainer container, Graphics g) {
+    public void render(Graphics g) {
         renderBackground(g);
 
         if (isMeshEnabled) {
-            renderMesh(container, g);
+            renderMesh(g);
         }
 
-        renderEntities(container, g);
+        renderEntities(g);
     }
 
     /**
@@ -57,15 +57,13 @@ public abstract class Renderer {
 
     /**
      * Renders map mesh, e. g. set of red lines, defining map fields.
-     * @param container Game container
      * @param g Graphics
      */
-    protected abstract void renderMesh(GameContainer container, Graphics g);
+    protected abstract void renderMesh(Graphics g);
 
     /**
      * Renders all entities on the map.
-     * @param container Game container
      * @param g Graphics
      */
-    protected abstract void renderEntities(GameContainer container, Graphics g);
+    protected abstract void renderEntities(Graphics g);
 }

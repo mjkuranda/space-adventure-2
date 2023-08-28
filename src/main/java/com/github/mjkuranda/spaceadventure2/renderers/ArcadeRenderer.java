@@ -26,7 +26,7 @@ public class ArcadeRenderer extends Renderer {
     }
 
     @Override
-    protected void renderMesh(GameContainer container, Graphics g) {
+    protected void renderMesh(Graphics g) {
         for (int y = 0; y < GameData.Y_SIZE; y++) {
             for (int x = 0; x < GameData.X_SIZE; x++) {
                 g.setColor(Color.red);
@@ -36,7 +36,7 @@ public class ArcadeRenderer extends Renderer {
     }
 
     @Override
-    protected void renderEntities(GameContainer container, Graphics g) {
+    protected void renderEntities(Graphics g) {
         /** Render space entities */
         for (var line : getData().getSpaceEntityList()) {
             var it = line.iterator();

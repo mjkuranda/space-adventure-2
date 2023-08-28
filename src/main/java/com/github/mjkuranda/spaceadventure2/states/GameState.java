@@ -53,7 +53,7 @@ public class GameState extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        renderer.render(container, g);
+        renderer.render(g);
         renderUI(container, g);
 
         if (isEnabledInfoRendering) {
