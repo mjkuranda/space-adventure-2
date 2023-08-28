@@ -22,6 +22,10 @@ public class CommodoreIntroState extends BasicGameState {
     private static final int SCREEN_GRID_SIZE = 16;
 
     private boolean hasStartedRendering;
+    private long startTime;
+    private String gameText;
+
+    private final String gameTextFull;
 
     private final float screenX;
     private final float screenY;
@@ -30,6 +34,9 @@ public class CommodoreIntroState extends BasicGameState {
         // Commodore screen grid 40 x 25, block is 16 x 16
         screenX = game.getContainer().getWidth() / 2.f - SCREEN_GRID_X / 2.f * SCREEN_GRID_SIZE;
         screenY = game.getContainer().getHeight() / 2.f - SCREEN_GRID_Y / 2.f * SCREEN_GRID_SIZE;
+
+        gameText = "";
+        gameTextFull = "LOAD \"SPACE ADVENTURE\"";
     }
 
     @Override
@@ -46,17 +53,27 @@ public class CommodoreIntroState extends BasicGameState {
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         if (!hasStartedRendering) {
             hasStartedRendering = true;
+            startTime = System.currentTimeMillis();
 
             return;
         }
 
         renderCommodoreBackgroundScreen(container, g);
         renderScreenText(g);
+        renderGameText(g);
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
+        long time = System.currentTimeMillis() - startTime;
 
+        if (time < 2000) {
+            return;
+        }
+
+        long size = (time - 2000) / 250;
+
+        gameText = gameTextFull.substring(0, (int) size);
     }
 
     private void renderCommodoreBackgroundScreen(GameContainer container, Graphics g) {
@@ -70,8 +87,12 @@ public class CommodoreIntroState extends BasicGameState {
     private void renderScreenText(Graphics g) {
         g.setFont(GameFont.COMMODORE_64);
         g.setColor(COMMODORE_BACKGROUND_COLOR);
-        g.drawString("    **** COMMODORE 64 BASIC V2 ****    ", screenX, screenY + 16);
+        g.drawString("    **** NG MARKO RETROCOMPUTER ****    ", screenX, screenY + 16);
         g.drawString(" 64K RAM SYSTEM  38911 BASIC BYTES FREE ", screenX, screenY + 16 * 3);
         g.drawString("READY.", screenX, screenY + 16 * 5);
+    }
+
+    private void renderGameText(Graphics g) {
+        g.drawString(gameText, screenX, screenY + 16 * 7);
     }
 }
