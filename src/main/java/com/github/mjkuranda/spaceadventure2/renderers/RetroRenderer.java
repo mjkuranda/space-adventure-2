@@ -8,6 +8,7 @@ import com.github.mjkuranda.spaceadventure2.entities.SpaceEntity;
 import com.github.mjkuranda.spaceadventure2.entities.Spaceship;
 import com.github.mjkuranda.spaceadventure2.resources.GameAnimation;
 import com.github.mjkuranda.spaceadventure2.resources.GameImage;
+import org.lwjgl.opengl.Display;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -17,8 +18,8 @@ import java.util.Random;
 
 public class RetroRenderer extends Renderer {
 
-    private static final int RENDERER_WIDTH = 1280;
-    private static final int RENDERER_HEIGHT = 1024;
+    private static final int RENDERER_WIDTH = Display.getDesktopDisplayMode().getWidth();
+    private static final int RENDERER_HEIGHT = Display.getDesktopDisplayMode().getHeight();
 
     private static final int MIDDLE_X = RENDERER_WIDTH / 2;
     private static final int MIDDLE_Y = RENDERER_HEIGHT / 2;

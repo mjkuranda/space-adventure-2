@@ -1,6 +1,7 @@
 package com.github.mjkuranda.spaceadventure2.renderers;
 
 import com.github.mjkuranda.spaceadventure2.GameData;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 public abstract class Renderer {
