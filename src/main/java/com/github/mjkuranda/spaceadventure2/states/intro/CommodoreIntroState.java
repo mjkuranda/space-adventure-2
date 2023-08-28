@@ -1,8 +1,6 @@
 package com.github.mjkuranda.spaceadventure2.states.intro;
 
-import com.github.mjkuranda.spaceadventure2.SpaceAdventure2;
 import com.github.mjkuranda.spaceadventure2.resources.GameFont;
-import com.github.mjkuranda.spaceadventure2.resources.GameImage;
 import com.github.mjkuranda.spaceadventure2.resources.GameSound;
 import com.github.mjkuranda.spaceadventure2.states.StatesId;
 import org.newdawn.slick.Color;
@@ -22,8 +20,7 @@ public class CommodoreIntroState extends BasicGameState {
 
     private static final int SCREEN_GRID_SIZE = 16;
 
-    // FIXME: 2000
-    private final long AWAITING_TIME = 1;
+    private final long AWAITING_TIME = 2000;
 
     private boolean hasStartedRendering;
     private long startTime;
@@ -102,12 +99,14 @@ public class CommodoreIntroState extends BasicGameState {
 
         if (isGameTextFullWritten() && !isInputtedCommand) {
             try {
-                Thread.sleep(500);
+                Thread.sleep(100);
+                GameSound.KEY_BACKSPACE.play();
+                Thread.sleep(1500);
+                GameSound.KEY_BACKSPACE.play();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
 
-            GameSound.KEY_BACKSPACE.play();
             isInputtedCommand = true;
 
             return;
@@ -118,7 +117,6 @@ public class CommodoreIntroState extends BasicGameState {
 
             // Inputted
             try {
-                GameSound.KEY_BACKSPACE.play();
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
@@ -135,8 +133,21 @@ public class CommodoreIntroState extends BasicGameState {
                 throw new RuntimeException(e);
             }
 
-            isSearching = false;
             isFoundGame = true;
+
+            return;
+        }
+
+        if (isFoundGame) {
+            // Go to the another intro state
+            try {
+                Thread.sleep(1000);
+                GameSound.KEY_SPACE_BAR.play();
+                Thread.sleep(200);
+                game.enterState(StatesId.VHS_INTRO);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
