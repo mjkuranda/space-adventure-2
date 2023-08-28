@@ -85,7 +85,7 @@ public class LoadingState extends BasicGameState {
             return;
         }
 
-        game.enterState(StatesId.CREDITS_INTRO, new FadeOutTransition(), new FadeInTransition());
+        game.enterState(StatesId.COMMODORE_INTRO, new FadeOutTransition(), new FadeInTransition());
     }
 
     private String getLoadingResourceName() {
