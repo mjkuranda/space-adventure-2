@@ -3,7 +3,7 @@ package com.github.mjkuranda.spaceadventure2.states;
 public interface StatesId {
     int LOADING = 0;
     int COMMODORE_INTRO = 1;
-    int VHS_INTRO = 2;
+    int CREDITS_INTRO = 2;
     int GAME = 3;
 
     int MAIN_MENU = 10;

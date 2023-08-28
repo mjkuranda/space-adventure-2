@@ -144,7 +144,7 @@ public class CommodoreIntroState extends BasicGameState {
                 Thread.sleep(1000);
                 GameSound.KEY_SPACE_BAR.play();
                 Thread.sleep(200);
-                game.enterState(StatesId.VHS_INTRO);
+                game.enterState(StatesId.CREDITS_INTRO);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

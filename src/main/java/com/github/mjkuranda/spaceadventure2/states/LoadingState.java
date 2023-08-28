@@ -81,16 +81,11 @@ public class LoadingState extends BasicGameState {
         if (!isMusicLoaded) {
             isMusicLoaded = true;
             GameMusic.load();
-//            GameMusic.BACKGROUND_MUSIC.loop(1.0f, 0.30f);
 
             return;
         }
 
-        game.enterState(StatesId.COMMODORE_INTRO, new FadeOutTransition(), new FadeInTransition());
-
-        // FIXME: Do something with this
-//        game.enterState(StatesId.MAIN_MENU);
-//        game.getState(StatesId.MAIN_MENU).init(game.getContainer(), game);
+        game.enterState(StatesId.CREDITS_INTRO, new FadeOutTransition(), new FadeInTransition());
     }
 
     private String getLoadingResourceName() {

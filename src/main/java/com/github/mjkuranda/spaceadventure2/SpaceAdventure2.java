@@ -4,7 +4,7 @@ import com.github.mjkuranda.spaceadventure2.states.GameState;
 import com.github.mjkuranda.spaceadventure2.states.LoadingState;
 import com.github.mjkuranda.spaceadventure2.states.highscore.HighScoreState;
 import com.github.mjkuranda.spaceadventure2.states.intro.CommodoreIntroState;
-import com.github.mjkuranda.spaceadventure2.states.intro.VhsIntroState;
+import com.github.mjkuranda.spaceadventure2.states.intro.CreditsIntroState;
 import com.github.mjkuranda.spaceadventure2.states.menus.*;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
@@ -27,7 +27,7 @@ public class SpaceAdventure2 extends StateBasedGame {
     public void initStatesList(GameContainer container) throws SlickException {
         addState(new LoadingState());
         addState(new CommodoreIntroState(this));
-        addState(new VhsIntroState());
+        addState(new CreditsIntroState());
         addState(new MainMenuState(this));
         addState(new NewGameMenuState(this));
         addState(new GameState());
