@@ -23,7 +23,7 @@ public class CommodoreIntroState extends BasicGameState {
     private static final int SCREEN_GRID_SIZE = 16;
 
     // FIXME: 2000
-    private final long AWAITING_TIME = 2000;
+    private final long AWAITING_TIME = 1;
 
     private boolean hasStartedRendering;
     private long startTime;
@@ -69,7 +69,7 @@ public class CommodoreIntroState extends BasicGameState {
         renderScreenText(g);
         renderGameText(g);
 
-        if (isSearching && !isFoundGame) {
+        if (isSearchingGame()) {
             renderBlankScreen(container, g);
         }
     }
@@ -118,8 +118,8 @@ public class CommodoreIntroState extends BasicGameState {
 
             // Inputted
             try {
-                Thread.sleep(500);
                 GameSound.KEY_BACKSPACE.play();
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -127,10 +127,10 @@ public class CommodoreIntroState extends BasicGameState {
             return;
         }
 
-        if (isSearching && !isFoundGame) {
+        if (isSearchingGame()) {
             // Searching
             try {
-                Thread.sleep(500);
+                Thread.sleep(1500);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -186,5 +186,9 @@ public class CommodoreIntroState extends BasicGameState {
 
     private boolean isGameTextFullWritten() {
         return gameTextFull.length() == gameText.length();
+    }
+
+    private boolean isSearchingGame() {
+        return isSearching && !isFoundGame;
     }
 }
