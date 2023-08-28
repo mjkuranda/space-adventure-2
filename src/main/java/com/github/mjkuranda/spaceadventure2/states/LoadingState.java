@@ -7,6 +7,8 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import java.awt.*;
 import java.io.IOException;
@@ -79,13 +81,11 @@ public class LoadingState extends BasicGameState {
         if (!isMusicLoaded) {
             isMusicLoaded = true;
             GameMusic.load();
-            GameMusic.BACKGROUND_MUSIC.loop(1.0f, 0.30f);
 
             return;
         }
 
-        game.enterState(StatesId.MAIN_MENU);
-        game.getState(StatesId.MAIN_MENU).init(game.getContainer(), game);
+        game.enterState(StatesId.COMMODORE_INTRO, new FadeOutTransition(), new FadeInTransition());
     }
 
     private String getLoadingResourceName() {

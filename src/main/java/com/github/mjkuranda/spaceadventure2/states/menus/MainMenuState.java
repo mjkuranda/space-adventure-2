@@ -5,6 +5,7 @@ import com.github.mjkuranda.spaceadventure2.entities.EntityShapes;
 import com.github.mjkuranda.spaceadventure2.entities.Particle;
 import com.github.mjkuranda.spaceadventure2.resources.GameAnimation;
 import com.github.mjkuranda.spaceadventure2.resources.GameFont;
+import com.github.mjkuranda.spaceadventure2.resources.GameImage;
 import com.github.mjkuranda.spaceadventure2.states.StatesId;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.MenuOption;
 import com.github.mjkuranda.spaceadventure2.states.menus.options.SimpleMenuOption;
@@ -102,10 +103,6 @@ public class MainMenuState extends MenuState {
         g.setFont(GameFont.VCR_OSD_MONO);
         float fontHeight = GameFont.VCR_OSD_MONO.getHeight("X");
 
-        String title = SpaceAdventure2.GAME_TITLE;
-        int width = getStringWidth(title, GameFont.VCR_OSD_MONO);
-        float textX = (float) container.getWidth() / 2 - (float) width / 2;
-
         String version = SpaceAdventure2.GAME_VERSION;
         int versionWidth = getStringWidth(version, GameFont.VCR_OSD_MONO);
         float versionX = (float) container.getWidth() - versionWidth;
@@ -117,7 +114,10 @@ public class MainMenuState extends MenuState {
         float creatorY = (float) container.getHeight() - fontHeight;
 
         // Game texts
-        g.drawString(title, textX, 144);
+        GameImage.LOGO.draw(
+                container.getWidth() / 2.f - 512 / 2.f,
+                48
+        );
         g.drawString(version, versionX, versionY);
         g.drawString(creator, creatorX, creatorY);
         g.fillRect(container.getWidth() - 24, creatorY, 2, 4);

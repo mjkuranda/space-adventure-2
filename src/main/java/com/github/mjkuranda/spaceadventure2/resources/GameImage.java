@@ -14,6 +14,8 @@ public class GameImage implements GameResource<Image> {
     public static Image BACKGROUND_3;
     public static Image BACKGROUND_4;
 
+    public static Image LOGO;
+
     private Image img;
 
     public GameImage(String path) throws SlickException {
@@ -23,6 +25,7 @@ public class GameImage implements GameResource<Image> {
     public static void load() throws SlickException {
         initEntityImages();
         initBackgrounds();
+        initOthers();
     }
 
     private static void initEntityImages() throws SlickException {
@@ -36,6 +39,10 @@ public class GameImage implements GameResource<Image> {
         BACKGROUND_2 = new GameImage("backgrounds/background-2.jpg").get();
         BACKGROUND_3 = new GameImage("backgrounds/background-3.jpg").get();
         BACKGROUND_4 = new GameImage("backgrounds/background-4.jpg").get();
+    }
+
+    private static void initOthers() throws SlickException {
+        LOGO = new GameImage("game-logo.png").get();
     }
 
     @Override

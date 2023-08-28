@@ -67,6 +67,13 @@ public class CreditsMenuState extends MenuState {
                         .addCredit(new CreditItem("Button Pressed by Jofae"))
         );
         this.creditSections.add(
+                new CreditSection("Fonts")
+                        .addCredit(new CreditItem("C64 Pro Mono STYLE from http://style64.org/c64-truetype"))
+                        .addCredit(new CreditItem("Perfect DOS VGA 437 by Zeh Fernando"))
+                        .addCredit(new CreditItem("Retro Gaming by Daymarius"))
+                        .addCredit(new CreditItem("VCR OSD MONO 1.001 by Riciery Leal"))
+        );
+        this.creditSections.add(
                 new CreditSection("Images")
                         .addCredit(new CreditItem("Spaceship engine fire by BenHickling"))
                         .addCredit(new CreditItem("background-1 by FelixMittermeier from Pixabay"))
