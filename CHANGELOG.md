@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.1] - 2023-08-28
 ### Fixed
-- [@mjkuranda](https://github.com/mjkuranda): Mesh rows in `RetroRenderer` and player centering there.
+- [@mjkuranda](https://github.com/mjkuranda): Mesh rows in renderers and player centering there.
 
 ## [1.0.0] - 2023-08-28
 ### Added
