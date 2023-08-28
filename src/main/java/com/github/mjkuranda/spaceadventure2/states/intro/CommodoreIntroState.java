@@ -71,5 +71,7 @@ public class CommodoreIntroState extends BasicGameState {
         g.setFont(GameFont.COMMODORE_64);
         g.setColor(COMMODORE_BACKGROUND_COLOR);
         g.drawString("    **** COMMODORE 64 BASIC V2 ****    ", screenX, screenY + 16);
+        g.drawString(" 64K RAM SYSTEM  38911 BASIC BYTES FREE ", screenX, screenY + 16 * 3);
+        g.drawString("READY.", screenX, screenY + 16 * 5);
     }
 }
