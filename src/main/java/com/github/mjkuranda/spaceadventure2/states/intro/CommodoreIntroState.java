@@ -22,9 +22,15 @@ public class CommodoreIntroState extends BasicGameState {
 
     private static final int SCREEN_GRID_SIZE = 16;
 
+    // FIXME: 2000
+    private final long AWAITING_TIME = 2000;
+
     private boolean hasStartedRendering;
     private long startTime;
     private String gameText;
+    private boolean isInputtedCommand;
+    private boolean isSearching;
+    private boolean isFoundGame;
 
     private final String gameTextFull;
 
@@ -62,13 +68,17 @@ public class CommodoreIntroState extends BasicGameState {
         renderCommodoreBackgroundScreen(container, g);
         renderScreenText(g);
         renderGameText(g);
+
+        if (isSearching && !isFoundGame) {
+            renderBlankScreen(container, g);
+        }
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         long time = System.currentTimeMillis() - startTime;
 
-        if (time < 2000) {
+        if (time < AWAITING_TIME) {
             return;
         }
 
@@ -86,6 +96,47 @@ public class CommodoreIntroState extends BasicGameState {
                     GameSound.playKeySound();
                     break;
             }
+
+            return;
+        }
+
+        if (isGameTextFullWritten() && !isInputtedCommand) {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            GameSound.KEY_BACKSPACE.play();
+            isInputtedCommand = true;
+
+            return;
+        }
+
+        if (isInputtedCommand && !isSearching) {
+            isSearching = true;
+
+            // Inputted
+            try {
+                Thread.sleep(500);
+                GameSound.KEY_BACKSPACE.play();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            return;
+        }
+
+        if (isSearching && !isFoundGame) {
+            // Searching
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            isSearching = false;
+            isFoundGame = true;
         }
     }
 
@@ -107,15 +158,33 @@ public class CommodoreIntroState extends BasicGameState {
 
     private void renderGameText(Graphics g) {
         g.drawString(gameText, screenX, screenY + 16 * 7);
+
+        if (isInputtedCommand) {
+            g.drawString("PRESS PLAY ON TAPE", screenX, screenY + 16 * 9);
+        }
+
+        if (isFoundGame) {
+            g.drawString("SEARCHING", screenX, screenY + 16 * 11);
+            g.drawString("FOUND SPACE ADVENTURE 2", screenX, screenY + 16 * 12);
+        }
+    }
+
+    private void renderBlankScreen(GameContainer container, Graphics g) {
+        g.setColor(COMMODORE_BACKGROUND_COLOR);
+        g.fillRect(0, 0, container.getWidth(), container.getHeight());
     }
 
     private String getGameText(long time) {
-        long size = (time - 2000) / 250;
+        long size = (time - AWAITING_TIME) / 250;
 
         if (size > gameTextFull.length()) {
             return gameTextFull;
         }
 
         return gameTextFull.substring(0, (int) size);
+    }
+
+    private boolean isGameTextFullWritten() {
+        return gameTextFull.length() == gameText.length();
     }
 }
