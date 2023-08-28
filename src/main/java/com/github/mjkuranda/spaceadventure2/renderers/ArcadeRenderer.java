@@ -1,14 +1,18 @@
 package com.github.mjkuranda.spaceadventure2.renderers;
 
 import com.github.mjkuranda.spaceadventure2.GameData;
+import org.lwjgl.opengl.Display;
 import org.newdawn.slick.Color;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 public class ArcadeRenderer extends Renderer {
 
     private static final int GAME_OBJECT_SIZE = 32;
-    private static final int RENDERER_WIDTH = 1280;
-    private static final int RENDERER_HEIGHT = 1024;
+
+    private static final int RENDERER_WIDTH = Display.getDesktopDisplayMode().getWidth();
+    private static final int RENDERER_HEIGHT = Display.getDesktopDisplayMode().getHeight();
+
     private static final int START_X = RENDERER_WIDTH / 2 - (GameData.X_SIZE / 2) * GAME_OBJECT_SIZE;
     private static final int START_Y = RENDERER_HEIGHT / 2 - (GameData.Y_SIZE / 2) * GAME_OBJECT_SIZE;
 
@@ -22,7 +26,7 @@ public class ArcadeRenderer extends Renderer {
     }
 
     @Override
-    protected void renderMesh(Graphics g) {
+    protected void renderMesh(GameContainer container, Graphics g) {
         for (int y = 0; y < GameData.Y_SIZE; y++) {
             for (int x = 0; x < GameData.X_SIZE; x++) {
                 g.setColor(Color.red);
@@ -32,7 +36,7 @@ public class ArcadeRenderer extends Renderer {
     }
 
     @Override
-    protected void renderEntities(Graphics g) {
+    protected void renderEntities(GameContainer container, Graphics g) {
         /** Render space entities */
         for (var line : getData().getSpaceEntityList()) {
             var it = line.iterator();

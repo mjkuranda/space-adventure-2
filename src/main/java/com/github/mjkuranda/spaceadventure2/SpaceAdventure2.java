@@ -6,17 +6,18 @@ import com.github.mjkuranda.spaceadventure2.states.highscore.HighScoreState;
 import com.github.mjkuranda.spaceadventure2.states.intro.CommodoreIntroState;
 import com.github.mjkuranda.spaceadventure2.states.intro.CreditsIntroState;
 import com.github.mjkuranda.spaceadventure2.states.menus.*;
+import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.DisplayMode;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 
-import java.awt.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SpaceAdventure2 extends StateBasedGame {
 
     public static final String GAME_TITLE   = "Space Adventure II";
-    public static final String GAME_VERSION = "v1.0.0";
+    public static final String GAME_VERSION = "v1.0.1";
     public static final String GAME_CREATOR = "Marek Kuranda";
 
     public SpaceAdventure2() {
@@ -38,13 +39,13 @@ public class SpaceAdventure2 extends StateBasedGame {
     }
 
     public static void main(String[] args) {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        ScalableGame sg = new ScalableGame(new SpaceAdventure2(), screenSize.width, screenSize.height, true);
+        DisplayMode displayMode = Display.getDesktopDisplayMode();
+        ScalableGame sg = new ScalableGame(new SpaceAdventure2(), displayMode.getWidth(), displayMode.getHeight(), true);
         AppGameContainer appgc;
 
         try {
             appgc = new AppGameContainer(sg);
-            appgc.setDisplayMode(screenSize.width, screenSize.height, false);
+            appgc.setDisplayMode(displayMode.getWidth(), displayMode.getHeight(), false);
             appgc.setShowFPS(false);
             appgc.setTargetFrameRate(60);
             appgc.setFullscreen(true);

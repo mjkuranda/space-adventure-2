@@ -1,6 +1,7 @@
 package com.github.mjkuranda.spaceadventure2.renderers;
 
 import com.github.mjkuranda.spaceadventure2.GameData;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 public abstract class Renderer {
@@ -17,14 +18,14 @@ public abstract class Renderer {
     }
 
     /** Renders screen */
-    public void render(Graphics g) {
+    public void render(GameContainer container, Graphics g) {
         renderBackground(g);
 
         if (isMeshEnabled) {
-            renderMesh(g);
+            renderMesh(container, g);
         }
 
-        renderEntities(g);
+        renderEntities(container, g);
     }
 
     /**
@@ -56,13 +57,15 @@ public abstract class Renderer {
 
     /**
      * Renders map mesh, e. g. set of red lines, defining map fields.
+     * @param container Game container
      * @param g Graphics
      */
-    protected abstract void renderMesh(Graphics g);
+    protected abstract void renderMesh(GameContainer container, Graphics g);
 
     /**
      * Renders all entities on the map.
+     * @param container Game container
      * @param g Graphics
      */
-    protected abstract void renderEntities(Graphics g);
+    protected abstract void renderEntities(GameContainer container, Graphics g);
 }
