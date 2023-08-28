@@ -16,14 +16,20 @@ public class CommodoreIntroState extends BasicGameState {
     private static final Color COMMODORE_BACKGROUND_COLOR = new Color(165, 165, 255);
     private static final Color COMMODORE_BLUE_BACKGROUND_COLOR = new Color(66, 66, 231);
 
+    private static final int SCREEN_GRID_X = 40;
+    private static final int SCREEN_GRID_Y = 25;
+
+    private static final int SCREEN_GRID_SIZE = 16;
+
     private boolean hasStartedRendering;
 
-    private float screenX, screenY;
+    private final float screenX;
+    private final float screenY;
 
     public CommodoreIntroState(StateBasedGame game) {
         // Commodore screen grid 40 x 25, block is 16 x 16
-        screenX = game.getContainer().getWidth() / 2.f - 20.f * 16.f;
-        screenY = game.getContainer().getHeight() / 2.f - 12.5f * 16.f;
+        screenX = game.getContainer().getWidth() / 2.f - SCREEN_GRID_X / 2.f * SCREEN_GRID_SIZE;
+        screenY = game.getContainer().getHeight() / 2.f - SCREEN_GRID_Y / 2.f * SCREEN_GRID_SIZE;
     }
 
     @Override
@@ -45,6 +51,7 @@ public class CommodoreIntroState extends BasicGameState {
         }
 
         renderCommodoreBackgroundScreen(container, g);
+        renderScreenText(g);
     }
 
     @Override
@@ -56,11 +63,13 @@ public class CommodoreIntroState extends BasicGameState {
         g.setColor(COMMODORE_BACKGROUND_COLOR);
         g.fillRect(0, 0, container.getWidth(), container.getHeight());
 
-        g.setColor(Color.white);
-        g.setFont(GameFont.COMMODORE_64);
-        g.drawString("TEST IT", screenX, screenY);
+        g.setColor(COMMODORE_BLUE_BACKGROUND_COLOR);
+        g.fillRect(screenX, screenY, SCREEN_GRID_X * SCREEN_GRID_SIZE, SCREEN_GRID_Y * SCREEN_GRID_SIZE);
+    }
 
-        g.setColor(Color.black);
-        g.fillRect(screenX, screenY, 16, 16);
+    private void renderScreenText(Graphics g) {
+        g.setFont(GameFont.COMMODORE_64);
+        g.setColor(COMMODORE_BACKGROUND_COLOR);
+        g.drawString("    **** COMMODORE 64 BASIC V2 ****    ", screenX, screenY + 16);
     }
 }
