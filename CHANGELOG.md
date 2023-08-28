@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [@mjkuranda](https://github.com/mjkuranda): Intro state.
 - [@mjkuranda](https://github.com/mjkuranda): Logo image.
 - [@mjkuranda](https://github.com/mjkuranda): Credits for fonts.
+- [@mjkuranda](https://github.com/mjkuranda): Logo image in main menu as well.
 
 ## [0.29.0] - 2023-08-21
 ### Changed
